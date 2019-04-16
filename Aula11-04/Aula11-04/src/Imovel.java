@@ -1,21 +1,21 @@
+
+import java.net.URL;
+
 /**
  * Aula 11/04/2019
  * @author Gamarra
  */
-
-import javax.swing.JOptionPane;
 
 public class Imovel {
     public String nomeProprietario;
     private String cep;
     
     public void setCep(String cep){
-        if(!cep.equals("00000000")&&(cep.length() == 8)){
-            this.cep = cep;
+        try{
+            URL url = new URL("https://viacep.com.br/ws/"+ cep +"/json");
         }
-        else{
-            JOptionPane.showMessageDialog(null,"CEP INVÁLIDO", "ALERTA",
-                    JOptionPane.WARNING_MESSAGE);
+        catch(Exception e){
+            System.out.println("Erro: "+e.getMessage());
         }
     }
     

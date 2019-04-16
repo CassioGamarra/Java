@@ -82,6 +82,7 @@ public class Principal {
                         fim = linha.indexOf("');");
                         cidade = linha.substring(50, fim);
                         cidades.add(cidade);
+                        
                     }
                 }
             }        
