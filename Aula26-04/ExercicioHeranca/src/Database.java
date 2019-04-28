@@ -1,6 +1,8 @@
+/**
+ * Class: Database
+ * @author Gnomo
+ */
 public class Database {
-    Tablet tablet = new Tablet();
-    
     public void cadastrar(Tablet tablet){
         
     }

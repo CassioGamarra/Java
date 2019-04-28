@@ -1,4 +1,3 @@
-
 public class Produto {
    public String nome;
    public String descricao;
@@ -6,6 +5,5 @@ public class Produto {
    public String codigo;
    
    public Produto(){
-   
    }
 }

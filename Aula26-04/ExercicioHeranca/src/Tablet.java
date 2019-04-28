@@ -1,4 +1,8 @@
-public class Tablet {
+/**
+ * Class: tablet
+ * @author Gnomo
+ */
+public class Tablet extends Eletronico {
     private String resolucao;
     private boolean rede4G;
     
@@ -8,19 +12,17 @@ public class Tablet {
         
     }
     
-    public void setResolucao(String resolucao){
-        this.resolucao = resolucao;
-    }
     public String getResolucao(){
         return resolucao;
     }
-    
-    public void setRede4G(boolean rede4G){
-        this.rede4G = rede4G;
+    public void setResolucao(String resolucao){
+        this.resolucao = resolucao;
     }
+    
     public boolean isRede4G(){
         return rede4G;
     }
-    
-    
+    public void setRede4G(boolean rede4G){
+        this.rede4G = rede4G;
+    }
 }

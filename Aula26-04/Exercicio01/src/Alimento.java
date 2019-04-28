@@ -1,4 +1,3 @@
-
-public class Alimento {
+public class Alimento extends Produto {
     
 }

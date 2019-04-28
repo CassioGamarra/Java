@@ -1,4 +1,3 @@
-
-public class Bebida {
+public class Bebida extends Produto {
     public int volume;
 }
