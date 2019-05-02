@@ -3,7 +3,7 @@
  * @author Gnomo
  */
 
-public class Principal extends Tablet{
+public class Principal {
     
     private Database database;
     private Tablet tablet;

@@ -1,12 +1,9 @@
 public class Principal {
-    
-    public Vinho vinho;
+    private Maca maca;
+    private Uva uva;
+    private Arquivo arquivo;
     
     public static void main(String[] args) {
        
-    }
-    
-    public void cadastrarProduto(){
-    
     }
 }
