@@ -22,7 +22,7 @@ public class Uva {
     public float getQuantidade(){
         return quantidade;
     }
-    public void getQuantidade(float quantidade){
+    public void setQuantidade(float quantidade){
         this.quantidade = quantidade;
     }
 }
