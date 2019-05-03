@@ -9,9 +9,9 @@ import java.io.PrintWriter;
 public class Arquivo extends Database{
     
     public void cadastrar(Uva uva){
-        String nomeArquivo = uva.getNome()+".txt";
+        nomeBase = uva.getNome()+".txt";
         
-        try (FileWriter arquivo = new FileWriter(nomeArquivo)){
+        try (FileWriter arquivo = new FileWriter(nomeBase)){
             
             PrintWriter gravar = new PrintWriter(arquivo);
             
