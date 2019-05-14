@@ -1,6 +1,4 @@
-
 import javax.swing.JOptionPane;
-
 
 public class Principal {
     
@@ -9,7 +7,7 @@ public class Principal {
         Socio socio = new Socio();
         String informacoes = "";
         
-        int entrada = JOptionPane.showConfirmDialog(null, "SÓCIO?", "ENTRADA",
+        int entrada = JOptionPane.showConfirmDialog(null, "SÓCIO?", "LENDS CLUB",
                 JOptionPane.YES_NO_CANCEL_OPTION);
         
         if(entrada == JOptionPane.YES_OPTION){

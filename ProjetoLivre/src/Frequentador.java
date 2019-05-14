@@ -1,12 +1,12 @@
-public abstract class EntradaSaida {
+public abstract class Frequentador {
     private boolean socio;
-    private double desconto;
-    private int numeroCartao;
+    private float desconto;
+    private String numeroCartao;
     private float consumo;
     private float valorEntrada;
 
     public abstract void entrada();
-    public abstract double saida();
+    public abstract float saida();
     
     public void setSocio(boolean socio){
         this.socio = socio;
@@ -15,17 +15,17 @@ public abstract class EntradaSaida {
         return socio;
     }
     
-    public void setDesconto(double desconto){
+    public void setDesconto(float desconto){
         this.desconto = desconto;
     }
-    public double getDesconto(){
+    public float getDesconto(){
         return desconto;
     }
     
-    public void setNumeroCartao(int numeroCartao){
+    public void setNumeroCartao(String numeroCartao){
         this.numeroCartao = numeroCartao;
     }
-    public int getNumeroCartao(){
+    public String getNumeroCartao(){
         return numeroCartao;
     }
     

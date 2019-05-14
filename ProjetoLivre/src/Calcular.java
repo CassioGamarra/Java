@@ -1,19 +1,17 @@
 public class Calcular {
-    public float calcular(float consumo, float entrada){
+    public float calcular(float consumo){
         float total;
 
-        total = consumo+entrada;
+        total = consumo;
         
         return total;
     }
     
-        public double calcular(float consumo, double desconto){
-        double total;
+    public float calcular(float consumo, float desconto){
+        float total;
         
         total = consumo-desconto;
         
         return total;
     }
-    
-    
 }
