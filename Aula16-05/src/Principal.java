@@ -1,21 +1,29 @@
 
+import javax.swing.JOptionPane;
+
 public class Principal {
-    public String nome;
-    public int idade;
-    public String telefone;
     
     public static void main(String[] args) {
-        
-        Principal dados = new Principal();
-        
-        dados.nome = "cassio";
-        dados.idade = 24;
-        dados.telefone = "9 9149-7946";
-        
-        System.out.println("Nome: "+dados.nome);
-        System.out.println("Idade: "+dados.idade);
-        System.out.println("Telefone: "+dados.telefone);
-        
+       Pessoa pessoa = new Pessoa();
+       Cadastrar cadastro = new Cadastrar();
+       Consultar consulta = new Consultar();
+       
+       int escolha;
+       escolha = Integer.parseInt(JOptionPane.showInputDialog(null, "1 - CADASTRAR / 2 - CONSULTAR"));
+       
+       if(escolha == 1){
+            pessoa.setNome(JOptionPane.showInputDialog(null, "NOME: "));
+            pessoa.setCPF(JOptionPane.showInputDialog(null, "CPF: "));
+            pessoa.setEmail(JOptionPane.showInputDialog(null, "E-MAIL: "));
+            pessoa.setTelefone(JOptionPane.showInputDialog(null, "TELEFONE: "));
+            cadastro.cadastrar(pessoa);
+       }
+       if(escolha == 2){
+            String msg = consulta.consultar(Long.parseLong(JOptionPane.showInputDialog(null, "Codigo: ")));
+            JOptionPane.showMessageDialog(null, msg);
+       }
+       
+       
+       
     }
-    
 }
