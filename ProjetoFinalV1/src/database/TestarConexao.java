@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 public class TestarConexao{
     public static void main(String[] args) throws SQLException{
-        Connection conectar = new ConectarBD().conectar("jdbc:mysql://localhost:3306/teste","cassio","17eemZp1oavudfJ1");
+        Connection conectar = new ConectarBD().conectar("jdbc:mysql://localhost:3306/teste","root","");
         System.out.println("OK");
         conectar.close();
     }
