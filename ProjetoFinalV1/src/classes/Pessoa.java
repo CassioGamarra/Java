@@ -1,3 +1,5 @@
+package classes;
+
 public abstract class Pessoa {
     private String nome;
     protected String CPF;

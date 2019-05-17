@@ -5,12 +5,8 @@
  */
 package gui;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import database.*;
-import utilitarios.*;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
+import classes.Cadastrar;
+import utilitarios.LimparTela;
 /**
  *
  * @author Gnomo
@@ -274,50 +270,11 @@ public class FramePessoas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        
-        Connection conectar = new ConectarBD().conectar("jdbc:mysql://localhost:3306/teste","root","");
-        
-        String sql = "INSERT INTO usuarios(nome, cpf, telefone, dependentes,turma, cargo, observacoes)VALUES(?,?,?,?,?,?,?)";
-        try{
-            PreparedStatement stmt = conectar.prepareStatement(sql);
-            stmt.setString(1, jTextField1.getText());
-            stmt.setString(2, jTextField2.getText());
-            stmt.setString(3, jTextField3.getText());
-            if(jComboBox1.getSelectedItem() == "Responsável"){
-                stmt.setInt(4, Integer.parseInt(jTextField4.getText()));
-                stmt.setString(5, "");
-                stmt.setString(6, "");
-                stmt.setString(7, "");
-                
-            }
-            if(jComboBox1.getSelectedItem() == "Aluno"){
-                stmt.setString(5, jTextField4.getText());
-                stmt.setInt(4, 0);
-                stmt.setString(6, "");
-                stmt.setString(7, "");
-            }
-            if(jComboBox1.getSelectedItem() == "Colaborador"){
-                stmt.setString(6, jTextField4.getText());
-                stmt.setInt(4, 0);
-                stmt.setString(5, "");
-                stmt.setString(7, "");
-            }
-            
-            if(jComboBox1.getSelectedItem() == "Visitante"){
-                stmt.setString(7, jTextField4.getText());
-                stmt.setInt(4, 0);
-                stmt.setString(5, "");
-                stmt.setString(6, "");
-            }
-            
-            stmt.execute();
-            JOptionPane.showMessageDialog(null, "CADASTRO CONCLUIDO COM SUCESSO!");
+        boolean teste = false;
+        String comboBox = ""+jComboBox1.getSelectedItem();
+        teste = Cadastrar.cadastrar(jTextField1.getText(), jTextField2.getText(), jTextField3.getText(), jTextField4.getText(), comboBox);
+        if(teste){
             new LimparTela().LimparTela(jFrame1);
-            stmt.close();
-        }
-        
-        catch(SQLException e){
-            throw new RuntimeException(e);
         }
     }//GEN-LAST:event_jButton10ActionPerformed
 

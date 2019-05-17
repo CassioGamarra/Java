@@ -1,3 +1,4 @@
+package classes;
 
 public class Colaborador extends Pessoa {
     private String cargo;

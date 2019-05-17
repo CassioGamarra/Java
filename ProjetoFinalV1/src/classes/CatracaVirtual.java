@@ -1,3 +1,6 @@
+package classes;
+
+
 public class CatracaVirtual {
     public void entrada(long codigo){
     

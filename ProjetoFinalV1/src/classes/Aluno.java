@@ -1,3 +1,4 @@
+package classes;
 
 public class Aluno extends Pessoa{
     public String turma;

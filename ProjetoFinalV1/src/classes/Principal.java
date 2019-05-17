@@ -1,3 +1,5 @@
+package classes;
+
 import database.ConectarBD;
 import database.Database;
 import gui.FrameInicio;

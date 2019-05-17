@@ -1,3 +1,4 @@
+package classes;
 
 public class Responsavel extends Pessoa {
     private int numeroDependentes;
