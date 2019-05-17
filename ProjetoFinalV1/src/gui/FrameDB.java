@@ -13,13 +13,11 @@ import java.sql.Connection;
  */
 public class FrameDB extends javax.swing.JFrame {
     Database conectar = new Database();
-    
+
     String banco = "";
     String user = "";
     String senha = "" ;
-    /**
-     * Creates new form FrameDB
-     */
+    
     public FrameDB() {
         initComponents();
     }
@@ -70,10 +68,6 @@ public class FrameDB extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Aharoni", 1, 14)); // NOI18N
         jLabel11.setText("SENHA");
 
-        jPasswordField1.setText("xxxxxxxxxxxxxxxxxxxxxxxxx");
-
-        jTextField4.setText("usuario");
-
         jLabel10.setFont(new java.awt.Font("Aharoni", 1, 14)); // NOI18N
         jLabel10.setText("USER");
 
@@ -81,10 +75,8 @@ public class FrameDB extends javax.swing.JFrame {
         jLabel9.setText("PORTA");
 
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setText("porta");
 
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("nome");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -98,7 +90,7 @@ public class FrameDB extends javax.swing.JFrame {
         jLabel3.setText("URL");
 
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("url");
+        jTextField1.setToolTipText("url");
 
         jLabel2.setFont(new java.awt.Font("Aharoni", 0, 36)); // NOI18N
         jLabel2.setText("Banco de Dados");
@@ -111,7 +103,7 @@ public class FrameDB extends javax.swing.JFrame {
         jButton3.setText("CANCELAR");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                System.exit(0);
+                FrameDB.this.dispose();
             }
         });
 

@@ -122,7 +122,7 @@
         <Property name="text" type="java.lang.String" value="CONECTAR"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jButton1.addActionListener(new java.awt.event.ActionListener() {&#xa;    public void actionPerformed(java.awt.event.ActionEvent evt) {&#xa;        conectar.setURL(jTextField1.getText());&#xa;        conectar.setNome(jTextField2.getText());&#xa;        conectar.setPorta(Integer.parseInt(jTextField3.getText()));&#xa;        conectar.setUsuario(jTextField4.getText());&#xa;        conectar.setPassword(jPasswordField1.getText());&#xa;&#xa;        banco = &quot;jdbc:mysql://&quot;+conectar.getURL()+&quot;:&quot;+conectar.getPorta()+&quot;/&quot;+conectar.getNome();&#xa;        user = conectar.getUsuario();&#xa;        senha = conectar.getPassword();&#xa;        Connection conectar = new ConectarBD().conectar(banco, user, senha);&#xa;        JOptionPane.showMessageDialog(null, &quot;SUCESSO!&quot;);&#xa;    }&#xa;});"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jButton1.addActionListener(new java.awt.event.ActionListener() {&#xa;    public void actionPerformed(java.awt.event.ActionEvent evt) {&#xa;        conectar.setURL(jTextField1.getText());&#xa;        conectar.setNome(jTextField2.getText());&#xa;        conectar.setPorta(Integer.parseInt(jTextField3.getText()));&#xa;        conectar.setUsuario(jTextField4.getText());&#xa;        conectar.setPassword(jPasswordField1.getText());&#xa;        &#xa;        banco = &quot;jdbc:mysql://&quot;+conectar.getURL()+&quot;:&quot;+conectar.getPorta()+&quot;/&quot;+conectar.getNome();&#xa;        user = conectar.getUsuario();&#xa;        senha = conectar.getPassword();&#xa;        Connection conectar = new ConectarBD().conectar(banco, user, senha);&#xa;        JOptionPane.showMessageDialog(null, &quot;SUCESSO!&quot;);&#xa;    }&#xa;});"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel11">
@@ -134,14 +134,8 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="jPasswordField1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="xxxxxxxxxxxxxxxxxxxxxxxxx"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField4">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="usuario"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">
       <Properties>
@@ -162,13 +156,11 @@
     <Component class="javax.swing.JTextField" name="jTextField3">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="porta"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField2">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="nome"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
@@ -193,7 +185,7 @@
     <Component class="javax.swing.JTextField" name="jTextField1">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="url"/>
+        <Property name="toolTipText" type="java.lang.String" value="url"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -219,7 +211,7 @@
         <Property name="text" type="java.lang.String" value="CANCELAR"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jButton3.addActionListener(new java.awt.event.ActionListener() {&#xa;    public void actionPerformed(java.awt.event.ActionEvent evt) {&#xa;        System.exit(0);&#xa;    }&#xa;});"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jButton3.addActionListener(new java.awt.event.ActionListener() {&#xa;    public void actionPerformed(java.awt.event.ActionEvent evt) {&#xa;        FrameDB.this.dispose();&#xa;    }&#xa;});"/>
       </AuxValues>
     </Component>
   </SubComponents>
