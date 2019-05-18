@@ -2,6 +2,7 @@ package br.com.cassiogamarra.projetofinal.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -15,12 +16,16 @@ public class ConectarDB{
         Connection conectar = null;
         try{
             
-            conectar = DriverManager.getConnection("jdbc:mysql://localhost:3306/teste","root","");
+            conectar = DriverManager.getConnection("jdbc:mysql://localhost:3306/bancocatracas","root","");
             
             return conectar;
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Não foi possivel conectar");
 	}
 	return conectar;
+    }
+
+    PreparedStatement prepareStatement(String sql) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

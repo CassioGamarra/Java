@@ -4,7 +4,7 @@ public abstract class Pessoa {
     protected String nome;
     protected String CPF;
     protected String telefone;
-    protected int codigo;
+    protected long codigo;
 
     public String getNome() {
         return nome;
@@ -30,11 +30,11 @@ public abstract class Pessoa {
         this.telefone = telefone;
     }
 
-    public int getCodigo() {
+    public long getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(long codigo) {
         this.codigo = codigo;
     }
 }

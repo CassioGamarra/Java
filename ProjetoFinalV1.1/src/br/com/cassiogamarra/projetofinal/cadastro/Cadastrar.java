@@ -15,11 +15,13 @@ public class Cadastrar {
         
        Connection conectar = ConectarDB.conectar();
        
-       String sql = "INSERT INTO usuarios(nome, cpf, telefone, dependentes,turma, cargo, observacoes)VALUES(?,?,?,?,?,?,?)";
+       String sql = "INSERT INTO usuario(nome, cpf, telefone, dependentes,turma, cargo, observacoes, categoria, situacao)VALUES(?,?,?,?,?,?,?,?,?)";
        try (PreparedStatement stmt = conectar.prepareStatement(sql)) {
                stmt.setString(1, pessoa.getNome());
                stmt.setString(2, pessoa.getCPF());
                stmt.setString(3, pessoa.getTelefone());
+               stmt.setString(8, categoria);
+               stmt.setInt(9, 1);
                if(categoria.equals("Responsável")){
                    stmt.setInt(4, Integer.parseInt(especial));
                    stmt.setString(5, "");
