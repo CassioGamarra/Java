@@ -1,6 +1,5 @@
 package br.com.cassiogamarra.projetofinal.utilitarios;
 
-
 public class ValidarTelefone {
     public ValidarTelefone(){
         

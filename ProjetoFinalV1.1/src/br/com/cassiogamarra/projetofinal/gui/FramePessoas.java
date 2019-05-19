@@ -50,12 +50,12 @@ public class FramePessoas extends javax.swing.JFrame {
         btnSalvar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         frameConsultar = new javax.swing.JFrame();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         fieldConsulta = new javax.swing.JTextField();
         btnConsultar = new javax.swing.JButton();
         btnCancelarCon = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         frameExcluir = new javax.swing.JFrame();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -76,6 +76,7 @@ public class FramePessoas extends javax.swing.JFrame {
         btnVoltar = new javax.swing.JButton();
 
         frameCadastrar.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        frameCadastrar.setTitle("PROJETO FINAL V1.1 - CADASTRAR");
         frameCadastrar.setForeground(java.awt.Color.white);
         frameCadastrar.setMinimumSize(new java.awt.Dimension(375, 400));
         frameCadastrar.setLocationRelativeTo(null);
@@ -207,17 +208,12 @@ public class FramePessoas extends javax.swing.JFrame {
         jLabel7.getAccessibleContext().setAccessibleDescription("");
 
         frameConsultar.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        frameConsultar.setTitle("PROJETO FINAL V1.1 - CONSULTAR");
         frameConsultar.setForeground(java.awt.Color.white);
-        frameConsultar.setMinimumSize(new java.awt.Dimension(228, 245));
+        frameConsultar.setMinimumSize(new java.awt.Dimension(250, 250));
+        frameConsultar.setPreferredSize(new java.awt.Dimension(250, 250));
         frameConsultar.setResizable(false);
         frameConsultar.setLocationRelativeTo(null);
-
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cassiogamarra/projetofinal/gui/pessoa.png"))); // NOI18N
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("CONSULTAR PESSOAS");
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel11.setText("CÓDIGO:");
@@ -244,51 +240,62 @@ public class FramePessoas extends javax.swing.JFrame {
             }
         });
 
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cassiogamarra/projetofinal/gui/pessoa.png"))); // NOI18N
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("CONSULTAR PESSOA");
+
         javax.swing.GroupLayout frameConsultarLayout = new javax.swing.GroupLayout(frameConsultar.getContentPane());
         frameConsultar.getContentPane().setLayout(frameConsultarLayout);
         frameConsultarLayout.setHorizontalGroup(
             frameConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(frameConsultarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(frameConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(frameConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(frameConsultarLayout.createSequentialGroup()
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fieldConsulta))
-                    .addGroup(frameConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(frameConsultarLayout.createSequentialGroup()
-                            .addComponent(btnConsultar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnCancelarCon))
-                        .addGroup(frameConsultarLayout.createSequentialGroup()
-                            .addGap(24, 24, 24)
-                            .addGroup(frameConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel10)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(12, 12, 12)
+                        .addGroup(frameConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(frameConsultarLayout.createSequentialGroup()
+                                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnCancelarCon))
+                            .addGroup(frameConsultarLayout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(fieldConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(12, 12, 12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frameConsultarLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(frameConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34)))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         frameConsultarLayout.setVerticalGroup(
             frameConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frameConsultarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel10)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(frameConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(frameConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConsultar)
                     .addComponent(btnCancelarCon))
-                .addContainerGap())
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         frameExcluir.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        frameExcluir.setTitle("PROJETO FINAL V1.1 - EXCLUIR");
         frameExcluir.setForeground(java.awt.Color.white);
-        frameExcluir.setMaximumSize(new java.awt.Dimension(228, 245));
-        frameExcluir.setMinimumSize(new java.awt.Dimension(228, 245));
+        frameExcluir.setMaximumSize(new java.awt.Dimension(237, 250));
+        frameExcluir.setMinimumSize(new java.awt.Dimension(237, 250));
         frameExcluir.setPreferredSize(new java.awt.Dimension(228, 245));
         frameExcluir.setResizable(false);
         frameExcluir.setLocationRelativeTo(null);
@@ -331,34 +338,33 @@ public class FramePessoas extends javax.swing.JFrame {
             frameExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(frameExcluirLayout.createSequentialGroup()
                 .addGroup(frameExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frameExcluirLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fieldConsulta1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frameExcluirLayout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jLabel13)
-                        .addGap(33, 33, 33))
                     .addGroup(frameExcluirLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(btnExcluir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCancelarExc)))
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(frameExcluirLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(frameExcluirLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(frameExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(frameExcluirLayout.createSequentialGroup()
+                                .addComponent(btnExcluir)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                                .addComponent(btnCancelarExc))
+                            .addGroup(frameExcluirLayout.createSequentialGroup()
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(fieldConsulta1)))))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frameExcluirLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
         );
         frameExcluirLayout.setVerticalGroup(
             frameExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frameExcluirLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel12)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(frameExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldConsulta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -366,10 +372,11 @@ public class FramePessoas extends javax.swing.JFrame {
                 .addGroup(frameExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExcluir)
                     .addComponent(btnCancelarExc))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(50, 50, 50))
         );
 
         dialogConsulta.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        dialogConsulta.setTitle("RESULTADO CONSULTA");
         dialogConsulta.setAlwaysOnTop(true);
         dialogConsulta.setMinimumSize(new java.awt.Dimension(350, 400));
         dialogConsulta.setLocationRelativeTo(null);
@@ -427,6 +434,7 @@ public class FramePessoas extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("PROJETO FINAL V1.1 - PESSOAS");
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cassiogamarra/projetofinal/gui/pessoa.png"))); // NOI18N
@@ -559,13 +567,51 @@ public class FramePessoas extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnSalvarActionPerformed
 
+    private void btnConsultarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarPessoaActionPerformed
+        frameConsultar.setVisible(true);
+    }//GEN-LAST:event_btnConsultarPessoaActionPerformed
+
+    private void btnExcluirPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirPessoaActionPerformed
+        frameExcluir.setVisible(true);
+    }//GEN-LAST:event_btnExcluirPessoaActionPerformed
+
+    private void btnVoltarDialogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarDialogActionPerformed
+        dialogConsulta.dispose();
+    }//GEN-LAST:event_btnVoltarDialogActionPerformed
+
+    private void btnCancelarExcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarExcActionPerformed
+        frameExcluir.dispose();
+    }//GEN-LAST:event_btnCancelarExcActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        long codigo = Long.parseLong(fieldConsulta1.getText());
+
+        try {
+            if(Consultar.consultar(codigo).equals("")){
+                JOptionPane.showMessageDialog(null, "PESSOA NÃO ENCONTRADA");
+            }
+            else if(VerificarDependentes.verificarDependentes(codigo) != 0){
+                JOptionPane.showMessageDialog(null, "RESPONSÁVEL NÃO PODE SER EXCLUIDO!");
+            }
+            else{
+                Excluir.excluir(codigo);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FramePessoas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void fieldConsulta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldConsulta1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldConsulta1ActionPerformed
+
     private void btnCancelarConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarConActionPerformed
         frameConsultar.dispose();
     }//GEN-LAST:event_btnCancelarConActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         long codigo = Long.parseLong(fieldConsulta.getText());
-        
+
         try {
             if(Consultar.consultar(codigo).equals("")){
                 JOptionPane.showMessageDialog(null, "PESSOA NÃO ENCONTRADA");
@@ -577,50 +623,12 @@ public class FramePessoas extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(FramePessoas.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void fieldConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldConsultaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldConsultaActionPerformed
-
-    private void btnConsultarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarPessoaActionPerformed
-        frameConsultar.setVisible(true);
-    }//GEN-LAST:event_btnConsultarPessoaActionPerformed
-
-    private void fieldConsulta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldConsulta1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fieldConsulta1ActionPerformed
-
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        long codigo = Long.parseLong(fieldConsulta1.getText());
-
-        try {
-            if(Consultar.consultar(codigo).equals("")){
-                JOptionPane.showMessageDialog(null, "PESSOA NÃO ENCONTRADA");
-            }
-            if(VerificarDependentes.verificarDependentes(codigo) != 0){
-                JOptionPane.showMessageDialog(null, "RESPONSÁVEL NÃO PODE SER EXCLUIDO!");
-            }
-            else{
-                Excluir.excluir(codigo);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(FramePessoas.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnExcluirActionPerformed
-
-    private void btnCancelarExcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarExcActionPerformed
-        frameExcluir.dispose();
-    }//GEN-LAST:event_btnCancelarExcActionPerformed
-
-    private void btnExcluirPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirPessoaActionPerformed
-        frameExcluir.setVisible(true);
-    }//GEN-LAST:event_btnExcluirPessoaActionPerformed
-
-    private void btnVoltarDialogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarDialogActionPerformed
-        dialogConsulta.dispose();
-    }//GEN-LAST:event_btnVoltarDialogActionPerformed
 
     /**
      * @param args the command line arguments
@@ -681,13 +689,14 @@ public class FramePessoas extends javax.swing.JFrame {
     private javax.swing.JFrame frameConsultar;
     private javax.swing.JFrame frameExcluir;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -695,7 +704,6 @@ public class FramePessoas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea textoConsulta;
     // End of variables declaration//GEN-END:variables

@@ -1,4 +1,3 @@
-
 package br.com.cassiogamarra.projetofinal.cadastro;
 
 import br.com.cassiogamarra.projetofinal.database.ConectarDB;
@@ -32,7 +31,14 @@ public class Historico {
                 }
                 
             }
-            JOptionPane.showMessageDialog(null, mensagem, "HISTÓRICO EXCLUIDOS", JOptionPane.PLAIN_MESSAGE);
+            if(mensagem.equals("")){
+                JOptionPane.showMessageDialog(null, "SEM HISTÓRICO",
+                        "HISTÓRICO EXCLUIDOS", JOptionPane.PLAIN_MESSAGE);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, mensagem,
+                        "HISTÓRICO EXCLUIDOS", JOptionPane.PLAIN_MESSAGE);
+            }
         }
         catch(SQLException e){
            throw new RuntimeException(e);
