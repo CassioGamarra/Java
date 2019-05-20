@@ -4,7 +4,7 @@ public class ValidarNome {
     
     public  ValidarNome(){
     }
-    public boolean validarNome(String nome){
+    public static boolean validarNome(String nome){
         String valor = nome.toUpperCase();
         if(nome.length() < 3){
             return false;

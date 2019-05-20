@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 public class LimparTela {
-    public void LimparTela(JFrame Frame) {     
+    public static void LimparTela(JFrame Frame) {     
             //limpa os campos     
             for (int i=0; i < Frame.getContentPane().getComponentCount(); i++) {   
                 //varre todos os componentes     

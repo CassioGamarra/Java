@@ -61,14 +61,21 @@ public class FramePessoas extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         fieldConsulta1 = new javax.swing.JTextField();
-        btnExcluir = new javax.swing.JButton();
-        btnCancelarExc = new javax.swing.JButton();
+        btnVerificar = new javax.swing.JButton();
+        btnVoltarExc = new javax.swing.JButton();
         dialogConsulta = new javax.swing.JDialog();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         btnVoltarDialog = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         textoConsulta = new javax.swing.JTextArea();
+        frameExclusao = new javax.swing.JFrame();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        textoExclusao = new javax.swing.JTextArea();
+        btnExcluir = new javax.swing.JButton();
+        btnCancelarExclusao = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnIncluirPessoa = new javax.swing.JButton();
         btnExcluirPessoa = new javax.swing.JButton();
@@ -210,19 +217,12 @@ public class FramePessoas extends javax.swing.JFrame {
         frameConsultar.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         frameConsultar.setTitle("PROJETO FINAL V1.1 - CONSULTAR");
         frameConsultar.setForeground(java.awt.Color.white);
-        frameConsultar.setMinimumSize(new java.awt.Dimension(250, 250));
-        frameConsultar.setPreferredSize(new java.awt.Dimension(250, 250));
-        frameConsultar.setResizable(false);
+        frameConsultar.setMinimumSize(new java.awt.Dimension(255, 250));
+        frameConsultar.setPreferredSize(new java.awt.Dimension(255, 250));
         frameConsultar.setLocationRelativeTo(null);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel11.setText("CÓDIGO:");
-
-        fieldConsulta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldConsultaActionPerformed(evt);
-            }
-        });
 
         btnConsultar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnConsultar.setText("CONSULTAR");
@@ -255,15 +255,15 @@ public class FramePessoas extends javax.swing.JFrame {
                 .addGroup(frameConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(frameConsultarLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addGroup(frameConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(frameConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(frameConsultarLayout.createSequentialGroup()
-                                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnCancelarCon))
                             .addGroup(frameConsultarLayout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(fieldConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(fieldConsulta)))
                         .addGap(12, 12, 12))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frameConsultarLayout.createSequentialGroup()
                         .addGap(34, 34, 34)
@@ -271,7 +271,7 @@ public class FramePessoas extends javax.swing.JFrame {
                             .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(34, 34, 34)))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(5, Short.MAX_VALUE))
         );
         frameConsultarLayout.setVerticalGroup(
             frameConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,9 +294,7 @@ public class FramePessoas extends javax.swing.JFrame {
         frameExcluir.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         frameExcluir.setTitle("PROJETO FINAL V1.1 - EXCLUIR");
         frameExcluir.setForeground(java.awt.Color.white);
-        frameExcluir.setMaximumSize(new java.awt.Dimension(237, 250));
         frameExcluir.setMinimumSize(new java.awt.Dimension(237, 250));
-        frameExcluir.setPreferredSize(new java.awt.Dimension(228, 245));
         frameExcluir.setResizable(false);
         frameExcluir.setLocationRelativeTo(null);
 
@@ -316,19 +314,19 @@ public class FramePessoas extends javax.swing.JFrame {
             }
         });
 
-        btnExcluir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnExcluir.setText("EXCLUIR");
-        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+        btnVerificar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnVerificar.setText("VERIFICAR");
+        btnVerificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirActionPerformed(evt);
+                btnVerificarActionPerformed(evt);
             }
         });
 
-        btnCancelarExc.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnCancelarExc.setText("CANCELAR");
-        btnCancelarExc.addActionListener(new java.awt.event.ActionListener() {
+        btnVoltarExc.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnVoltarExc.setText("VOLTAR");
+        btnVoltarExc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarExcActionPerformed(evt);
+                btnVoltarExcActionPerformed(evt);
             }
         });
 
@@ -348,9 +346,9 @@ public class FramePessoas extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addGroup(frameExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(frameExcluirLayout.createSequentialGroup()
-                                .addComponent(btnExcluir)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                                .addComponent(btnCancelarExc))
+                                .addComponent(btnVerificar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnVoltarExc, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
                             .addGroup(frameExcluirLayout.createSequentialGroup()
                                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -370,8 +368,8 @@ public class FramePessoas extends javax.swing.JFrame {
                     .addComponent(fieldConsulta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(frameExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnExcluir)
-                    .addComponent(btnCancelarExc))
+                    .addComponent(btnVerificar)
+                    .addComponent(btnVoltarExc))
                 .addGap(50, 50, 50))
         );
 
@@ -405,19 +403,19 @@ public class FramePessoas extends javax.swing.JFrame {
         dialogConsulta.getContentPane().setLayout(dialogConsultaLayout);
         dialogConsultaLayout.setHorizontalGroup(
             dialogConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1)
             .addGroup(dialogConsultaLayout.createSequentialGroup()
                 .addGroup(dialogConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(dialogConsultaLayout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(btnVoltarDialog))
                     .addGroup(dialogConsultaLayout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(dialogConsultaLayout.createSequentialGroup()
                         .addGap(128, 128, 128)
-                        .addComponent(jLabel16)))
-                .addContainerGap(35, Short.MAX_VALUE))
-            .addComponent(jScrollPane1)
+                        .addComponent(jLabel16))
+                    .addGroup(dialogConsultaLayout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(btnVoltarDialog, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         dialogConsultaLayout.setVerticalGroup(
             dialogConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -430,6 +428,82 @@ public class FramePessoas extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVoltarDialog)
+                .addContainerGap())
+        );
+
+        btnVoltarDialog.getAccessibleContext().setAccessibleName("OK");
+
+        frameExclusao.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        frameExclusao.setTitle("PROJETO FINAL V1.1 - EXCLUIR");
+        frameExclusao.setForeground(java.awt.Color.white);
+        frameExclusao.setMinimumSize(new java.awt.Dimension(350, 400));
+        frameExclusao.setPreferredSize(new java.awt.Dimension(350, 400));
+        frameExclusao.setResizable(false);
+        frameExclusao.setLocationRelativeTo(null);
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setText("DADOS USUÁRIO");
+
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cassiogamarra/projetofinal/gui/pessoa.png"))); // NOI18N
+
+        textoExclusao.setEditable(false);
+        textoExclusao.setColumns(20);
+        textoExclusao.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        textoExclusao.setRows(5);
+        jScrollPane3.setViewportView(textoExclusao);
+        textoConsulta.setEditable(false);
+
+        btnExcluir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnExcluir.setText("EXCLUIR");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
+        btnCancelarExclusao.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnCancelarExclusao.setText("CANCELAR");
+        btnCancelarExclusao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarExclusaoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout frameExclusaoLayout = new javax.swing.GroupLayout(frameExclusao.getContentPane());
+        frameExclusao.getContentPane().setLayout(frameExclusaoLayout);
+        frameExclusaoLayout.setHorizontalGroup(
+            frameExclusaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3)
+            .addGroup(frameExclusaoLayout.createSequentialGroup()
+                .addGroup(frameExclusaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(frameExclusaoLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(frameExclusaoLayout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(jLabel25)))
+                .addContainerGap(35, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frameExclusaoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnExcluir)
+                .addGap(18, 18, 18)
+                .addComponent(btnCancelarExclusao)
+                .addGap(56, 56, 56))
+        );
+        frameExclusaoLayout.setVerticalGroup(
+            frameExclusaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frameExclusaoLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(jLabel25)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(frameExclusaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnExcluir)
+                    .addComponent(btnCancelarExclusao))
                 .addContainerGap())
         );
 
@@ -542,29 +616,23 @@ public class FramePessoas extends javax.swing.JFrame {
         pessoa.setCPF(fieldCPF.getText());
         pessoa.setTelefone(fieldTelefone.getText());
         
-        ValidarNome nome = new ValidarNome();
-        ValidarCPF cpf = new ValidarCPF();
-        ValidarTelefone telefone = new ValidarTelefone();
-        
-        if(!nome.validarNome(pessoa.getNome())){
+        if(!ValidarNome.validarNome(pessoa.getNome())){
             JOptionPane.showMessageDialog(null, "NOME INVÁLIDO");
         }
-        else if(!cpf.isCPF(pessoa.getCPF())){
+        else if(!ValidarCPF.isCPF(pessoa.getCPF())){
             JOptionPane.showMessageDialog(null, "CPF INVÁLIDO");
         }
-        else if(!telefone.validarTelefone(pessoa.getTelefone())){
+        else if(!ValidarTelefone.validarTelefone(pessoa.getTelefone())){
             JOptionPane.showMessageDialog(null, "TELEFONE INVÁLIDO");
         }
         else{
             try {
                 Cadastrar.cadastrar(pessoa, (String)ComboBoxCategoria.getSelectedItem(), especial);
-                new LimparTela().LimparTela(frameCadastrar);
+                LimparTela.LimparTela(frameCadastrar);
             } catch (SQLException ex) {
                 Logger.getLogger(FramePessoas.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
-        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnConsultarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarPessoaActionPerformed
@@ -579,27 +647,34 @@ public class FramePessoas extends javax.swing.JFrame {
         dialogConsulta.dispose();
     }//GEN-LAST:event_btnVoltarDialogActionPerformed
 
-    private void btnCancelarExcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarExcActionPerformed
+    private void btnVoltarExcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarExcActionPerformed
         frameExcluir.dispose();
-    }//GEN-LAST:event_btnCancelarExcActionPerformed
+    }//GEN-LAST:event_btnVoltarExcActionPerformed
 
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        long codigo = Long.parseLong(fieldConsulta1.getText());
-
-        try {
-            if(Consultar.consultar(codigo).equals("")){
-                JOptionPane.showMessageDialog(null, "PESSOA NÃO ENCONTRADA");
-            }
-            else if(VerificarDependentes.verificarDependentes(codigo) != 0){
-                JOptionPane.showMessageDialog(null, "RESPONSÁVEL NÃO PODE SER EXCLUIDO!");
-            }
-            else{
-                Excluir.excluir(codigo);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(FramePessoas.class.getName()).log(Level.SEVERE, null, ex);
+    private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
+        
+        if(!ValidarCodigo.validarCodigo(fieldConsulta1.getText())){
+            JOptionPane.showMessageDialog(null, "Consulta inválida!"
+                    + "\nO código possui apenas 5 digitos numéricos");
         }
-    }//GEN-LAST:event_btnExcluirActionPerformed
+        
+        else{
+            long codigo = Long.parseLong(fieldConsulta1.getText());
+            try {
+                if(Consultar.consultar(codigo).equals("")){
+                    JOptionPane.showMessageDialog(null, "PESSOA NÃO ENCONTRADA");
+                }
+                else{
+                    textoExclusao.setText(Consultar.consultar(codigo));
+                    frameExclusao.setVisible(true);
+                }
+            } 
+            catch (SQLException ex) {
+                Logger.getLogger(FramePessoas.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+        }
+        
+    }//GEN-LAST:event_btnVerificarActionPerformed
 
     private void fieldConsulta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldConsulta1ActionPerformed
         // TODO add your handling code here:
@@ -610,25 +685,58 @@ public class FramePessoas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarConActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        long codigo = Long.parseLong(fieldConsulta.getText());
-
-        try {
-            if(Consultar.consultar(codigo).equals("")){
-                JOptionPane.showMessageDialog(null, "PESSOA NÃO ENCONTRADA");
+        
+        if(!ValidarCodigo.validarCodigo(fieldConsulta.getText())){
+            JOptionPane.showMessageDialog(null, "Consulta inválida!"
+                    + "\nO código possui apenas 5 digitos numéricos");
+        }
+        else{
+            long codigo = Long.parseLong(fieldConsulta.getText());
+            if(btnVerificar.getText().equals("EXCLUIR")){
+                try {
+                    Excluir.excluir(codigo);
+                } catch (SQLException ex) {
+                    Logger.getLogger(FramePessoas.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             else{
-                textoConsulta.setText(Consultar.consultar(codigo));
-                dialogConsulta.setVisible(true);
+                try {
+
+                if(Consultar.consultar(codigo).equals("")){
+                    JOptionPane.showMessageDialog(null, "PESSOA NÃO ENCONTRADA");
+                }
+                else{
+                    textoConsulta.setText(Consultar.consultar(codigo));
+                    dialogConsulta.setVisible(true);
+                }
+                } catch (SQLException ex) {
+                    Logger.getLogger(FramePessoas.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(FramePessoas.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
 
     }//GEN-LAST:event_btnConsultarActionPerformed
 
-    private void fieldConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldConsultaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fieldConsultaActionPerformed
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        long codigo = Long.parseLong(fieldConsulta1.getText());
+        try {
+            if(VerificarDependentes.verificarDependentes(codigo) != 0){
+                JOptionPane.showMessageDialog(null, "RESPONSÁVEL NÃO PODE SER EXCLUIDO!");
+            }
+            else{
+                Excluir.excluir(codigo);
+                frameExclusao.dispose();
+            }
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(FramePessoas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnCancelarExclusaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarExclusaoActionPerformed
+        frameExclusao.dispose();
+    }//GEN-LAST:event_btnCancelarExclusaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -669,15 +777,17 @@ public class FramePessoas extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ComboBoxCategoria;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnCancelarCon;
-    private javax.swing.JButton btnCancelarExc;
+    private javax.swing.JButton btnCancelarExclusao;
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnConsultarPessoa;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnExcluirPessoa;
     private javax.swing.JButton btnIncluirPessoa;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JButton btnVerificar;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JButton btnVoltarDialog;
+    private javax.swing.JButton btnVoltarExc;
     private javax.swing.JDialog dialogConsulta;
     private javax.swing.JTextField fieldCPF;
     private javax.swing.JTextField fieldCategoria;
@@ -688,6 +798,7 @@ public class FramePessoas extends javax.swing.JFrame {
     private javax.swing.JFrame frameCadastrar;
     private javax.swing.JFrame frameConsultar;
     private javax.swing.JFrame frameExcluir;
+    private javax.swing.JFrame frameExclusao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -698,6 +809,8 @@ public class FramePessoas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -705,6 +818,8 @@ public class FramePessoas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea textoConsulta;
+    private javax.swing.JTextArea textoExclusao;
     // End of variables declaration//GEN-END:variables
 }
