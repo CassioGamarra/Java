@@ -6,6 +6,7 @@
 package br.com.cassiogamarra.projetofinal.gui;
 
 import br.com.cassiogamarra.projetofinal.cadastro.Historico;
+import br.com.cassiogamarra.projetofinal.database.ResetarExcluidos;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,9 +38,11 @@ public class FrameInicio extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        menu = new javax.swing.JMenu();
+        menuAtivos = new javax.swing.JMenuItem();
+        menuHistorico = new javax.swing.JMenuItem();
+        menuResetar = new javax.swing.JMenuItem();
+        menuSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PROJETO FINAL V1.1");
@@ -66,25 +69,41 @@ public class FrameInicio extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("CATRACAS");
 
-        jMenu1.setText("Arquivo");
+        menu.setText("Arquivo");
 
-        jMenuItem2.setText("Histórico");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        menuAtivos.setText("Ativos");
+        menuAtivos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                menuAtivosActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        menu.add(menuAtivos);
 
-        jMenuItem3.setText("Sair");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        menuHistorico.setText("Histórico Excluidos");
+        menuHistorico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuHistoricoActionPerformed(evt);
+            }
+        });
+        menu.add(menuHistorico);
+
+        menuResetar.setText("Resetar Excluidos");
+        menuResetar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuResetarActionPerformed(evt);
+            }
+        });
+        menu.add(menuResetar);
+
+        menuSair.setText("Sair");
+        menuSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 System.exit(0);
             }
         });
-        jMenu1.add(jMenuItem3);
+        menu.add(menuSair);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menu);
 
         setJMenuBar(jMenuBar1);
 
@@ -128,13 +147,29 @@ public class FrameInicio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void menuHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuHistoricoActionPerformed
         try {
-            Historico.historico();
+            Historico.excluidos();
         } catch (SQLException ex) {
             Logger.getLogger(FrameInicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_menuHistoricoActionPerformed
+
+    private void menuAtivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAtivosActionPerformed
+        try {
+            Historico.ativos();
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameInicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuAtivosActionPerformed
+
+    private void menuResetarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuResetarActionPerformed
+        try {
+            ResetarExcluidos.resetarExcluidos();
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameInicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuResetarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,9 +211,11 @@ public class FrameInicio extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenu menu;
+    private javax.swing.JMenuItem menuAtivos;
+    private javax.swing.JMenuItem menuHistorico;
+    private javax.swing.JMenuItem menuResetar;
+    private javax.swing.JMenuItem menuSair;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,12 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 public class Historico {
     public Historico(){
     }
     
-    public static void historico() throws SQLException{
+    public static void excluidos() throws SQLException{
         Connection conectar = ConectarDB.conectar();
         String sql = "SELECT * FROM usuario WHERE situacao = 0";
         String mensagem = "";
@@ -23,11 +24,11 @@ public class Historico {
                 String codigo = consulta.getString("codigo");
                 if(mensagem.equals("")){
                     mensagem = "Nome: "+nome+
-                            "\nCódigo: "+codigo;
+                            " \t| Código: "+codigo+"\n";
                 }
                 else{
                     mensagem = mensagem + "\nNome: "+nome+
-                            "\nCódigo: "+codigo;
+                            " \t| Código: "+codigo+"\n";
                 }
                 
             }
@@ -36,9 +37,43 @@ public class Historico {
                         "HISTÓRICO EXCLUIDOS", JOptionPane.PLAIN_MESSAGE);
             }
             else{
-                JOptionPane.showMessageDialog(null, mensagem,
+                JOptionPane.showMessageDialog(null, new JTextArea(mensagem),
                         "HISTÓRICO EXCLUIDOS", JOptionPane.PLAIN_MESSAGE);
             }
+        }
+        catch(SQLException e){
+           throw new RuntimeException(e);
+        }
+    }
+    public static void ativos() throws SQLException{
+        Connection conectar = ConectarDB.conectar();
+        String sql = "SELECT * FROM usuario WHERE situacao = 1";
+        String mensagem = "";
+        try{
+            PreparedStatement stmt = conectar.prepareStatement(sql);
+            ResultSet consulta = stmt.executeQuery(sql);
+            while(consulta.next()){
+                String nome = consulta.getString("nome");
+                String codigo = consulta.getString("codigo");
+                if(mensagem.equals("")){
+                    mensagem = "Nome: "+nome+
+                            " \t| Código: "+codigo+"\n";
+                }
+                else{
+                    mensagem = mensagem + "\nNome: "+nome+
+                            " \t| Código: "+codigo+"\n";
+                }
+                
+            }
+            if(mensagem.equals("")){
+                JOptionPane.showMessageDialog(null, "SEM USUÁRIOS ATIVOS",
+                        "HISTÓRICO EXCLUIDOS", JOptionPane.PLAIN_MESSAGE);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, new JTextArea(mensagem),
+                        "HISTÓRICO EXCLUIDOS", JOptionPane.PLAIN_MESSAGE);
+            }
+            conectar.close();
         }
         catch(SQLException e){
            throw new RuntimeException(e);
