@@ -23,12 +23,12 @@ public class Historico {
                 String nome = consulta.getString("nome");
                 String codigo = consulta.getString("codigo");
                 if(mensagem.equals("")){
-                    mensagem = "Nome: "+nome+
-                            " \t| Código: "+codigo+"\n";
+                    mensagem = "Código: "+codigo+
+                            " \t |  Nome: "+nome+"\n";
                 }
                 else{
-                    mensagem = mensagem + "\nNome: "+nome+
-                            " \t| Código: "+codigo+"\n";
+                    mensagem = mensagem + "\nCódigo: "+codigo+
+                            " \t |  Nome: "+nome+"\n";
                 }
                 
             }
@@ -56,22 +56,22 @@ public class Historico {
                 String nome = consulta.getString("nome");
                 String codigo = consulta.getString("codigo");
                 if(mensagem.equals("")){
-                    mensagem = "Nome: "+nome+
-                            " \t| Código: "+codigo+"\n";
+                    mensagem = "Código: "+codigo+
+                            " \t |  Nome: "+nome+"\n";
                 }
                 else{
-                    mensagem = mensagem + "\nNome: "+nome+
-                            " \t| Código: "+codigo+"\n";
+                    mensagem = mensagem + "\nCódigo: "+codigo+
+                            " \t |  Nome: "+nome+"\n";
                 }
                 
             }
             if(mensagem.equals("")){
                 JOptionPane.showMessageDialog(null, "SEM USUÁRIOS ATIVOS",
-                        "HISTÓRICO EXCLUIDOS", JOptionPane.PLAIN_MESSAGE);
+                        "USUÁRIOS ATIVOS", JOptionPane.PLAIN_MESSAGE);
             }
             else{
                 JOptionPane.showMessageDialog(null, new JTextArea(mensagem),
-                        "HISTÓRICO EXCLUIDOS", JOptionPane.PLAIN_MESSAGE);
+                        "USUÁRIOS ATIVOS", JOptionPane.PLAIN_MESSAGE);
             }
             conectar.close();
         }
