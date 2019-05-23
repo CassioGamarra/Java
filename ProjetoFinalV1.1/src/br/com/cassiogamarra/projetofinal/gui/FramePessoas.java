@@ -437,7 +437,6 @@ public class FramePessoas extends javax.swing.JFrame {
         frameExclusao.setTitle("PROJETO FINAL V1.1 - EXCLUIR");
         frameExclusao.setForeground(java.awt.Color.white);
         frameExclusao.setMinimumSize(new java.awt.Dimension(350, 400));
-        frameExclusao.setPreferredSize(new java.awt.Dimension(350, 400));
         frameExclusao.setResizable(false);
         frameExclusao.setLocationRelativeTo(null);
 
@@ -615,6 +614,7 @@ public class FramePessoas extends javax.swing.JFrame {
         pessoa.setNome(fieldNome.getText());
         pessoa.setCPF(fieldCPF.getText());
         pessoa.setTelefone(fieldTelefone.getText());
+        String categoria = (String) ComboBoxCategoria.getSelectedItem();
         
         if(!ValidarNome.validarNome(pessoa.getNome())){
             JOptionPane.showMessageDialog(null, "NOME INVÁLIDO");
@@ -625,9 +625,12 @@ public class FramePessoas extends javax.swing.JFrame {
         else if(!ValidarTelefone.validarTelefone(pessoa.getTelefone())){
             JOptionPane.showMessageDialog(null, "TELEFONE INVÁLIDO");
         }
+        else if((fieldCategoria.getText().equals(""))||(categoria.equals(""))){
+            JOptionPane.showMessageDialog(null, "POR FAVOR, PREENCHA A CATEGORIA");
+        }
         else{
             try {
-                Cadastrar.cadastrar(pessoa, (String)ComboBoxCategoria.getSelectedItem(), especial);
+                Cadastrar.cadastrar(pessoa, categoria, especial);
                 LimparTela.LimparTela(frameCadastrar);
             } catch (SQLException ex) {
                 Logger.getLogger(FramePessoas.class.getName()).log(Level.SEVERE, null, ex);

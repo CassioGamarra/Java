@@ -15,9 +15,7 @@ public class ConectarDB{
     public static Connection conectar() throws SQLException{
         Connection conectar = null;
         try{
-            
             conectar = DriverManager.getConnection("jdbc:mysql://localhost:3306/bancocatracas","root","");
-            
             return conectar;
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Não foi possivel conectar");
@@ -29,3 +27,23 @@ public class ConectarDB{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
+
+/* *COMANDO SQL PARA CRIAR O BANCO*
+CREATE DATABASE bancocatracas;
+USE bancocatracas;
+CREATE TABLE usuario(
+codigo BIGINT(10) AUTO_INCREMENT,
+nome VARCHAR(200),
+cpf VARCHAR(20),
+telefone VARCHAR(20),
+dependentes INT(10),
+turma VARCHAR(50),
+cargo VARCHAR(50),
+observacoes VARCHAR(200),
+categoria VARCHAR(30),
+situacao TINYINT(1),
+PRIMARY KEY (codigo)
+);
+
+ALTER TABLE usuario AUTO_INCREMENT = 12000;
+*/
