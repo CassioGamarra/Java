@@ -1,7 +1,7 @@
 package br.com.cassiogamarra.projetofinal.classes;
 
 public class Responsavel extends Pessoa{
-    protected int dependentes;
+    private int dependentes;
 
     public int getDependentes() {
         return dependentes;

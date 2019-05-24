@@ -1,7 +1,7 @@
 package br.com.cassiogamarra.projetofinal.classes;
 
 public class Aluno extends Pessoa{
-    protected String turma;
+    private String turma;
 
     public String getTurma() {
         return turma;

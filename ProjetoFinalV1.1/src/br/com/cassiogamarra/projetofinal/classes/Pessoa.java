@@ -1,11 +1,11 @@
 package br.com.cassiogamarra.projetofinal.classes;
 
-public abstract class Pessoa {
-    protected String nome;
-    protected String CPF;
-    protected String telefone;
-    protected long codigo;
-
+public class Pessoa {
+    private String nome;
+    private String CPF;
+    private String telefone;
+    private long codigo;
+    
     public String getNome() {
         return nome;
     }
