@@ -83,7 +83,7 @@ public class FramePessoas extends javax.swing.JFrame {
         btnVoltar = new javax.swing.JButton();
 
         frameCadastrar.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        frameCadastrar.setTitle("PROJETO FINAL V1.1 - CADASTRAR");
+        frameCadastrar.setTitle("PROJETO FINAL - CADASTRAR");
         frameCadastrar.setForeground(java.awt.Color.white);
         frameCadastrar.setMinimumSize(new java.awt.Dimension(375, 400));
         frameCadastrar.setLocationRelativeTo(null);
@@ -214,7 +214,7 @@ public class FramePessoas extends javax.swing.JFrame {
         jLabel7.getAccessibleContext().setAccessibleDescription("");
 
         frameConsultar.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        frameConsultar.setTitle("PROJETO FINAL V1.1 - CONSULTAR");
+        frameConsultar.setTitle("PROJETO FINAL - CONSULTAR");
         frameConsultar.setForeground(java.awt.Color.white);
         frameConsultar.setMinimumSize(new java.awt.Dimension(255, 250));
         frameConsultar.setLocationRelativeTo(null);
@@ -290,7 +290,7 @@ public class FramePessoas extends javax.swing.JFrame {
         );
 
         frameExcluir.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        frameExcluir.setTitle("PROJETO FINAL V1.1 - EXCLUIR");
+        frameExcluir.setTitle("PROJETO FINAL - EXCLUIR");
         frameExcluir.setForeground(java.awt.Color.white);
         frameExcluir.setMinimumSize(new java.awt.Dimension(237, 250));
         frameExcluir.setResizable(false);
@@ -432,7 +432,7 @@ public class FramePessoas extends javax.swing.JFrame {
         btnVoltarDialog.getAccessibleContext().setAccessibleName("OK");
 
         frameExclusao.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        frameExclusao.setTitle("PROJETO FINAL V1.1 - EXCLUIR");
+        frameExclusao.setTitle("PROJETO FINAL - EXCLUIR");
         frameExclusao.setForeground(java.awt.Color.white);
         frameExclusao.setMinimumSize(new java.awt.Dimension(350, 400));
         frameExclusao.setResizable(false);
@@ -505,7 +505,7 @@ public class FramePessoas extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("PROJETO FINAL V1.1 - PESSOAS");
+        setTitle("PROJETO FINAL - PESSOAS");
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cassiogamarra/projetofinal/gui/pessoa.png"))); // NOI18N

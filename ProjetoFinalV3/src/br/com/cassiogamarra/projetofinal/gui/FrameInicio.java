@@ -45,7 +45,7 @@ public class FrameInicio extends javax.swing.JFrame {
         menuSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("PROJETO FINAL V1.1");
+        setTitle("PROJETO FINAL");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cassiogamarra/projetofinal/gui/pessoa.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
