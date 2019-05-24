@@ -14,7 +14,7 @@ public class ConectarDB{
     public static Connection conectar() throws SQLException{
         Connection conectar = null;
         try{
-            conectar = DriverManager.getConnection("jdbc:mysql://mysql465.umbler.com:41890/bancocatracas","cassiogamarra","O+f5pl*-O3[Z");
+            conectar = DriverManager.getConnection("jdbc:mysql://localhost:3306/bancocatracas","root","");
             return conectar;
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Não foi possivel conectar");

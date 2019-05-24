@@ -40,6 +40,7 @@ public class Cadastrar {
         else{
             try {
                 cadastrar(pessoa, categoria, especial);
+                LimparTela.LimparTela(frame.getFrameCadastrar());
             } catch (SQLException ex) {
                 Logger.getLogger(FramePessoas.class.getName()).log(Level.SEVERE, null, ex);
             }

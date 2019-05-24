@@ -699,11 +699,18 @@ public class FramePessoas extends javax.swing.JFrame {
         try {
             //MÉTODO PARA VALIDAR O CADASTRO
             Cadastrar.validarCadastro(this);
-            LimparTela.LimparTela(frameCadastrar);
         } catch (SQLException ex) {
             Logger.getLogger(FramePessoas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    public JFrame getFrameCadastrar() {
+        return frameCadastrar;
+    }
+
+    public void setFrameCadastrar(JFrame frameCadastrar) {
+        this.frameCadastrar = frameCadastrar;
+    }
 
     private void btnConsultarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarPessoaActionPerformed
         frameConsultar.setVisible(true);
