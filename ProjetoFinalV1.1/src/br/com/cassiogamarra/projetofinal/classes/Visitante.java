@@ -1,7 +1,7 @@
 package br.com.cassiogamarra.projetofinal.classes;
 
 public class Visitante extends Pessoa{
-    protected String observacoes;
+    private String observacoes;
 
     public String getObservacoes() {
         return observacoes;

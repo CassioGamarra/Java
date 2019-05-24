@@ -575,10 +575,12 @@ public class FramePessoas extends javax.swing.JFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         FramePessoas.this.dispose();
+        new FrameInicio().setVisible(true);
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnIncluirPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirPessoaActionPerformed
         frameCadastrar.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnIncluirPessoaActionPerformed
 
     private void fieldCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCPFActionPerformed
@@ -606,10 +608,11 @@ public class FramePessoas extends javax.swing.JFrame {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
             frameCadastrar.dispose();
+            new FramePessoas().setVisible(true);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        Pessoa pessoa = new Pessoa() {};
+        Pessoa pessoa = new Pessoa();
         String especial = fieldCategoria.getText();
         pessoa.setNome(fieldNome.getText());
         pessoa.setCPF(fieldCPF.getText());
@@ -640,18 +643,22 @@ public class FramePessoas extends javax.swing.JFrame {
 
     private void btnConsultarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarPessoaActionPerformed
         frameConsultar.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnConsultarPessoaActionPerformed
 
     private void btnExcluirPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirPessoaActionPerformed
         frameExcluir.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnExcluirPessoaActionPerformed
 
     private void btnVoltarDialogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarDialogActionPerformed
         dialogConsulta.dispose();
+        frameConsultar.setVisible(true);
     }//GEN-LAST:event_btnVoltarDialogActionPerformed
 
     private void btnVoltarExcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarExcActionPerformed
         frameExcluir.dispose();
+        new FramePessoas().setVisible(true);
     }//GEN-LAST:event_btnVoltarExcActionPerformed
 
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
@@ -685,10 +692,11 @@ public class FramePessoas extends javax.swing.JFrame {
 
     private void btnCancelarConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarConActionPerformed
         frameConsultar.dispose();
+        new FramePessoas().setVisible(true);
     }//GEN-LAST:event_btnCancelarConActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        
+
         if(!ValidarCodigo.validarCodigo(fieldConsulta.getText())){
             JOptionPane.showMessageDialog(null, "Consulta inválida!"
                     + "\nO código possui apenas 5 digitos numéricos");
@@ -739,6 +747,7 @@ public class FramePessoas extends javax.swing.JFrame {
 
     private void btnCancelarExclusaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarExclusaoActionPerformed
         frameExclusao.dispose();
+        frameExcluir.setVisible(true);
     }//GEN-LAST:event_btnCancelarExclusaoActionPerformed
 
     /**
