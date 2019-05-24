@@ -2,7 +2,6 @@ package br.com.cassiogamarra.projetofinal.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -21,10 +20,6 @@ public class ConectarDB{
             JOptionPane.showMessageDialog(null, "Não foi possivel conectar");
 	}
 	return conectar;
-    }
-
-    PreparedStatement prepareStatement(String sql) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 
@@ -46,4 +41,13 @@ PRIMARY KEY (codigo)
 );
 
 ALTER TABLE usuario AUTO_INCREMENT = 12000;
+*/
+
+/*
+Banco externo:
+phpmyadmin.umbler.com -> mysql465.umbler.com
+
+mysql465.umbler.com:41890
+cassiogamarra
+O+f5pl*-O3[Z
 */
