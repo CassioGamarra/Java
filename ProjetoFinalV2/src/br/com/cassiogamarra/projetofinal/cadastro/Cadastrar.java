@@ -2,9 +2,13 @@ package br.com.cassiogamarra.projetofinal.cadastro;
 
 import br.com.cassiogamarra.projetofinal.classes.Pessoa;
 import br.com.cassiogamarra.projetofinal.database.*;
+import br.com.cassiogamarra.projetofinal.gui.FramePessoas;
+import br.com.cassiogamarra.projetofinal.utilitarios.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Cadastrar {
@@ -12,6 +16,37 @@ public class Cadastrar {
     public Cadastrar(){
     
     }
+    public static void validarCadastro(FramePessoas frame) throws SQLException{
+        Pessoa pessoa = new Pessoa();
+        String especial = frame.getCampoCategoria().getText();
+        String categoria = (String) frame.getComboBoxCategoria().getSelectedItem();
+        
+        pessoa.setNome(frame.getCampoNome().getText());
+        pessoa.setCPF(frame.getCampoCPF().getText());
+        pessoa.setTelefone(frame.getCampoTelefone().getText());
+        
+        if(!ValidarNome.validarNome(pessoa.getNome())){
+            JOptionPane.showMessageDialog(null, "NOME INVÁLIDO");
+        }
+        else if(!ValidarCPF.isCPF(pessoa.getCPF())){
+            JOptionPane.showMessageDialog(null, "CPF INVÁLIDO");
+        }
+        else if(!ValidarTelefone.validarTelefone(pessoa.getTelefone())){
+            JOptionPane.showMessageDialog(null, "TELEFONE INVÁLIDO");
+        }
+        else if((frame.getCampoCategoria().getText().equals(""))||(categoria.equals(""))){
+            JOptionPane.showMessageDialog(null, "POR FAVOR, PREENCHA A CATEGORIA");
+        }
+        else{
+            try {
+                cadastrar(pessoa, categoria, especial);
+                LimparTela.LimparTela(frame);
+            } catch (SQLException ex) {
+                Logger.getLogger(FramePessoas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }   
+    
     public static void cadastrar(Pessoa pessoa, String categoria, String especial) throws SQLException{
         
        Connection conectar = ConectarDB.conectar();

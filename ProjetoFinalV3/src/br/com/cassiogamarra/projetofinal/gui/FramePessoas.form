@@ -32,7 +32,7 @@
                               <Component id="jLabel5" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
                               <Component id="jLabel6" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
                               <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCategoria" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -40,10 +40,10 @@
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="ComboBoxCategoria" alignment="0" pref="252" max="32767" attributes="0"/>
-                                  <Component id="fieldTelefone" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="fieldCPF" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="fieldNome" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="fieldCategoria" max="32767" attributes="0"/>
+                                  <Component id="campoTelefone" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="campoCPF" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="campoNome" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="campoCategoria" max="32767" attributes="0"/>
                               </Group>
                               <Component id="jLabel2" alignment="0" min="-2" pref="168" max="-2" attributes="0"/>
                           </Group>
@@ -63,16 +63,16 @@
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="fieldNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoNome" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel5" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="fieldCPF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoCPF" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="fieldTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel6" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -82,8 +82,8 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel8" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="fieldCategoria" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCategoria" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="campoCategoria" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -148,22 +148,22 @@
             <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
           </AccessibilityProperties>
         </Component>
-        <Component class="javax.swing.JTextField" name="fieldNome">
+        <Component class="javax.swing.JTextField" name="campoNome">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldNomeActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoNomeActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="fieldCPF">
+        <Component class="javax.swing.JTextField" name="campoCPF">
           <Properties>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[6, 50]"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldCPFActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoCPFActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="fieldTelefone">
+        <Component class="javax.swing.JTextField" name="campoTelefone">
         </Component>
         <Component class="javax.swing.JComboBox" name="ComboBoxCategoria">
           <Properties>
@@ -183,15 +183,14 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel8">
+        <Component class="javax.swing.JLabel" name="lblCategoria">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="DEPENDENTES: "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="fieldCategoria">
+        <Component class="javax.swing.JTextField" name="campoCategoria">
         </Component>
         <Component class="javax.swing.JButton" name="btnSalvar">
           <Properties>
@@ -248,7 +247,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="fieldConsulta" max="32767" attributes="0"/>
+                                  <Component id="campoConsulta" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
@@ -276,7 +275,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel11" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="fieldConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -297,7 +296,7 @@
             <Property name="text" type="java.lang.String" value="C&#xd3;DIGO:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="fieldConsulta">
+        <Component class="javax.swing.JTextField" name="campoConsulta">
         </Component>
         <Component class="javax.swing.JButton" name="btnConsultar">
           <Properties>
@@ -380,7 +379,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel14" min="-2" pref="64" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="fieldConsulta1" max="32767" attributes="0"/>
+                                  <Component id="campoConsultaExclusao" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -399,7 +398,7 @@
                   <EmptySpace pref="8" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel14" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="fieldConsulta1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoConsultaExclusao" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -437,9 +436,9 @@
             <Property name="text" type="java.lang.String" value="C&#xd3;DIGO:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="fieldConsulta1">
+        <Component class="javax.swing.JTextField" name="campoConsultaExclusao">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldConsulta1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoConsultaExclusaoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnVerificar">
