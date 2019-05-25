@@ -11,7 +11,7 @@ public class ValidarCodigo {
     
     public static boolean validarCodigo(String codigo){
         
-        if((codigo.length()==5)&&(codigo.matches("[0-9]+"))){
+        if((codigo.length()==6)&&(codigo.matches("[0-9]+"))){
             return true;
         }
         return false;

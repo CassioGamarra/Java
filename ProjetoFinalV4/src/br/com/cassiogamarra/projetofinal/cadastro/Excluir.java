@@ -2,6 +2,7 @@ package br.com.cassiogamarra.projetofinal.cadastro;
 
 import br.com.cassiogamarra.projetofinal.database.*;
 import br.com.cassiogamarra.projetofinal.gui.FramePessoas;
+import br.com.cassiogamarra.projetofinal.utilitarios.LimparTela;
 import br.com.cassiogamarra.projetofinal.utilitarios.ValidarCodigo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,17 +19,20 @@ public class Excluir {
         
         if(!ValidarCodigo.validarCodigo(frame.getCampoConsultaExclusao().getText())){
             JOptionPane.showMessageDialog(null, "Consulta inválida!"
-                    + "\nO código possui apenas 5 digitos numéricos");
+                    + "\nO código possui apenas 6 digitos numéricos");
+            LimparTela.LimparTela(frame.getFrameExcluir());
         }
         else{
             long codigo = Long.parseLong(frame.getCampoConsultaExclusao().getText());
             try{
                 if(Consultar.consultar(codigo).equals("")){
                     JOptionPane.showMessageDialog(null, "PESSOA NÃO ENCONTRADA");
+                    LimparTela.LimparTela(frame.getFrameExcluir());
                 }
                 else{
                     frame.getTextoExclusao().setText(Consultar.consultar(codigo));
                     frame.getFrameExclusao().setVisible(true);
+                    LimparTela.LimparTela(frame.getFrameExcluir());
                 }
             }
             catch (SQLException ex) {

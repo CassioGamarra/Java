@@ -8,7 +8,6 @@ package br.com.cassiogamarra.projetofinal.gui;
 import br.com.cassiogamarra.projetofinal.cadastro.Cadastrar;
 import br.com.cassiogamarra.projetofinal.cadastro.Consultar;
 import br.com.cassiogamarra.projetofinal.cadastro.Excluir;
-import br.com.cassiogamarra.projetofinal.utilitarios.LimparTela;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -130,6 +129,12 @@ public class FramePessoas extends javax.swing.JFrame {
 
         lblCategoria.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
+        campoCategoria.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                campoCategoriaKeyPressed(evt);
+            }
+        });
+
         btnSalvar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnSalvar.setText("SALVAR");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -222,6 +227,12 @@ public class FramePessoas extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel11.setText("CÓDIGO:");
 
+        campoConsulta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                campoConsultaKeyPressed(evt);
+            }
+        });
+
         btnConsultar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnConsultar.setText("CONSULTAR");
         btnConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -309,6 +320,11 @@ public class FramePessoas extends javax.swing.JFrame {
         campoConsultaExclusao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoConsultaExclusaoActionPerformed(evt);
+            }
+        });
+        campoConsultaExclusao.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                campoConsultaExclusaoKeyPressed(evt);
             }
         });
 
@@ -437,6 +453,7 @@ public class FramePessoas extends javax.swing.JFrame {
         frameExclusao.setMinimumSize(new java.awt.Dimension(350, 400));
         frameExclusao.setResizable(false);
         frameExclusao.setLocationRelativeTo(null);
+        frameExclusao.getRootPane().setDefaultButton(btnExcluir);
 
         jLabel24.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -605,6 +622,22 @@ public class FramePessoas extends javax.swing.JFrame {
         return btnVerificar;
     }
 
+    public JFrame getFrameConsultar() {
+        return frameConsultar;
+    }
+
+    public void setFrameConsultar(JFrame frameConsultar) {
+        this.frameConsultar = frameConsultar;
+    }
+
+    public JFrame getFrameExcluir() {
+        return frameExcluir;
+    }
+
+    public void setFrameExcluir(JFrame frameExcluir) {
+        this.frameExcluir = frameExcluir;
+    }
+
     public void setBtnVerificar(JButton btnVerificar) {
         this.btnVerificar = btnVerificar;
     }
@@ -762,6 +795,24 @@ public class FramePessoas extends javax.swing.JFrame {
         frameExclusao.dispose();
         frameExcluir.setVisible(true);
     }//GEN-LAST:event_btnCancelarExclusaoActionPerformed
+
+    private void campoCategoriaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoCategoriaKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {                    
+            btnSalvar.doClick();
+        }
+    }//GEN-LAST:event_campoCategoriaKeyPressed
+
+    private void campoConsultaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoConsultaKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {                    
+            btnConsultar.doClick();
+        }
+    }//GEN-LAST:event_campoConsultaKeyPressed
+
+    private void campoConsultaExclusaoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoConsultaExclusaoKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {                    
+            btnVerificar.doClick();
+        }
+    }//GEN-LAST:event_campoConsultaExclusaoKeyPressed
 
     /**
      * @param args the command line arguments

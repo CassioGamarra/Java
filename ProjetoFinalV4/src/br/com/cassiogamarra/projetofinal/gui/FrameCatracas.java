@@ -10,6 +10,7 @@ import br.com.cassiogamarra.projetofinal.catracas.HistoricoCatracas;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 /**
@@ -17,7 +18,7 @@ import javax.swing.JTextField;
  * @author Gamarra
  */
 public class FrameCatracas extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form FrameCatracas
      */
@@ -69,6 +70,11 @@ public class FrameCatracas extends javax.swing.JFrame {
         campoConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoConsultaActionPerformed(evt);
+            }
+        });
+        campoConsulta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                campoConsultaKeyPressed(evt);
             }
         });
 
@@ -151,6 +157,11 @@ public class FrameCatracas extends javax.swing.JFrame {
         campoConsultaSaida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoConsultaSaidaActionPerformed(evt);
+            }
+        });
+        campoConsultaSaida.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                campoConsultaSaidaKeyPressed(evt);
             }
         });
 
@@ -303,7 +314,7 @@ public class FrameCatracas extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void btnSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaidaActionPerformed
         frameSaida.setVisible(true);
         this.setVisible(false);
@@ -348,6 +359,22 @@ public class FrameCatracas extends javax.swing.JFrame {
         this.campoConsultaSaida = campoConsultaSaida;
     }
 
+    public JFrame getFrameEntrada() {
+        return frameEntrada;
+    }
+
+    public void setFrameEntrada(JFrame frameEntrada) {
+        this.frameEntrada = frameEntrada;
+    }
+
+    public JFrame getFrameSaida() {
+        return frameSaida;
+    }
+
+    public void setFrameSaida(JFrame frameSaida) {
+        this.frameSaida = frameSaida;
+    }
+
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         try {
             CatracaVirtual.saida(this);
@@ -376,6 +403,18 @@ public class FrameCatracas extends javax.swing.JFrame {
             Logger.getLogger(FrameCatracas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_historicoSaidaActionPerformed
+
+    private void campoConsultaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoConsultaKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {                    
+            btnEntrar.doClick();
+        }
+    }//GEN-LAST:event_campoConsultaKeyPressed
+
+    private void campoConsultaSaidaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoConsultaSaidaKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {                    
+            btnSair.doClick();
+        }
+    }//GEN-LAST:event_campoConsultaSaidaKeyPressed
 
     public JTextField getCampoConsulta() {
         return campoConsulta;

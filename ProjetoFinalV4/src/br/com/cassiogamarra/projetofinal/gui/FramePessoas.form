@@ -191,6 +191,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="campoCategoria">
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoCategoriaKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnSalvar">
           <Properties>
@@ -297,6 +300,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="campoConsulta">
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoConsultaKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnConsultar">
           <Properties>
@@ -439,6 +445,7 @@
         <Component class="javax.swing.JTextField" name="campoConsultaExclusao">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoConsultaExclusaoActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoConsultaExclusaoKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnVerificar">
@@ -584,7 +591,7 @@
         <Property name="resizable" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="frameExclusao.setLocationRelativeTo(null);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="frameExclusao.setLocationRelativeTo(null);&#xa;frameExclusao.getRootPane().setDefaultButton(btnExcluir);"/>
       </AuxValues>
 
       <Layout>
