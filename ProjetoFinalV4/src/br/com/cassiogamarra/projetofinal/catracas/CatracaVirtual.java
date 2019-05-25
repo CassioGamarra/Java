@@ -61,18 +61,66 @@ public class CatracaVirtual{
                    throw new RuntimeException(e);
                 }
                 
-                
-                
             }
         }
         catch(SQLException e){
            throw new RuntimeException(e);
         }
         
-       
-        
     }
-    public static void saida(FrameCatracas frame) {
+    
+    public static void saida(FrameCatracas frame) throws SQLException {
+        long codigo = Long.parseLong(frame.getCampoConsultaSaida().getText());
         
+        Connection conectar = ConectarDB.conectar();
+        String sql = "SELECT situacao FROM catraca WHERE codigo = "+codigo;
+        int status = 0;
+        try{
+            PreparedStatement stmt = conectar.prepareStatement(sql);
+            ResultSet consulta = stmt.executeQuery(sql);
+            while(consulta.next()){
+                status = Integer.parseInt(consulta.getString("situacao"));
+            }
+            //Procura o nome da pessoa
+            sql = "SELECT * FROM usuario WHERE codigo = "+codigo;
+            String nome = "";
+            int situacao = 0;
+            try{
+                stmt = conectar.prepareStatement(sql);
+                consulta = stmt.executeQuery(sql);
+                while(consulta.next()){
+                    nome = consulta.getString("nome");
+                    situacao = consulta.getInt("situacao");
+                }
+                if(situacao == 0){
+                    JOptionPane.showMessageDialog(null, "PESSOA INATIVA!!!");
+                }
+                else if(status == 0){
+                    JOptionPane.showMessageDialog(null, "SAÍDA DUPLA!!!");
+                }
+                else{
+                    //Faz a entrada da pessoa
+                    sql = "INSERT INTO catraca(codigo, situacao)VALUES(?,?)";
+                    try{
+                        stmt = conectar.prepareStatement(sql);
+                        stmt.setLong(1, codigo);
+                        stmt.setInt(2, 0);
+                        stmt.execute();
+                        JOptionPane.showMessageDialog(null, "VOLTE SEMPRE: "+nome);
+                    }
+
+                    catch(SQLException e){
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+            catch(SQLException e){
+                throw new RuntimeException(e);
+            }
+                
+        }
+        catch(SQLException e){
+           throw new RuntimeException(e);
+        }
     }
 }

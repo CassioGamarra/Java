@@ -37,6 +37,9 @@ public class Cadastrar {
         else if((frame.getCampoCategoria().getText().equals(""))||(categoria.equals(""))){
             JOptionPane.showMessageDialog(null, "POR FAVOR, PREENCHA A CATEGORIA");
         }
+        else if(!ConsultarDuplicidade.consultarDuplicidade(pessoa.getCPF())){
+            JOptionPane.showMessageDialog(null, "O CADASTRO JÁ EXISTE");
+        }
         else{
             try {
                 cadastrar(pessoa, categoria, especial);

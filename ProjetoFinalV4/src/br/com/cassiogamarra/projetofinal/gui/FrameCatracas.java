@@ -6,6 +6,7 @@
 package br.com.cassiogamarra.projetofinal.gui;
 
 import br.com.cassiogamarra.projetofinal.catracas.CatracaVirtual;
+import br.com.cassiogamarra.projetofinal.catracas.HistoricoCatracas;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,13 +38,24 @@ public class FrameCatracas extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         campoConsulta = new javax.swing.JTextField();
         btnEntrar = new javax.swing.JButton();
-        btnCancelarCon = new javax.swing.JButton();
+        btnCancelarEntrada = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        frameSaida = new javax.swing.JFrame();
+        jLabel12 = new javax.swing.JLabel();
+        campoConsultaSaida = new javax.swing.JTextField();
+        btnSair = new javax.swing.JButton();
+        btnCancelarSaida = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnEntrada = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnVoltarCatracas = new javax.swing.JButton();
+        btnSaida = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        arquivo = new javax.swing.JMenu();
+        historicoEntrada = new javax.swing.JMenuItem();
+        historicoSaida = new javax.swing.JMenuItem();
 
         frameEntrada.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         frameEntrada.setTitle("PROJETO FINAL V1.1 - CONSULTAR");
@@ -68,11 +80,11 @@ public class FrameCatracas extends javax.swing.JFrame {
             }
         });
 
-        btnCancelarCon.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnCancelarCon.setText("CANCELAR");
-        btnCancelarCon.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelarEntrada.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnCancelarEntrada.setText("CANCELAR");
+        btnCancelarEntrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarConActionPerformed(evt);
+                btnCancelarEntradaActionPerformed(evt);
             }
         });
 
@@ -95,7 +107,7 @@ public class FrameCatracas extends javax.swing.JFrame {
                             .addGroup(frameEntradaLayout.createSequentialGroup()
                                 .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCancelarCon))
+                                .addComponent(btnCancelarEntrada))
                             .addGroup(frameEntradaLayout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -123,13 +135,94 @@ public class FrameCatracas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(frameEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEntrar)
-                    .addComponent(btnCancelarCon))
+                    .addComponent(btnCancelarEntrada))
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+
+        frameSaida.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        frameSaida.setTitle("PROJETO FINAL V1.1 - CONSULTAR");
+        frameSaida.setForeground(java.awt.Color.white);
+        frameSaida.setMinimumSize(new java.awt.Dimension(255, 250));
+        frameSaida.setLocationRelativeTo(null);
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel12.setText("CÓDIGO:");
+
+        campoConsultaSaida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoConsultaSaidaActionPerformed(evt);
+            }
+        });
+
+        btnSair.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnSair.setText("SAIR");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
+
+        btnCancelarSaida.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnCancelarSaida.setText("CANCELAR");
+        btnCancelarSaida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarSaidaActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cassiogamarra/projetofinal/gui/catraca.png"))); // NOI18N
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setText("SAÍDA");
+
+        javax.swing.GroupLayout frameSaidaLayout = new javax.swing.GroupLayout(frameSaida.getContentPane());
+        frameSaida.getContentPane().setLayout(frameSaidaLayout);
+        frameSaidaLayout.setHorizontalGroup(
+            frameSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frameSaidaLayout.createSequentialGroup()
+                .addGroup(frameSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(frameSaidaLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(frameSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(frameSaidaLayout.createSequentialGroup()
+                                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnCancelarSaida))
+                            .addGroup(frameSaidaLayout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(campoConsultaSaida)))
+                        .addGap(12, 12, 12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frameSaidaLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(frameSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34)))
+                .addContainerGap(5, Short.MAX_VALUE))
+        );
+        frameSaidaLayout.setVerticalGroup(
+            frameSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frameSaidaLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(frameSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoConsultaSaida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(frameSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSair)
+                    .addComponent(btnCancelarSaida))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CATRACAS");
-        setPreferredSize(new java.awt.Dimension(300, 310));
         setResizable(false);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -143,21 +236,43 @@ public class FrameCatracas extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setText("VOLTAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnVoltarCatracas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnVoltarCatracas.setText("VOLTAR");
+        btnVoltarCatracas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnVoltarCatracasActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton3.setText("SAÍDA");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnSaida.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSaida.setText("SAÍDA");
+        btnSaida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnSaidaActionPerformed(evt);
             }
         });
+
+        arquivo.setText("Arquivo");
+
+        historicoEntrada.setText("Histórico Entrada");
+        historicoEntrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historicoEntradaActionPerformed(evt);
+            }
+        });
+        arquivo.add(historicoEntrada);
+
+        historicoSaida.setText("Histórico Saída");
+        historicoSaida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historicoSaidaActionPerformed(evt);
+            }
+        });
+        arquivo.add(historicoSaida);
+
+        jMenuBar1.add(arquivo);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -168,8 +283,8 @@ public class FrameCatracas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnVoltarCatracas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSaida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -179,19 +294,20 @@ public class FrameCatracas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addComponent(btnVoltarCatracas, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaidaActionPerformed
+        frameSaida.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnSaidaActionPerformed
 
     private void btnEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntradaActionPerformed
         frameEntrada.setVisible(true);
@@ -206,19 +322,60 @@ public class FrameCatracas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
-    private void btnCancelarConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarConActionPerformed
+    private void btnCancelarEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEntradaActionPerformed
         frameEntrada.dispose();
         new FrameCatracas().setVisible(true);
-    }//GEN-LAST:event_btnCancelarConActionPerformed
+    }//GEN-LAST:event_btnCancelarEntradaActionPerformed
 
     private void campoConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoConsultaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoConsultaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnVoltarCatracasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarCatracasActionPerformed
         FrameCatracas.this.dispose();
         new FrameInicio().setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnVoltarCatracasActionPerformed
+
+    private void campoConsultaSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoConsultaSaidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoConsultaSaidaActionPerformed
+
+    public JTextField getCampoConsultaSaida() {
+        return campoConsultaSaida;
+    }
+
+    public void setCampoConsultaSaida(JTextField campoConsultaSaida) {
+        this.campoConsultaSaida = campoConsultaSaida;
+    }
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        try {
+            CatracaVirtual.saida(this);
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameCatracas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnCancelarSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarSaidaActionPerformed
+        frameSaida.dispose();
+        new FrameCatracas().setVisible(true);
+    }//GEN-LAST:event_btnCancelarSaidaActionPerformed
+
+    private void historicoEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoEntradaActionPerformed
+        try {
+            HistoricoCatracas.historicoEntrada();
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameCatracas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_historicoEntradaActionPerformed
+
+    private void historicoSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoSaidaActionPerformed
+        try {
+            HistoricoCatracas.historicoSaida();
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameCatracas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_historicoSaidaActionPerformed
 
     public JTextField getCampoConsulta() {
         return campoConsulta;
@@ -264,16 +421,27 @@ public class FrameCatracas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelarCon;
+    private javax.swing.JMenu arquivo;
+    private javax.swing.JButton btnCancelarEntrada;
+    private javax.swing.JButton btnCancelarSaida;
     private javax.swing.JButton btnEntrada;
     private javax.swing.JButton btnEntrar;
+    private javax.swing.JButton btnSaida;
+    private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnVoltarCatracas;
     private javax.swing.JTextField campoConsulta;
+    private javax.swing.JTextField campoConsultaSaida;
     private javax.swing.JFrame frameEntrada;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JFrame frameSaida;
+    private javax.swing.JMenuItem historicoEntrada;
+    private javax.swing.JMenuItem historicoSaida;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
