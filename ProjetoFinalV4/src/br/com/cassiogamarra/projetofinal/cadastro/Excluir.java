@@ -32,7 +32,6 @@ public class Excluir {
                 else{
                     frame.getTextoExclusao().setText(Consultar.consultar(codigo));
                     frame.getFrameExclusao().setVisible(true);
-                    LimparTela.LimparTela(frame.getFrameExcluir());
                 }
             }
             catch (SQLException ex) {
@@ -66,6 +65,7 @@ public class Excluir {
                     }
                 }
                 else{
+                    LimparTela.LimparTela(frame.getFrameExcluir());
                     return;
                 }
             }
