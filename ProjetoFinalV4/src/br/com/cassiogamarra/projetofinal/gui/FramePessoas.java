@@ -8,6 +8,7 @@ package br.com.cassiogamarra.projetofinal.gui;
 import br.com.cassiogamarra.projetofinal.cadastro.Cadastrar;
 import br.com.cassiogamarra.projetofinal.cadastro.Consultar;
 import br.com.cassiogamarra.projetofinal.cadastro.Excluir;
+import br.com.cassiogamarra.projetofinal.utilitarios.LimparTela;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,7 +29,7 @@ public class FramePessoas extends javax.swing.JFrame {
     public FramePessoas() {
         initComponents();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -793,6 +794,7 @@ public class FramePessoas extends javax.swing.JFrame {
 
     private void btnCancelarExclusaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarExclusaoActionPerformed
         frameExclusao.dispose();
+        LimparTela.LimparTela(frameExcluir);
         frameExcluir.setVisible(true);
     }//GEN-LAST:event_btnCancelarExclusaoActionPerformed
 

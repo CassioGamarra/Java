@@ -10,14 +10,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 public class HistoricoCatracas {
- 
+    
     public HistoricoCatracas(){
     
     }
     
     public static void historicoEntrada() throws SQLException{
         Connection conectar = ConectarDB.conectar();
-        String sql = "SELECT usuario.nome, catraca.codigo FROM usuario, catraca WHERE usuario.codigo = catraca.codigo AND catraca.situacao = 1";
+        String sql = "SELECT usuario.nome, catraca.codigo, catraca.dataHora FROM usuario, catraca WHERE usuario.codigo = catraca.codigo AND catraca.situacao = 1";
         String mensagem = "";
         try{
             PreparedStatement stmt = conectar.prepareStatement(sql);
@@ -25,13 +25,14 @@ public class HistoricoCatracas {
             while(consulta.next()){
                 String nome = consulta.getString("nome");
                 String codigo = consulta.getString("codigo");
+                String dataHora = consulta.getString("dataHora");
                 if(mensagem.equals("")){
                     mensagem = "Código: "+codigo+
-                            " \t |  Nome: "+nome+"\n";
+                            " |  Nome: "+nome+" | "+dataHora+"\n";
                 }
                 else{
                     mensagem = mensagem + "\nCódigo: "+codigo+
-                            " \t |  Nome: "+nome+"\n";
+                            "  |  Nome: "+nome+" | "+dataHora+"\n";
                 }
             }
             
@@ -51,7 +52,7 @@ public class HistoricoCatracas {
     
     public static void historicoSaida() throws SQLException{
         Connection conectar = ConectarDB.conectar();
-        String sql = "SELECT usuario.nome, catraca.codigo FROM usuario, catraca WHERE usuario.codigo = catraca.codigo AND catraca.situacao = 0";
+        String sql = "SELECT usuario.nome, catraca.codigo, catraca.dataHora FROM usuario, catraca WHERE usuario.codigo = catraca.codigo AND catraca.situacao = 0";
         String mensagem = "";
         try{
             PreparedStatement stmt = conectar.prepareStatement(sql);
@@ -59,13 +60,14 @@ public class HistoricoCatracas {
             while(consulta.next()){
                 String nome = consulta.getString("nome");
                 String codigo = consulta.getString("codigo");
+                String dataHora = consulta.getString("dataHora");
                 if(mensagem.equals("")){
                     mensagem = "Código: "+codigo+
-                            " \t |  Nome: "+nome+"\n";
+                            " |  Nome: "+nome+" | "+dataHora+"\n";
                 }
                 else{
                     mensagem = mensagem + "\nCódigo: "+codigo+
-                            " \t |  Nome: "+nome+"\n";
+                            " |  Nome: "+nome+" | "+dataHora+"\n";
                 }
             }
             

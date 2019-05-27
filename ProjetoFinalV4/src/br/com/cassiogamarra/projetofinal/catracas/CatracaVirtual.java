@@ -2,6 +2,7 @@ package br.com.cassiogamarra.projetofinal.catracas;
 
 import br.com.cassiogamarra.projetofinal.database.ConectarDB;
 import br.com.cassiogamarra.projetofinal.gui.FrameCatracas;
+import br.com.cassiogamarra.projetofinal.utilitarios.DataHora;
 import br.com.cassiogamarra.projetofinal.utilitarios.LimparTela;
 import br.com.cassiogamarra.projetofinal.utilitarios.ValidarCodigo;
 import java.sql.Connection;
@@ -9,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 public class CatracaVirtual{
     
@@ -24,6 +26,7 @@ public class CatracaVirtual{
             Connection conectar = ConectarDB.conectar();
             String sql = "SELECT situacao FROM catraca WHERE codigo = "+codigo;
             int status = 0;
+            String horaAtual = DataHora.datahora();
             try{
                 PreparedStatement stmt = conectar.prepareStatement(sql);
                 ResultSet consulta = stmt.executeQuery(sql);
@@ -52,13 +55,17 @@ public class CatracaVirtual{
                         }
                         else{
                             //Faz a entrada da pessoa
-                            sql = "INSERT INTO catraca(codigo, situacao)VALUES(?,?)";
+                            sql = "INSERT INTO catraca(codigo, dataHora ,situacao)VALUES(?,?,?)";
                             try{
                                 stmt = conectar.prepareStatement(sql);
                                 stmt.setLong(1, codigo);
-                                stmt.setInt(2, 1);
+                                stmt.setString(2, horaAtual);
+                                stmt.setInt(3, 1);
                                 stmt.execute();
-                                JOptionPane.showMessageDialog(null, "BEM VINDO: "+nome);
+                                String mensagem = "BEM VINDO(A): "+nome+"\n"+
+                                    "Entrada: "+horaAtual;
+                            JOptionPane.showMessageDialog(null, new JTextArea(mensagem),
+                                    "ENTRADA", JOptionPane.PLAIN_MESSAGE);
                                 LimparTela.LimparTela(frame.getFrameEntrada());
                             }
 
@@ -90,7 +97,9 @@ public class CatracaVirtual{
         
             Connection conectar = ConectarDB.conectar();
             String sql = "SELECT situacao FROM catraca WHERE codigo = "+codigo;
+            
             int status = 0;
+            String horaAtual = DataHora.datahora();
             try{
                 PreparedStatement stmt = conectar.prepareStatement(sql);
                 ResultSet consulta = stmt.executeQuery(sql);
@@ -98,15 +107,17 @@ public class CatracaVirtual{
                     status = Integer.parseInt(consulta.getString("situacao"));
                 }
                 //Procura o nome da pessoa
-                sql = "SELECT * FROM usuario WHERE codigo = "+codigo;
-                String nome = "";
+                sql = "SELECT usuario.*, catraca.dataHora FROM usuario, catraca WHERE usuario.codigo = "+codigo+" AND catraca.situacao = 1";
+                String nome = "", dataEntrada = "";
                 int situacao = 0;
                 try{
                     stmt = conectar.prepareStatement(sql);
                     consulta = stmt.executeQuery(sql);
+                    
                     while(consulta.next()){
                         nome = consulta.getString("nome");
                         situacao = consulta.getInt("situacao");
+                        dataEntrada = consulta.getString("dataHora");
                     }
                     if(situacao == 0){
                         JOptionPane.showMessageDialog(null, "PESSOA INATIVA!!!");
@@ -117,14 +128,18 @@ public class CatracaVirtual{
                         LimparTela.LimparTela(frame.getFrameSaida());
                     }
                     else{
-                        //Faz a entrada da pessoa
-                        sql = "INSERT INTO catraca(codigo, situacao)VALUES(?,?)";
+                        //Faz a saída da pessoa
+                        sql = "INSERT INTO catraca(codigo, dataHora ,situacao)VALUES(?,?,?)";
                         try{
                             stmt = conectar.prepareStatement(sql);
                             stmt.setLong(1, codigo);
-                            stmt.setInt(2, 0);
+                            stmt.setString(2, horaAtual);
+                            stmt.setInt(3, 0);
                             stmt.execute();
-                            JOptionPane.showMessageDialog(null, "VOLTE SEMPRE: "+nome);
+                            String mensagem = "VOLTE SEMPRE: "+nome+"\n"+
+                                    "Entrada: "+dataEntrada+"\n"+"Saída: "+horaAtual;
+                            JOptionPane.showMessageDialog(null, new JTextArea(mensagem),
+                        "SAÍDA", JOptionPane.PLAIN_MESSAGE);
                             LimparTela.LimparTela(frame.getFrameSaida());
                         }
 

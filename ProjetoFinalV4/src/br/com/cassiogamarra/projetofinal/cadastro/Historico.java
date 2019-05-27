@@ -24,11 +24,11 @@ public class Historico {
                 String codigo = consulta.getString("codigo");
                 if(mensagem.equals("")){
                     mensagem = "Código: "+codigo+
-                            " \t |  Nome: "+nome+"\n";
+                            " |  Nome: "+nome+"\n";
                 }
                 else{
                     mensagem = mensagem + "\nCódigo: "+codigo+
-                            " \t |  Nome: "+nome+"\n";
+                            " |  Nome: "+nome+"\n";
                 }
                 
             }
@@ -57,11 +57,11 @@ public class Historico {
                 String codigo = consulta.getString("codigo");
                 if(mensagem.equals("")){
                     mensagem = "Código: "+codigo+
-                            " \t |  Nome: "+nome+"\n";
+                            " |  Nome: "+nome+"\n";
                 }
                 else{
                     mensagem = mensagem + "\nCódigo: "+codigo+
-                            " \t |  Nome: "+nome+"\n";
+                            " |  Nome: "+nome+"\n";
                 }
                 
             }

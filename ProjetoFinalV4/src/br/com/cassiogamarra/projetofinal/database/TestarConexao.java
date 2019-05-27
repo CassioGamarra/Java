@@ -10,7 +10,6 @@ import java.sql.SQLException;
 public class TestarConexao {
     public static void main(String[] args) throws SQLException{
         Connection conectar = ConectarDB.conectar();
-        
         conectar.close();
     }
 }

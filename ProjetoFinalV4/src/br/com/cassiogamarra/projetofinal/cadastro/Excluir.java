@@ -59,13 +59,13 @@ public class Excluir {
                         stmt.execute();
                         JOptionPane.showMessageDialog(null, "PESSOA EXCLUIDA COM SUCESSO");
                         frame.getFrameExclusao().dispose();
+                        LimparTela.LimparTela(frame.getFrameExcluir());
                     }
                     catch(SQLException e){
                        JOptionPane.showMessageDialog(null, "ERRO!");
                     }
                 }
                 else{
-                    LimparTela.LimparTela(frame.getFrameExcluir());
                     return;
                 }
             }
