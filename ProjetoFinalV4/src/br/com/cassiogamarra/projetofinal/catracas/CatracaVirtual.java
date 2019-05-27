@@ -119,15 +119,13 @@ public class CatracaVirtual{
                         situacao = consulta.getInt("situacao");
                         dataEntrada = consulta.getString("dataHora");
                     }
-                    if(situacao == 0){
-                        JOptionPane.showMessageDialog(null, "PESSOA INATIVA!!!");
-                        LimparTela.LimparTela(frame.getFrameSaida());
-                    }
-                    else if(status == 0){
+                    //Se a pessoa já realizou uma saída e está ativa no sistema
+                    if(status == 0 && situacao == 1){
                         JOptionPane.showMessageDialog(null, "SAÍDA DUPLA!!!");
                         LimparTela.LimparTela(frame.getFrameSaida());
                     }
-                    else{
+                    //Se a pessoa já foi excluida e já entrou ou se apenas entrou
+                    else if((situacao == 0 && status == 1) || (status == 1)){
                         //Faz a saída da pessoa
                         sql = "INSERT INTO catraca(codigo, dataHora ,situacao)VALUES(?,?,?)";
                         try{
@@ -146,6 +144,11 @@ public class CatracaVirtual{
                         catch(SQLException e){
                             throw new RuntimeException(e);
                         }
+                    }
+                    //Caso a pessoa esteja inativa no sistema
+                    else{
+                        JOptionPane.showMessageDialog(null, "PESSOA INATIVA!!!");
+                        LimparTela.LimparTela(frame.getFrameSaida());
                     }
                 }
                 catch(SQLException e){
