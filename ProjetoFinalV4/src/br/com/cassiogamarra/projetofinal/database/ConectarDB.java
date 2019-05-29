@@ -11,6 +11,10 @@ import javax.swing.JOptionPane;
  */
 public class ConectarDB{
     
+    public ConectarDB(){
+    
+    }
+    
     public static Connection conectar() throws SQLException{
         Connection conectar = null;
         try{
