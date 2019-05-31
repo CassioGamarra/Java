@@ -2,6 +2,7 @@ package br.com.cassiogamarra.projetofinal.catracas;
 
 import br.com.cassiogamarra.projetofinal.database.ConectarDB;
 import br.com.cassiogamarra.projetofinal.gui.FrameCatracas;
+import br.com.cassiogamarra.projetofinal.utilitarios.ControlePortaSerial;
 import br.com.cassiogamarra.projetofinal.utilitarios.DataHora;
 import br.com.cassiogamarra.projetofinal.utilitarios.LimparTela;
 import br.com.cassiogamarra.projetofinal.utilitarios.ValidarCodigo;
@@ -13,9 +14,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 public class CatracaVirtual{
-    
+
     public static void entrada(FrameCatracas frame) throws SQLException {
-        
+
         if(!ValidarCodigo.validarCodigo(frame.getCampoConsulta().getText())){
             JOptionPane.showMessageDialog(null, "Código inválido!"
                     + "\nO código possui apenas 6 digitos numéricos");
@@ -64,8 +65,9 @@ public class CatracaVirtual{
                                 stmt.execute();
                                 String mensagem = "BEM VINDO(A): "+nome+"\n"+
                                     "Entrada: "+horaAtual;
-                            JOptionPane.showMessageDialog(null, new JTextArea(mensagem),
+                                JOptionPane.showMessageDialog(null, new JTextArea(mensagem),
                                     "ENTRADA", JOptionPane.PLAIN_MESSAGE);
+                                
                                 LimparTela.LimparTela(frame.getFrameEntrada());
                             }
 
