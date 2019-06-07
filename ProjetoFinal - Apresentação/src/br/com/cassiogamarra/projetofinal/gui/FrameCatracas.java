@@ -160,7 +160,6 @@ public class FrameCatracas extends javax.swing.JFrame {
         frameSaida.setTitle("PROJETO FINAL - SAÍDA");
         frameSaida.setForeground(java.awt.Color.white);
         frameSaida.setMinimumSize(new java.awt.Dimension(315, 280));
-        frameSaida.setPreferredSize(new java.awt.Dimension(315, 280));
         frameSaida.setLocationRelativeTo(null);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -247,7 +246,6 @@ public class FrameCatracas extends javax.swing.JFrame {
         frameAutomatica.setTitle("PROJETO FINAL - ENTRADA/SAIDA");
         frameAutomatica.setForeground(java.awt.Color.white);
         frameAutomatica.setMinimumSize(new java.awt.Dimension(315, 280));
-        frameAutomatica.setPreferredSize(new java.awt.Dimension(315, 280));
         frameAutomatica.setLocationRelativeTo(null);
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
