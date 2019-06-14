@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.cassiogamarra.projetofinal.database;
 
 import java.sql.Connection;
@@ -13,15 +8,15 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Classe com os métodos relacionados ao banco de dados
  * @author Gnomo
  */
-public class Database {
-    public Database(){}
+public class BancoDeDados {
+    public BancoDeDados(){}
     
     //Método para testar a conexão com o banco
     public static void main(String[] args) throws SQLException{
-        Database conectar = new Database();
+        BancoDeDados conectar = new BancoDeDados();
         conectar.conectar();
     }
     //Método para conectar com o banco de dados
@@ -40,7 +35,7 @@ public class Database {
     public String consultar(long codigo) throws SQLException{
         String mensagem = "";
         String sql = "SELECT * FROM usuario WHERE situacao = 1 AND codigo = "+codigo;
-        Database conectar = new Database();
+        BancoDeDados conectar = new BancoDeDados();
         
         PreparedStatement stmt = conectar.conectar().prepareStatement(sql);
         ResultSet consulta = stmt.executeQuery(sql);
@@ -74,7 +69,7 @@ public class Database {
     }
     //Método para resetar os excluidos do banco
     public void resetarExcluidos() throws SQLException{
-        Database database = new Database();
+        BancoDeDados database = new BancoDeDados();
         
         String sql = "UPDATE usuario SET situacao = 1";
         int opcao;

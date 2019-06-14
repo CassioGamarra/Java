@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.cassiogamarra.projetofinal.gui;
 
-import br.com.cassiogamarra.projetofinal.cadastro.Cadastrar;
-import br.com.cassiogamarra.projetofinal.cadastro.Consultar;
-import br.com.cassiogamarra.projetofinal.cadastro.Excluir;
-import br.com.cassiogamarra.projetofinal.utilitarios.LimparTela;
+import br.com.cassiogamarra.projetofinal.cadastro.Gerenciamento;
+import br.com.cassiogamarra.projetofinal.utilitarios.Frame;
+import br.com.cassiogamarra.projetofinal.utilitarios.Validador;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,9 +25,8 @@ public class FramePessoas extends javax.swing.JFrame {
     }
     
     //Classes utilizadas
-    Cadastrar cadastrar = new Cadastrar();
-    Consultar consultar = new Consultar();
-    Excluir excluir = new Excluir();
+    Gerenciamento gerenciar = new Gerenciamento();
+    Validador validador = new Validador();
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -92,7 +85,6 @@ public class FramePessoas extends javax.swing.JFrame {
         frameCadastrar.setForeground(java.awt.Color.white);
         frameCadastrar.setMinimumSize(new java.awt.Dimension(440, 420));
         frameCadastrar.setLocationRelativeTo(null);
-        frameCadastrar.setPreferredSize(new java.awt.Dimension(440, 420));
         frameCadastrar.setResizable(false);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -236,7 +228,6 @@ public class FramePessoas extends javax.swing.JFrame {
         frameConsultar.setTitle("PROJETO FINAL  - CONSULTAR");
         frameConsultar.setForeground(java.awt.Color.white);
         frameConsultar.setMinimumSize(new java.awt.Dimension(340, 280));
-        frameConsultar.setPreferredSize(new java.awt.Dimension(340, 280));
         frameConsultar.setLocationRelativeTo(null);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -317,7 +308,6 @@ public class FramePessoas extends javax.swing.JFrame {
         frameExcluir.setTitle("PROJETO FINAL  - EXCLUIR");
         frameExcluir.setForeground(java.awt.Color.white);
         frameExcluir.setMinimumSize(new java.awt.Dimension(340, 280));
-        frameExcluir.setPreferredSize(new java.awt.Dimension(340, 280));
         frameExcluir.setResizable(false);
         frameExcluir.setLocationRelativeTo(null);
 
@@ -739,11 +729,7 @@ public class FramePessoas extends javax.swing.JFrame {
     }
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        try {
-            cadastrar.validarCadastro(this);
-        } catch (SQLException ex) {
-            Logger.getLogger(FramePessoas.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        validador.validarCadastro(this);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     public JFrame getFrameCadastrar() {
@@ -775,7 +761,7 @@ public class FramePessoas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarExcActionPerformed
 
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
-        excluir.verificarExclusao(this);
+        validador.verificarExclusao(this);
     }//GEN-LAST:event_btnVerificarActionPerformed
 
     private void campoConsultaExclusaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoConsultaExclusaoActionPerformed
@@ -788,12 +774,12 @@ public class FramePessoas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarConActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        consultar.validarConsulta(this);
+        gerenciar.realizarConsulta(this);
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         try {
-            excluir.excluir(this);
+            gerenciar.excluir(this);
         } catch (SQLException ex) {
             Logger.getLogger(FramePessoas.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -801,7 +787,7 @@ public class FramePessoas extends javax.swing.JFrame {
 
     private void btnCancelarExclusaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarExclusaoActionPerformed
         frameExclusao.dispose();
-        LimparTela.LimparTela(frameExcluir);
+        Frame.limparFrame(frameExcluir);
         frameExcluir.setVisible(true);
     }//GEN-LAST:event_btnCancelarExclusaoActionPerformed
 
