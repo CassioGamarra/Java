@@ -33,8 +33,7 @@ public class Historico {
                 else{
                     mensagem = mensagem + "\nCódigo: "+codigo+
                             " |  Nome: "+nome+"\n";
-                }
-                
+                } 
             }
             if(mensagem.equals("")){
                 JOptionPane.showMessageDialog(null, "SEM HISTÓRICO",
@@ -66,7 +65,6 @@ public class Historico {
                     mensagem = mensagem + "\nCódigo: "+codigo+
                             " |  Nome: "+nome+"\n";
                 }
-                
             }
             if(mensagem.equals("")){
                 JOptionPane.showMessageDialog(null, "SEM USUÁRIOS ATIVOS",
