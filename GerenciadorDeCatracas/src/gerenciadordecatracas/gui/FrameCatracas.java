@@ -8,9 +8,8 @@ package gerenciadordecatracas.gui;
 import gerenciadordecatracas.catracas.CatracaVirtual;
 import gerenciadordecatracas.gerenciamento.Historico;
 import gerenciadordecatracas.util.Utilitario;
+import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -69,6 +68,21 @@ public class FrameCatracas extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         textPanelSaidas = new javax.swing.JTextPane();
         btnFecharSaidas = new javax.swing.JButton();
+        dialogMensagemEntrada = new javax.swing.JDialog();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        textPanelDialogEntrada = new javax.swing.JTextPane();
+        btnFecharMsgEntrada = new javax.swing.JButton();
+        dialogMensagemSaida = new javax.swing.JDialog();
+        jLabel8 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        textPanelDialogSaida = new javax.swing.JTextPane();
+        btnFecharMsgSaida = new javax.swing.JButton();
+        dialogMensagemAutomatica = new javax.swing.JDialog();
+        jLabel9 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        textPanelAutomatica = new javax.swing.JTextPane();
+        btnFecharMsgAutomatica = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnEntrada = new javax.swing.JButton();
         btnVoltarCatracas = new javax.swing.JButton();
@@ -376,7 +390,6 @@ public class FrameCatracas extends javax.swing.JFrame {
         dialogSaidas.setAlwaysOnTop(true);
         dialogSaidas.setBackground(new java.awt.Color(255, 255, 255));
         dialogSaidas.setMinimumSize(new java.awt.Dimension(500, 500));
-        dialogSaidas.setPreferredSize(new java.awt.Dimension(500, 500));
         dialogSaidas.setResizable(false);
         dialogSaidas.setLocationRelativeTo(null);
 
@@ -418,6 +431,171 @@ public class FrameCatracas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnFecharSaidas)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        dialogMensagemEntrada.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        dialogMensagemEntrada.setTitle("ENTRADA");
+        dialogMensagemEntrada.setAlwaysOnTop(true);
+        dialogMensagemEntrada.setBackground(new java.awt.Color(255, 255, 255));
+        dialogMensagemEntrada.setMinimumSize(new java.awt.Dimension(450, 220));
+        dialogMensagemEntrada.setPreferredSize(new java.awt.Dimension(450, 220));
+        dialogMensagemEntrada.setResizable(false);
+        dialogMensagemEntrada.setLocationRelativeTo(null);
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("ENTRADA");
+
+        textPanelDialogEntrada.setEditable(false);
+        textPanelDialogEntrada.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        textPanelDialogEntrada.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textPanelDialogEntradaKeyPressed(evt);
+            }
+        });
+        jScrollPane3.setViewportView(textPanelDialogEntrada);
+
+        btnFecharMsgEntrada.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnFecharMsgEntrada.setText("FECHAR");
+        btnFecharMsgEntrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFecharMsgEntradaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialogMensagemEntradaLayout = new javax.swing.GroupLayout(dialogMensagemEntrada.getContentPane());
+        dialogMensagemEntrada.getContentPane().setLayout(dialogMensagemEntradaLayout);
+        dialogMensagemEntradaLayout.setHorizontalGroup(
+            dialogMensagemEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogMensagemEntradaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(dialogMensagemEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnFecharMsgEntrada, javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        dialogMensagemEntradaLayout.setVerticalGroup(
+            dialogMensagemEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogMensagemEntradaLayout.createSequentialGroup()
+                .addGap(4, 4, 4)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnFecharMsgEntrada)
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+
+        dialogMensagemSaida.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        dialogMensagemSaida.setTitle("ENTRADA");
+        dialogMensagemSaida.setAlwaysOnTop(true);
+        dialogMensagemSaida.setBackground(new java.awt.Color(255, 255, 255));
+        dialogMensagemSaida.setMinimumSize(new java.awt.Dimension(450, 220));
+        dialogMensagemSaida.setPreferredSize(new java.awt.Dimension(450, 220));
+        dialogMensagemSaida.setResizable(false);
+        dialogMensagemSaida.setLocationRelativeTo(null);
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("SAÍDA");
+
+        textPanelDialogSaida.setEditable(false);
+        textPanelDialogSaida.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        textPanelDialogSaida.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textPanelDialogSaidaKeyPressed(evt);
+            }
+        });
+        jScrollPane6.setViewportView(textPanelDialogSaida);
+
+        btnFecharMsgSaida.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnFecharMsgSaida.setText("FECHAR");
+        btnFecharMsgSaida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFecharMsgSaidaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialogMensagemSaidaLayout = new javax.swing.GroupLayout(dialogMensagemSaida.getContentPane());
+        dialogMensagemSaida.getContentPane().setLayout(dialogMensagemSaidaLayout);
+        dialogMensagemSaidaLayout.setHorizontalGroup(
+            dialogMensagemSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogMensagemSaidaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(dialogMensagemSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnFecharMsgSaida, javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        dialogMensagemSaidaLayout.setVerticalGroup(
+            dialogMensagemSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogMensagemSaidaLayout.createSequentialGroup()
+                .addGap(4, 4, 4)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnFecharMsgSaida)
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+
+        dialogMensagemAutomatica.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        dialogMensagemAutomatica.setTitle("ENTRADA");
+        dialogMensagemAutomatica.setAlwaysOnTop(true);
+        dialogMensagemAutomatica.setBackground(new java.awt.Color(255, 255, 255));
+        dialogMensagemAutomatica.setMinimumSize(new java.awt.Dimension(450, 220));
+        dialogMensagemAutomatica.setPreferredSize(new java.awt.Dimension(450, 220));
+        dialogMensagemAutomatica.setResizable(false);
+        dialogMensagemAutomatica.setLocationRelativeTo(null);
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("ENTRADA/SAÍDA");
+
+        textPanelAutomatica.setEditable(false);
+        textPanelAutomatica.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        textPanelAutomatica.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textPanelAutomaticaKeyPressed(evt);
+            }
+        });
+        jScrollPane7.setViewportView(textPanelAutomatica);
+
+        btnFecharMsgAutomatica.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnFecharMsgAutomatica.setText("FECHAR");
+        btnFecharMsgAutomatica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFecharMsgAutomaticaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialogMensagemAutomaticaLayout = new javax.swing.GroupLayout(dialogMensagemAutomatica.getContentPane());
+        dialogMensagemAutomatica.getContentPane().setLayout(dialogMensagemAutomaticaLayout);
+        dialogMensagemAutomaticaLayout.setHorizontalGroup(
+            dialogMensagemAutomaticaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogMensagemAutomaticaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(dialogMensagemAutomaticaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnFecharMsgAutomatica, javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        dialogMensagemAutomaticaLayout.setVerticalGroup(
+            dialogMensagemAutomaticaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogMensagemAutomaticaLayout.createSequentialGroup()
+                .addGap(4, 4, 4)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnFecharMsgAutomatica)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -553,11 +731,10 @@ public class FrameCatracas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEntradaActionPerformed
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        JTextArea mensagem = new JTextArea();
-        mensagem.setText(catraca.entradaCatracaVirtual(this));
+        textPanelDialogEntrada.setText(catraca.entradaCatracaVirtual(this));
         util.limparFrame(frameEntrada);
-        if(!mensagem.getText().equals("")){
-            JOptionPane.showMessageDialog(null, mensagem, "ENTRADA-SAÍDA", JOptionPane.PLAIN_MESSAGE);
+        if(!textPanelDialogEntrada.getText().equals("")){
+            dialogMensagemEntrada.setVisible(true);
             util.limparFrame(frameEntrada);
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
@@ -605,11 +782,10 @@ public class FrameCatracas extends javax.swing.JFrame {
     }
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        JTextArea mensagem = new JTextArea();
-        mensagem.setText(catraca.saidaCatracaVirtual(this));
+        textPanelDialogSaida.setText(catraca.saidaCatracaVirtual(this));
         util.limparFrame(frameSaida);
-        if(!mensagem.getText().equals("")){
-            JOptionPane.showMessageDialog(null, mensagem, "ENTRADA-SAÍDA", JOptionPane.PLAIN_MESSAGE);
+        if(!textPanelDialogSaida.getText().equals("")){
+            dialogMensagemSaida.setVisible(true);
             util.limparFrame(frameSaida);
         }
     }//GEN-LAST:event_btnSairActionPerformed
@@ -635,13 +811,13 @@ public class FrameCatracas extends javax.swing.JFrame {
     }//GEN-LAST:event_historicoSaidaActionPerformed
 
     private void campoConsultaEntradaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoConsultaEntradaKeyPressed
-        if (evt.getKeyCode() == evt.VK_ENTER) {                    
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {                    
             btnEntrar.doClick();
         }
     }//GEN-LAST:event_campoConsultaEntradaKeyPressed
 
     private void campoConsultaSaidaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoConsultaSaidaKeyPressed
-        if (evt.getKeyCode() == evt.VK_ENTER) {                    
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {                    
             btnSair.doClick();
         }
     }//GEN-LAST:event_campoConsultaSaidaKeyPressed
@@ -652,11 +828,10 @@ public class FrameCatracas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAutomaticaActionPerformed
 
     private void campoConsultaAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoConsultaAutoActionPerformed
-        JTextArea mensagem = new JTextArea();
-        mensagem.setText(catraca.catracaVirtualAutomatica(this));
+        textPanelAutomatica.setText(catraca.catracaVirtualAutomatica(this));
         util.limparFrame(frameAutomatica);
-        if(!mensagem.getText().equals("")){
-            JOptionPane.showMessageDialog(null, mensagem, "ENTRADA-SAÍDA", JOptionPane.PLAIN_MESSAGE);
+        if(!textPanelAutomatica.getText().equals("")){
+            dialogMensagemAutomatica.setVisible(true);
             util.limparFrame(frameAutomatica);
         }
     }//GEN-LAST:event_campoConsultaAutoActionPerformed
@@ -677,6 +852,36 @@ public class FrameCatracas extends javax.swing.JFrame {
     private void btnFecharSaidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharSaidasActionPerformed
         dialogSaidas.dispose();
     }//GEN-LAST:event_btnFecharSaidasActionPerformed
+
+    private void btnFecharMsgEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharMsgEntradaActionPerformed
+        dialogMensagemEntrada.dispose();
+    }//GEN-LAST:event_btnFecharMsgEntradaActionPerformed
+
+    private void btnFecharMsgSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharMsgSaidaActionPerformed
+        dialogMensagemSaida.dispose();
+    }//GEN-LAST:event_btnFecharMsgSaidaActionPerformed
+
+    private void btnFecharMsgAutomaticaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharMsgAutomaticaActionPerformed
+        dialogMensagemAutomatica.dispose();
+    }//GEN-LAST:event_btnFecharMsgAutomaticaActionPerformed
+
+    private void textPanelDialogEntradaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textPanelDialogEntradaKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {                    
+            btnFecharMsgEntrada.doClick();
+        }
+    }//GEN-LAST:event_textPanelDialogEntradaKeyPressed
+
+    private void textPanelDialogSaidaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textPanelDialogSaidaKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {                    
+            btnFecharMsgSaida.doClick();
+        }
+    }//GEN-LAST:event_textPanelDialogSaidaKeyPressed
+
+    private void textPanelAutomaticaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textPanelAutomaticaKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {                    
+            btnFecharMsgAutomatica.doClick();
+        }
+    }//GEN-LAST:event_textPanelAutomaticaKeyPressed
 
     public JTextField getCampoConsulta() {
         return campoConsultaEntrada;
@@ -730,6 +935,9 @@ public class FrameCatracas extends javax.swing.JFrame {
     private javax.swing.JButton btnEntrada;
     private javax.swing.JButton btnEntrar;
     private javax.swing.JButton btnFecharEntradas;
+    private javax.swing.JButton btnFecharMsgAutomatica;
+    private javax.swing.JButton btnFecharMsgEntrada;
+    private javax.swing.JButton btnFecharMsgSaida;
     private javax.swing.JButton btnFecharSaidas;
     private javax.swing.JButton btnSaida;
     private javax.swing.JButton btnSair;
@@ -738,6 +946,9 @@ public class FrameCatracas extends javax.swing.JFrame {
     private javax.swing.JTextField campoConsultaEntrada;
     private javax.swing.JTextField campoConsultaSaida;
     private javax.swing.JDialog dialogEntradas;
+    private javax.swing.JDialog dialogMensagemAutomatica;
+    private javax.swing.JDialog dialogMensagemEntrada;
+    private javax.swing.JDialog dialogMensagemSaida;
     private javax.swing.JDialog dialogSaidas;
     private javax.swing.JFrame frameAutomatica;
     private javax.swing.JFrame frameEntrada;
@@ -756,9 +967,18 @@ public class FrameCatracas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JTextPane textPanelAutomatica;
+    private javax.swing.JTextPane textPanelDialogEntrada;
+    private javax.swing.JTextPane textPanelDialogSaida;
     private javax.swing.JTextPane textPanelEntradas;
     private javax.swing.JTextPane textPanelSaidas;
     // End of variables declaration//GEN-END:variables

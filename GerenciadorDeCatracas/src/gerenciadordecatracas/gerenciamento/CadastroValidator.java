@@ -41,14 +41,14 @@ public class CadastroValidator {
             JOptionPane.showMessageDialog(null, "NOME INVÁLIDO", "ERRO", 
                     JOptionPane.WARNING_MESSAGE);
         }
-        else if(!verificador.isCPF(pessoa.getCPF())){
+       /* else if(!verificador.isCPF(pessoa.getCPF())){
             JOptionPane.showMessageDialog(null, "CPF INVÁLIDO", "ERRO", 
                     JOptionPane.WARNING_MESSAGE);
-        }
-        else if(!consultarDuplicidade(pessoa.getCPF())){
+        }*/
+        /*else if(!consultarDuplicidade(pessoa.getCPF())){
             JOptionPane.showMessageDialog(null, "O CADASTRO JÁ EXISTE", "ERRO", 
                     JOptionPane.WARNING_MESSAGE);
-        }
+        }*/
         else if(!verificador.isTelefone(pessoa.getTelefone())){
             JOptionPane.showMessageDialog(null, "TELEFONE INVÁLIDO", "ERRO",
                     JOptionPane.WARNING_MESSAGE);
