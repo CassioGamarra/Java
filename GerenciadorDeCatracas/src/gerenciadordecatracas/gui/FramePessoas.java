@@ -688,7 +688,7 @@ public class FramePessoas extends javax.swing.JFrame {
 
     private void ComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxCategoriaActionPerformed
         //MÉTODO PARA ALTERAR O NOME DO COMBOBOX
-        AlterarComboBox.alterarComboBox(this);
+        util.alterarComboBox(this);
     }//GEN-LAST:event_ComboBoxCategoriaActionPerformed
 
     public JLabel getLblCategoria() {
