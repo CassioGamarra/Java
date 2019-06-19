@@ -1,4 +1,4 @@
-package gerenciadordecatracas.database;
+package gerenciadordecatracas.gerenciamento;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

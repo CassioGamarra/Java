@@ -1,6 +1,6 @@
-package gerenciadordecatracas.util;
+package gerenciadordecatracas.gerenciamento;
 
-import gerenciadordecatracas.gui.FramePessoas;
+import gerenciadordecatracas.gui.MenuPessoas;
 import java.awt.Component;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -37,23 +37,6 @@ public class Utilitario {
                 JTextField field = (JTextField) c;
                 field.setText("");  
             }
-        }
-    }
-    //Método para alterar o nome do ComboBox no Frame Pessoas
-    public void alterarComboBox(FramePessoas frame){
-        frame.getComboBoxCategoria();
-        
-        if(frame.getComboBoxCategoria().getSelectedItem() == "Aluno"){
-            frame.getLblCategoria().setText("TURMA: ");
-        }
-        if(frame.getComboBoxCategoria().getSelectedItem() == "Responsável"){
-            frame.getLblCategoria().setText("DEPENDENTES: ");
-        }
-        if(frame.getComboBoxCategoria().getSelectedItem() == "Colaborador"){
-            frame.getLblCategoria().setText("CARGO: ");
-        }
-        if(frame.getComboBoxCategoria().getSelectedItem() == "Visitante"){
-            frame.getLblCategoria().setText("OBSERVAÇÕES: ");
         }
     }
     //Erro padrão para tabela inexistente

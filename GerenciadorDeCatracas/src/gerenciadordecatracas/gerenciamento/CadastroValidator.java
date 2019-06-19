@@ -1,10 +1,7 @@
 package gerenciadordecatracas.gerenciamento;
 
-import gerenciadordecatracas.database.Conexao;
-import gerenciadordecatracas.gui.FramePessoas;
+import gerenciadordecatracas.gui.MenuPessoas;
 import gerenciadordecatracas.usuario.Pessoa;
-import gerenciadordecatracas.util.Utilitario;
-import gerenciadordecatracas.util.Verificador;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,7 +20,7 @@ public class CadastroValidator {
     Verificador verificador = new Verificador();
    
     //Método para validar um cadastro
-    public void validarCadastro(FramePessoas frame){
+    public void validarCadastro(MenuPessoas frame){
         Pessoa pessoa = new Pessoa();
         String tipoPessoa = (String)frame.getComboBoxCategoria().getSelectedItem();
         String conteudoTipoPessoa = frame.getCampoCategoria().getText();
@@ -41,14 +38,14 @@ public class CadastroValidator {
             JOptionPane.showMessageDialog(null, "NOME INVÁLIDO", "ERRO", 
                     JOptionPane.WARNING_MESSAGE);
         }
-       /* else if(!verificador.isCPF(pessoa.getCPF())){
+        else if(!verificador.isCPF(pessoa.getCPF())){
             JOptionPane.showMessageDialog(null, "CPF INVÁLIDO", "ERRO", 
                     JOptionPane.WARNING_MESSAGE);
-        }*/
-        /*else if(!consultarDuplicidade(pessoa.getCPF())){
+        }
+        else if(!consultarDuplicidade(pessoa.getCPF())){
             JOptionPane.showMessageDialog(null, "O CADASTRO JÁ EXISTE", "ERRO", 
                     JOptionPane.WARNING_MESSAGE);
-        }*/
+        }
         else if(!verificador.isTelefone(pessoa.getTelefone())){
             JOptionPane.showMessageDialog(null, "TELEFONE INVÁLIDO", "ERRO",
                     JOptionPane.WARNING_MESSAGE);
@@ -64,7 +61,7 @@ public class CadastroValidator {
         }
     }
     //Método para validar uma consulta
-    public void validarConsulta(FramePessoas frame){
+    public void validarConsulta(MenuPessoas frame){
         if(!verificador.isCodigo(frame.getCampoConsulta().getText())){
             JOptionPane.showMessageDialog(null, "Consulta inválida!"
                     + "\nO código possui apenas 6 digitos numéricos");
@@ -85,7 +82,7 @@ public class CadastroValidator {
         }
     }
     //Método para consultar uma pessoa antes de excluir
-    public void consultarExclusao(FramePessoas frame){
+    public void consultarExclusao(MenuPessoas frame){
         if(!verificador.isCodigo(frame.getCampoConsultaExclusao().getText())){
             JOptionPane.showMessageDialog(null, "Consulta inválida!"
                     + "\nO código possui apenas 6 digitos numéricos");

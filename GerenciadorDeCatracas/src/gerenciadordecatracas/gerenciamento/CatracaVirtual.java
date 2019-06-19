@@ -1,9 +1,7 @@
-package gerenciadordecatracas.catracas;
+package gerenciadordecatracas.gerenciamento;
 
-import gerenciadordecatracas.database.Conexao;
-import gerenciadordecatracas.gui.FrameCatracas;
-import gerenciadordecatracas.util.Utilitario;
-import gerenciadordecatracas.util.Verificador;
+import gerenciadordecatracas.gerenciamento.Conexao;
+import gerenciadordecatracas.gui.MenuCatracas;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +12,7 @@ public class CatracaVirtual implements ICatracas {
     Utilitario util = new Utilitario();
 
     //Entrada catraca virtual manual
-    public String entradaCatracaVirtual(FrameCatracas frame){
+    public String entradaCatracaVirtual(MenuCatracas frame){
         Verificador verificador = new Verificador();
         String mensagem =  "";
         
@@ -30,7 +28,7 @@ public class CatracaVirtual implements ICatracas {
         return mensagem;
     }
     //Saída catraca virtual manual
-    public String saidaCatracaVirtual(FrameCatracas frame){
+    public String saidaCatracaVirtual(MenuCatracas frame){
         Verificador verificador = new Verificador();
         String mensagem =  "";
         
@@ -46,7 +44,7 @@ public class CatracaVirtual implements ICatracas {
         return mensagem;
     }
     //Catraca virtual automatica
-    public String catracaVirtualAutomatica(FrameCatracas frame){
+    public String catracaVirtualAutomatica(MenuCatracas frame){
         Verificador verificador = new Verificador();
         Conexao conexao = new Conexao();
         String mensagem =  "";

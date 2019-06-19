@@ -1,4 +1,4 @@
-package gerenciadordecatracas.catracas;
+package gerenciadordecatracas.gerenciamento;
 
 public interface ICatracas {
     public String entrada(long codigo);

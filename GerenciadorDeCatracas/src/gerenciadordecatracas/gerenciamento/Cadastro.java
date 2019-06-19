@@ -1,9 +1,7 @@
 package gerenciadordecatracas.gerenciamento;
 
-import gerenciadordecatracas.database.Conexao;
-import gerenciadordecatracas.gui.FramePessoas;
+import gerenciadordecatracas.gui.MenuPessoas;
 import gerenciadordecatracas.usuario.*;
-import gerenciadordecatracas.util.Utilitario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -108,7 +106,7 @@ public class Cadastro {
         }
     }
     //Método para excluir uma pessoa
-    public void excluir(FramePessoas frame){
+    public void excluir(MenuPessoas frame){
         long codigo = Long.parseLong(frame.getCampoConsultaExclusao().getText());
         if(validarExclusao.verificarDependentes(codigo) != 0){
             JOptionPane.showMessageDialog(null, "RESPONSÁVEL NÃO PODE SER EXCLUIDO!");

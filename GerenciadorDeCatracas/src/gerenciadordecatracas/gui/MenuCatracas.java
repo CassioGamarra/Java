@@ -5,9 +5,9 @@
  */
 package gerenciadordecatracas.gui;
 
-import gerenciadordecatracas.catracas.CatracaVirtual;
+import gerenciadordecatracas.gerenciamento.CatracaVirtual;
 import gerenciadordecatracas.gerenciamento.Historico;
-import gerenciadordecatracas.util.Utilitario;
+import gerenciadordecatracas.gerenciamento.Utilitario;
 import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -16,12 +16,12 @@ import javax.swing.JTextField;
  *
  * @author Gamarra
  */
-public class FrameCatracas extends javax.swing.JFrame {
+public class MenuCatracas extends javax.swing.JFrame {
     
     /**
      * Creates new form FrameCatracas
      */
-    public FrameCatracas() {
+    public MenuCatracas() {
         initComponents();
     }
     
@@ -89,9 +89,6 @@ public class FrameCatracas extends javax.swing.JFrame {
         btnSaida = new javax.swing.JButton();
         btnAutomatica = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        arquivo = new javax.swing.JMenu();
-        historicoEntrada = new javax.swing.JMenuItem();
-        historicoSaida = new javax.swing.JMenuItem();
 
         frameEntrada.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         frameEntrada.setTitle("PROJETO FINAL - ENTRADA");
@@ -341,7 +338,6 @@ public class FrameCatracas extends javax.swing.JFrame {
         dialogEntradas.setAlwaysOnTop(true);
         dialogEntradas.setBackground(new java.awt.Color(255, 255, 255));
         dialogEntradas.setMinimumSize(new java.awt.Dimension(500, 500));
-        dialogEntradas.setPreferredSize(new java.awt.Dimension(500, 500));
         dialogEntradas.setResizable(false);
         dialogEntradas.setLocationRelativeTo(null);
 
@@ -438,7 +434,6 @@ public class FrameCatracas extends javax.swing.JFrame {
         dialogMensagemEntrada.setAlwaysOnTop(true);
         dialogMensagemEntrada.setBackground(new java.awt.Color(255, 255, 255));
         dialogMensagemEntrada.setMinimumSize(new java.awt.Dimension(450, 220));
-        dialogMensagemEntrada.setPreferredSize(new java.awt.Dimension(450, 220));
         dialogMensagemEntrada.setResizable(false);
         dialogMensagemEntrada.setLocationRelativeTo(null);
 
@@ -493,7 +488,6 @@ public class FrameCatracas extends javax.swing.JFrame {
         dialogMensagemSaida.setAlwaysOnTop(true);
         dialogMensagemSaida.setBackground(new java.awt.Color(255, 255, 255));
         dialogMensagemSaida.setMinimumSize(new java.awt.Dimension(450, 220));
-        dialogMensagemSaida.setPreferredSize(new java.awt.Dimension(450, 220));
         dialogMensagemSaida.setResizable(false);
         dialogMensagemSaida.setLocationRelativeTo(null);
 
@@ -548,7 +542,6 @@ public class FrameCatracas extends javax.swing.JFrame {
         dialogMensagemAutomatica.setAlwaysOnTop(true);
         dialogMensagemAutomatica.setBackground(new java.awt.Color(255, 255, 255));
         dialogMensagemAutomatica.setMinimumSize(new java.awt.Dimension(450, 220));
-        dialogMensagemAutomatica.setPreferredSize(new java.awt.Dimension(450, 220));
         dialogMensagemAutomatica.setResizable(false);
         dialogMensagemAutomatica.setLocationRelativeTo(null);
 
@@ -637,30 +630,6 @@ public class FrameCatracas extends javax.swing.JFrame {
                 btnAutomaticaActionPerformed(evt);
             }
         });
-
-        arquivo.setText("ARQUIVO");
-        arquivo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-
-        historicoEntrada.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        historicoEntrada.setText("Histórico Entrada");
-        historicoEntrada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                historicoEntradaActionPerformed(evt);
-            }
-        });
-        arquivo.add(historicoEntrada);
-
-        historicoSaida.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        historicoSaida.setText("Histórico Saída");
-        historicoSaida.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                historicoSaidaActionPerformed(evt);
-            }
-        });
-        arquivo.add(historicoSaida);
-
-        jMenuBar1.add(arquivo);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -682,13 +651,13 @@ public class FrameCatracas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addComponent(btnEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSaida, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                .addComponent(btnSaida, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAutomatica, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                .addComponent(btnAutomatica, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnVoltarCatracas, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                .addComponent(btnVoltarCatracas, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
                 .addGap(28, 28, 28))
         );
 
@@ -741,7 +710,7 @@ public class FrameCatracas extends javax.swing.JFrame {
 
     private void btnCancelarEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEntradaActionPerformed
         frameEntrada.dispose();
-        new FrameCatracas().setVisible(true);
+        new MenuCatracas().setVisible(true);
     }//GEN-LAST:event_btnCancelarEntradaActionPerformed
 
     private void campoConsultaEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoConsultaEntradaActionPerformed
@@ -749,8 +718,8 @@ public class FrameCatracas extends javax.swing.JFrame {
     }//GEN-LAST:event_campoConsultaEntradaActionPerformed
 
     private void btnVoltarCatracasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarCatracasActionPerformed
-        FrameCatracas.this.dispose();
-        new FrameInicio().setVisible(true);
+        MenuCatracas.this.dispose();
+        new MenuPrincipal().setVisible(true);
     }//GEN-LAST:event_btnVoltarCatracasActionPerformed
 
     private void campoConsultaSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoConsultaSaidaActionPerformed
@@ -792,23 +761,8 @@ public class FrameCatracas extends javax.swing.JFrame {
 
     private void btnCancelarSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarSaidaActionPerformed
         frameSaida.dispose();
-        new FrameCatracas().setVisible(true);
+        new MenuCatracas().setVisible(true);
     }//GEN-LAST:event_btnCancelarSaidaActionPerformed
-
-    private void historicoEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoEntradaActionPerformed
-        textPanelEntradas.setText(historico.historicoEntrada());
-        if(!textPanelEntradas.getText().equals("")){
-            dialogEntradas.setVisible(true);
-        }
-        
-    }//GEN-LAST:event_historicoEntradaActionPerformed
-
-    private void historicoSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoSaidaActionPerformed
-        textPanelSaidas.setText(historico.historicoSaida());
-        if(!textPanelSaidas.getText().equals("")){
-            dialogSaidas.setVisible(true);
-        }
-    }//GEN-LAST:event_historicoSaidaActionPerformed
 
     private void campoConsultaEntradaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoConsultaEntradaKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {                    
@@ -842,7 +796,7 @@ public class FrameCatracas extends javax.swing.JFrame {
 
     private void btnCancelarAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarAutoActionPerformed
         frameAutomatica.dispose();
-        new FrameCatracas().setVisible(true);
+        new MenuCatracas().setVisible(true);
     }//GEN-LAST:event_btnCancelarAutoActionPerformed
 
     private void btnFecharEntradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharEntradasActionPerformed
@@ -908,26 +862,26 @@ public class FrameCatracas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameCatracas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuCatracas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameCatracas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuCatracas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameCatracas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuCatracas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameCatracas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuCatracas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrameCatracas().setVisible(true);
+                new MenuCatracas().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu arquivo;
     private javax.swing.JButton btnAutomatica;
     private javax.swing.JButton btnCancelarAuto;
     private javax.swing.JButton btnCancelarEntrada;
@@ -953,8 +907,6 @@ public class FrameCatracas extends javax.swing.JFrame {
     private javax.swing.JFrame frameAutomatica;
     private javax.swing.JFrame frameEntrada;
     private javax.swing.JFrame frameSaida;
-    private javax.swing.JMenuItem historicoEntrada;
-    private javax.swing.JMenuItem historicoSaida;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

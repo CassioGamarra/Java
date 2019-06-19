@@ -1,4 +1,4 @@
-package gerenciadordecatracas.util;
+package gerenciadordecatracas.gerenciamento;
 
 import java.util.InputMismatchException;
 

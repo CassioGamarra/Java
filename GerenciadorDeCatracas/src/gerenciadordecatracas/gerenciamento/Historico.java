@@ -1,7 +1,5 @@
 package gerenciadordecatracas.gerenciamento;
 
-import gerenciadordecatracas.database.Conexao;
-import gerenciadordecatracas.util.Utilitario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,8 +32,7 @@ public class Historico {
                 }
             }
             if(usuariosAtivos.equals("")){
-                JOptionPane.showMessageDialog(null, "SEM USUÁRIOS ATIVOS",
-                        "USUÁRIOS ATIVOS", JOptionPane.PLAIN_MESSAGE);
+                return "SEM USUÁRIOS ATIVOS";
             }
             else{
                 return usuariosAtivos;
@@ -45,7 +42,6 @@ public class Historico {
            utilitario.erroTabela();
            return usuariosAtivos;
         }
-        return usuariosAtivos;
     }
     //Método que retorna o histórico de excluidos
     public String excluidos(){
@@ -67,8 +63,7 @@ public class Historico {
                 } 
             }
             if(usuariosExcluidos.equals("")){
-                JOptionPane.showMessageDialog(null, "SEM HISTÓRICO",
-                        "HISTÓRICO EXCLUIDOS", JOptionPane.PLAIN_MESSAGE);
+                return "SEM HISTÓRICO";
             }
             else{
                 return usuariosExcluidos;
@@ -78,7 +73,6 @@ public class Historico {
             utilitario.erroTabela();
             return usuariosExcluidos;
         }
-        return usuariosExcluidos;
     }
     //Método que retorna o histórico de entrada
     public String historicoEntrada(){
@@ -105,8 +99,7 @@ public class Historico {
                 }
             }
             if(historicoEntrada.equals("")){
-                JOptionPane.showMessageDialog(null, "SEM HISTÓRICO",
-                            "HISTÓRICO ENTRADA", JOptionPane.INFORMATION_MESSAGE);
+                return "SEM HISTÓRICO";
             }
             else{
                 return historicoEntrada;
@@ -116,7 +109,6 @@ public class Historico {
             utilitario.erroTabela();
             return historicoEntrada;
         }
-        return historicoEntrada;
     }
     //Método que retorna o histórico de saída
     public String historicoSaida(){
@@ -143,8 +135,7 @@ public class Historico {
                 }
             }
             if(historicoSaida.equals("")){
-                JOptionPane.showMessageDialog(null, "SEM HISTÓRICO",
-                        "HISTÓRICO SAÍDA", JOptionPane.INFORMATION_MESSAGE);
+                return "SEM HISTÓRICO";
             }
             else{
                 return historicoSaida;
@@ -154,6 +145,5 @@ public class Historico {
             utilitario.erroTabela();
             return historicoSaida;
         }
-        return historicoSaida;
     }
 }
