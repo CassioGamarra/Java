@@ -28,10 +28,8 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                          <Component id="btnSalvar" min="-2" pref="140" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnCancelar" min="-2" pref="140" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="221" max="-2" attributes="0"/>
+                          <Component id="filler2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="ComboBoxCategoria" alignment="0" min="-2" pref="379" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -43,6 +41,12 @@
                           <Component id="campoCPF" alignment="1" max="32767" attributes="0"/>
                           <Component id="campoTelefone" alignment="1" pref="379" max="32767" attributes="0"/>
                           <Component id="campoCategoria" alignment="1" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                          <Component id="btnSalvar" min="-2" pref="140" max="-2" attributes="0"/>
+                          <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                          <Component id="btnCancelar" min="-2" pref="140" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -66,12 +70,14 @@
                   <Component id="ComboBoxCategoria" min="-2" pref="65" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="campoCategoria" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                  <Component id="filler2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                   <Component id="filler1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -236,6 +242,16 @@
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="if(campoTelefone.getText().length()==8){&#xa;    try{&#xa;        campoTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(&quot;(##)####-####&quot;)));&#xa;    }&#xa;    catch (java.text.ParseException ex) {&#xa;        ex.printStackTrace();&#xa;    }&#xa;    &#xa;}"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.Box$Filler" name="filler2">
+          <Properties>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[0, 32767]"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.VerticalGlue"/>
           </AuxValues>
         </Component>
       </SubComponents>

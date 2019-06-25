@@ -345,6 +345,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFecharExcluidosActionPerformed
 
     private void btnAtivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtivosActionPerformed
+        btnResetar.setVisible(false);
         textPanelHistorico.setText(historico.ativos());
         nomeCampo = "USUÁRIOS ATIVOS";
         textPanelHistorico.setBorder(javax.swing.BorderFactory.createTitledBorder(null, nomeCampo, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12)));
@@ -365,12 +366,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluidosActionPerformed
 
     private void btnHistEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistEntradaActionPerformed
+        btnResetar.setVisible(false);
         textPanelHistorico.setText(historico.historicoEntrada());
         nomeCampo = "HISTÓRICO DE ENTRADA";
         textPanelHistorico.setBorder(javax.swing.BorderFactory.createTitledBorder(null, nomeCampo, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12)));
     }//GEN-LAST:event_btnHistEntradaActionPerformed
 
     private void btnHistSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistSaidaActionPerformed
+        btnResetar.setVisible(false);
         textPanelHistorico.setText(historico.historicoSaida());
         nomeCampo = "HISTÓRICO DE SAÍDA";
         textPanelHistorico.setBorder(javax.swing.BorderFactory.createTitledBorder(null, nomeCampo, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12)));

@@ -58,6 +58,7 @@ public class MenuPessoas extends javax.swing.JFrame {
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(1, 0), new java.awt.Dimension(1, 0), new java.awt.Dimension(1, 32767));
         campoCPF = new javax.swing.JFormattedTextField();
         campoTelefone = new javax.swing.JFormattedTextField();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         frameConsulsta = new javax.swing.JFrame();
         jLabel11 = new javax.swing.JLabel();
         campoConsulta = new javax.swing.JTextField();
@@ -188,10 +189,8 @@ public class MenuPessoas extends javax.swing.JFrame {
             .addGroup(frameCadastroLayout.createSequentialGroup()
                 .addGroup(frameCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(frameCadastroLayout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(221, 221, 221)
+                        .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(ComboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(frameCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(frameCadastroLayout.createSequentialGroup()
@@ -200,7 +199,12 @@ public class MenuPessoas extends javax.swing.JFrame {
                         .addComponent(campoNome)
                         .addComponent(campoCPF, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(campoTelefone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
-                        .addComponent(campoCategoria, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addComponent(campoCategoria, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(frameCadastroLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         frameCadastroLayout.setVerticalGroup(
@@ -220,11 +224,13 @@ public class MenuPessoas extends javax.swing.JFrame {
                 .addComponent(ComboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(frameCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnCancelar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -647,29 +653,7 @@ public class MenuPessoas extends javax.swing.JFrame {
     public void setCampoConsulta(JTextField campoConsulta) {
         this.campoConsulta = campoConsulta;
     }
-
-    private void campoNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoNomeActionPerformed
     
-    //ALTERA O TITULO DO CAMPO CATEGORIA DE ACORDO COM O COMBOBOX
-    private void ComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxCategoriaActionPerformed
-        String nomeCampo = "";
-        if(getComboBoxCategoria().getSelectedItem() == "Aluno"){
-            nomeCampo = "TURMA";
-        }
-        if(getComboBoxCategoria().getSelectedItem() == "Responsável"){
-            nomeCampo = "DEPENDENTES";
-        }
-        if(getComboBoxCategoria().getSelectedItem() == "Colaborador"){
-            nomeCampo = "CARGO";
-        }
-        if(getComboBoxCategoria().getSelectedItem() == "Visitante"){
-            nomeCampo = "OBSERVAÇÕES";
-        }
-        campoCategoria.setBorder(javax.swing.BorderFactory.createTitledBorder(null, nomeCampo, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18)));
-    }//GEN-LAST:event_ComboBoxCategoriaActionPerformed
-
     public JTextField getCampoCategoria() {
         return campoCategoria;
     }
@@ -694,11 +678,6 @@ public class MenuPessoas extends javax.swing.JFrame {
         this.campoTelefone = campoTelefone;
     }
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-            frameCadastro.dispose();
-            new MenuPessoas().setVisible(true);
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
     public JTextField getCampoConsultaExclusao() {
         return campoConsultaExclusao;
     }
@@ -722,11 +701,6 @@ public class MenuPessoas extends javax.swing.JFrame {
     public void setTextoExclusao(JTextArea textoExclusao) {
         this.textoExclusao = textoExclusao;
     }
-
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        
-        cadastroValidator.validarCadastro(this);
-    }//GEN-LAST:event_btnSalvarActionPerformed
 
     public JFrame getFrameCadastrar() {
         return frameCadastro;
@@ -783,12 +757,6 @@ public class MenuPessoas extends javax.swing.JFrame {
         frameExcluir.setVisible(true);
     }//GEN-LAST:event_btnCancelarExclusaoActionPerformed
 
-    private void campoCategoriaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoCategoriaKeyPressed
-        if (evt.getKeyCode() == evt.VK_ENTER) {                    
-            btnSalvar.doClick();
-        }
-    }//GEN-LAST:event_campoCategoriaKeyPressed
-
     private void campoConsultaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoConsultaKeyPressed
         if (evt.getKeyCode() == evt.VK_ENTER) {                    
             btnConsultar.doClick();
@@ -801,9 +769,47 @@ public class MenuPessoas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_campoConsultaExclusaoKeyPressed
 
+    private void campoCategoriaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoCategoriaKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            btnSalvar.doClick();
+        }
+    }//GEN-LAST:event_campoCategoriaKeyPressed
+
     private void campoCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCPFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoCPFActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        frameCadastro.dispose();
+        new MenuPessoas().setVisible(true);
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+
+        cadastroValidator.validarCadastro(this);
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    //ALTERA O TITULO DO CAMPO CATEGORIA DE ACORDO COM O COMBOBOX
+    private void ComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxCategoriaActionPerformed
+        String nomeCampo = "";
+        if(getComboBoxCategoria().getSelectedItem() == "Aluno"){
+            nomeCampo = "TURMA";
+        }
+        if(getComboBoxCategoria().getSelectedItem() == "Responsável"){
+            nomeCampo = "DEPENDENTES";
+        }
+        if(getComboBoxCategoria().getSelectedItem() == "Colaborador"){
+            nomeCampo = "CARGO";
+        }
+        if(getComboBoxCategoria().getSelectedItem() == "Visitante"){
+            nomeCampo = "OBSERVAÇÕES";
+        }
+        campoCategoria.setBorder(javax.swing.BorderFactory.createTitledBorder(null, nomeCampo, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18)));
+    }//GEN-LAST:event_ComboBoxCategoriaActionPerformed
+
+    private void campoNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoNomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -872,6 +878,7 @@ public class MenuPessoas extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField campoTelefone;
     private javax.swing.JDialog dialogConsulta;
     private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler2;
     private javax.swing.JFrame frameCadastro;
     private javax.swing.JFrame frameConsulsta;
     private javax.swing.JFrame frameExcluir;
