@@ -5,11 +5,10 @@
  */
 package gerenciadordecatracas.gui;
 
-import gerenciadordecatracas.gerenciamento.Conexao;
+
 import gerenciadordecatracas.gerenciamento.Cadastro;
 import gerenciadordecatracas.gerenciamento.Historico;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -59,10 +58,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnExcluidos = new javax.swing.JButton();
         btnHistEntrada = new javax.swing.JButton();
         btnHistSaida = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        scrollPane = new javax.swing.JScrollPane();
         textPanelHistorico = new javax.swing.JTextPane();
         btnResetar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         dialogExcluidos.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         dialogExcluidos.setTitle("HISTÓRICO");
@@ -253,10 +254,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        scrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "GERENCIADOR DE CATRACAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+
         textPanelHistorico.setEditable(false);
-        textPanelHistorico.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12)));
+        textPanelHistorico.setBorder(null);
         textPanelHistorico.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jScrollPane2.setViewportView(textPanelHistorico);
+        scrollPane.setViewportView(textPanelHistorico);
 
         btnResetar.setText("RESETAR EXCLUÍDOS");
         btnResetar.addActionListener(new java.awt.event.ActionListener() {
@@ -280,7 +283,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                             .addComponent(btnHistEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnHistSaida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -300,7 +303,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addComponent(btnHistEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnHistSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2))
+                    .addComponent(scrollPane))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnResetar)
                 .addContainerGap(34, Short.MAX_VALUE))
@@ -308,15 +311,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("HISTÓRICO", jPanel2);
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane4.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 698, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 232, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("SOBRE", jPanel3);
@@ -348,7 +361,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnResetar.setVisible(false);
         textPanelHistorico.setText(historico.ativos());
         nomeCampo = "USUÁRIOS ATIVOS";
-        textPanelHistorico.setBorder(javax.swing.BorderFactory.createTitledBorder(null, nomeCampo, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12)));
+        scrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(null, nomeCampo, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12)));
     }//GEN-LAST:event_btnAtivosActionPerformed
 
     private void btnPessoasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPessoasActionPerformed
@@ -359,7 +372,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void btnExcluidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluidosActionPerformed
         textPanelHistorico.setText(historico.excluidos());
         nomeCampo = "USUÁRIOS EXCLUÍDOS";
-        textPanelHistorico.setBorder(javax.swing.BorderFactory.createTitledBorder(null, nomeCampo, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12)));
+        scrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(null, nomeCampo, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12)));
         if(!textPanelHistorico.getText().equals("SEM HISTÓRICO")){
             btnResetar.setVisible(true);
         }
@@ -369,14 +382,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnResetar.setVisible(false);
         textPanelHistorico.setText(historico.historicoEntrada());
         nomeCampo = "HISTÓRICO DE ENTRADA";
-        textPanelHistorico.setBorder(javax.swing.BorderFactory.createTitledBorder(null, nomeCampo, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12)));
+        scrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(null, nomeCampo, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12)));
     }//GEN-LAST:event_btnHistEntradaActionPerformed
 
     private void btnHistSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistSaidaActionPerformed
         btnResetar.setVisible(false);
         textPanelHistorico.setText(historico.historicoSaida());
         nomeCampo = "HISTÓRICO DE SAÍDA";
-        textPanelHistorico.setBorder(javax.swing.BorderFactory.createTitledBorder(null, nomeCampo, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12)));
+        scrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(null, nomeCampo, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12)));
     }//GEN-LAST:event_btnHistSaidaActionPerformed
 
     private void btnResetarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetarActionPerformed
@@ -419,9 +432,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         
-        Conexao conexao = new Conexao();
-        conexao.conectar();
-        JOptionPane.showMessageDialog(null, "CONEXÃO REALIZADA COM SUCESSO!", "SUCESSO!", JOptionPane.PLAIN_MESSAGE);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -451,9 +461,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane scrollPane;
     private javax.swing.JTextPane textPanelAtivos;
     private javax.swing.JTextPane textPanelExcluidos;
     private javax.swing.JTextPane textPanelHistorico;
