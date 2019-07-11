@@ -1,6 +1,5 @@
 package gerenciadordecatracas.gerenciamento;
 
-import gerenciadordecatracas.gui.MenuPessoas;
 import java.awt.Component;
 import java.util.Calendar;
 import java.util.GregorianCalendar;

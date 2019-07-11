@@ -1,6 +1,5 @@
 package gerenciadordecatracas.gerenciamento;
 
-import gerenciadordecatracas.gerenciamento.Conexao;
 import gerenciadordecatracas.gui.MenuCatracas;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,6 +26,7 @@ public class CatracaVirtual implements ICatracas {
         }
         return mensagem;
     }
+    
     //Saída catraca virtual manual
     public String saidaCatracaVirtual(MenuCatracas frame){
         Verificador verificador = new Verificador();
@@ -43,7 +43,10 @@ public class CatracaVirtual implements ICatracas {
         }
         return mensagem;
     }
+    
     //Catraca virtual automatica
+    /*Na catraca automatica foi necessário criar a entrada e saída, pois a mesma
+    é diferente da entrada e saída manual*/
     public String catracaVirtualAutomatica(MenuCatracas frame){
         Verificador verificador = new Verificador();
         Conexao conexao = new Conexao();
@@ -80,17 +83,11 @@ public class CatracaVirtual implements ICatracas {
                         return mensagem;
                     }
                     else{
-                        //Faz a entrada da pessoa
-                        sql = "INSERT INTO catraca(codigo, dataHora ,situacao)VALUES(?,?,?)";
-                        stmt = conexao.conectar().prepareStatement(sql);
-                        stmt.setLong(1, codigo);
-                        stmt.setString(2, horaAtual);
-                        stmt.setInt(3, 1);
-                        stmt.execute();
-                        mensagem = "BEM VINDO(A): "+nome+"\nEntrada: "+horaAtual;
+                        mensagem = entrada(codigo);
                         return mensagem;
                     }
                 }
+                
                 //Caso a pessoa ja tenha entrado
                 else{
                     //Procura o nome da pessoa
@@ -112,14 +109,7 @@ public class CatracaVirtual implements ICatracas {
                         return mensagem;
                     }
                     else{
-                        //Faz a saída da pessoa
-                        sql = "INSERT INTO catraca(codigo, dataHora ,situacao)VALUES(?,?,?)";
-                        stmt = conexao.conectar().prepareStatement(sql);
-                        stmt.setLong(1, codigo);
-                        stmt.setString(2, horaAtual);
-                        stmt.setInt(3, 0);
-                        stmt.execute();
-                        mensagem = "VOLTE SEMPRE: "+nome+"\nEntrada: "+dataEntrada+"\n"+"Saída: "+horaAtual;
+                        mensagem = saida(codigo);
                         return mensagem;
                     }
                 }
@@ -133,7 +123,7 @@ public class CatracaVirtual implements ICatracas {
         return mensagem;
     }
     
-    //métodos implementados
+    //Métodos implementados
     @Override
     public String entrada(long codigo) {
         Conexao conexao = new Conexao();

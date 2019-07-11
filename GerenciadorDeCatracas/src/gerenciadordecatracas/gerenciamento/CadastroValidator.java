@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  * Classe para validações relacionadas ao cadastro.
- * @author Gnomo
+ * @author CassioGamarra
  */
 public class CadastroValidator {
     

@@ -3,7 +3,6 @@ package gerenciadordecatracas.gerenciamento;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
 /**
  * Classe com métodos relacionados com o histórico
@@ -12,6 +11,7 @@ import javax.swing.JOptionPane;
 public class Historico {
     Conexao conexao = new Conexao();
     Utilitario utilitario = new Utilitario();
+    
     //Método que retorna os usuários ativos
     public String ativos(){
         String usuariosAtivos = "";
@@ -43,6 +43,7 @@ public class Historico {
            return usuariosAtivos;
         }
     }
+    
     //Método que retorna o histórico de excluidos
     public String excluidos(){
         String usuariosExcluidos = "";
@@ -74,6 +75,7 @@ public class Historico {
             return usuariosExcluidos;
         }
     }
+    
     //Método que retorna o histórico de entrada
     public String historicoEntrada(){
         String historicoEntrada = "";
@@ -110,6 +112,7 @@ public class Historico {
             return historicoEntrada;
         }
     }
+    
     //Método que retorna o histórico de saída
     public String historicoSaida(){
         String historicoSaida = "";

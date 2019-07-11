@@ -8,21 +8,17 @@ package gerenciadordecatracas.gui;
 import gerenciadordecatracas.gerenciamento.Cadastro;
 import gerenciadordecatracas.gerenciamento.CadastroValidator;
 import gerenciadordecatracas.gerenciamento.Utilitario;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
  *
- * @author Gnomo
+ * @author CassioGamarra
  */
 public class MenuPessoas extends javax.swing.JFrame {
 

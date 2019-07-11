@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  * Classe para operações relacionadas ao cadastro.
- * @author Gnomo
+ * @author CassioGamarra
  */
 public class Cadastro {
     Conexao conexao = new Conexao();

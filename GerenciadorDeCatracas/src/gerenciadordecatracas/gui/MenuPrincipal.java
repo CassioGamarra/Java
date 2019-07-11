@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Gamarra
+ * @author CassioGamarra
  */
 public class MenuPrincipal extends javax.swing.JFrame {
 
@@ -313,7 +313,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("NÃO FALO MAIS SOBRE AZEITONAS");
+        jTextArea1.setText("Sobre");
         jScrollPane4.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);

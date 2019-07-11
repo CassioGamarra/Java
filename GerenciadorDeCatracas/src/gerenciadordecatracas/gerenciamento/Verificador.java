@@ -10,7 +10,6 @@ public class Verificador {
         //Método para verificar se o CPF é válido
     public boolean isCPF(String CPF) {
        
-        
         // considera-se erro CPF's formados por uma sequencia de numeros iguais
         if (CPF.equals("00000000000") ||
             CPF.equals("11111111111") ||
@@ -26,7 +25,7 @@ public class Verificador {
           
         // "try" - protege o codigo para eventuais erros de conversao de tipo (int)
         try {
-        // Calculo do 1o. Digito Verificador
+        // Calculo do primeiro Digito Verificador
             sm = 0;
             peso = 10;
             for (i=0; i<9; i++) {              
@@ -65,6 +64,7 @@ public class Verificador {
                 return(false);
             }
         }
+    
     //Método para verificar se o nome é válido
     public boolean isNome(String nome){
         String valor = nome.toUpperCase();
@@ -76,6 +76,7 @@ public class Verificador {
             return valor.matches(regex);
         }
     }
+    
     //Método para verificar se o telefone é válido
     public boolean isTelefone(String telefone){
         if(telefone.matches("(10)|([1-9][1-9])[9][2-9][0-9]{3}[0-9]{4}")||
@@ -84,6 +85,7 @@ public class Verificador {
         }
         return false;
     }
+    
     //Método para verificar se um código é válido
     public boolean isCodigo(String codigo){
         if((codigo.length()==6)&&(codigo.matches("[0-9]+"))){

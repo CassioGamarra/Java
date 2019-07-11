@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author Gamarra
+ * @author CassioGamarra
  */
 public class MenuCatracas extends javax.swing.JFrame {
     
