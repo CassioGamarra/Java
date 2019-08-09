@@ -1,0 +1,10 @@
+//Método para limpar um frame
+    public void limparFrame(JFrame frame){
+        for (int i=0; i < frame.getContentPane().getComponentCount(); i++){
+            Component c = frame.getContentPane().getComponent(i);
+            if (c instanceof JTextField){
+                JTextField field = (JTextField) c;
+                field.setText("");  
+            }
+        }
+    }
