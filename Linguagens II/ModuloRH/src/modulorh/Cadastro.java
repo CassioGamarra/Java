@@ -18,6 +18,7 @@ public class Cadastro {
     }
     
     public void cadastrar(JFrame frame){
-        JOptionPane.showMessageDialog(null, "SUCESSO!");
+        JOptionPane.showMessageDialog(null, "SUCESSO!" + "Tamanho" + frame.getSize());
     }
 }
+    
