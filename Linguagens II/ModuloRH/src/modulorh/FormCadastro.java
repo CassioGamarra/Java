@@ -5,6 +5,8 @@
  */
 package modulorh;
 
+import javax.swing.JComboBox;
+
 /**
  *
  * @author cassio
@@ -16,6 +18,22 @@ public class FormCadastro extends javax.swing.JFrame {
      */
     public FormCadastro() {
         initComponents();
+    }
+
+    public JComboBox getComboBoxCidade() {
+        return comboBoxCidade;
+    }
+
+    public void setComboBoxCidade(JComboBox comboBoxCidade) {
+        this.comboBoxCidade = comboBoxCidade;
+    }
+
+    public JComboBox getComboBoxUF() {
+        return comboBoxUF;
+    }
+
+    public void setComboBoxUF(JComboBox comboBoxUF) {
+        this.comboBoxUF = comboBoxUF;
     }
 
     /**
@@ -178,13 +196,13 @@ public class FormCadastro extends javax.swing.JFrame {
 
         panelCidadeUF.setBorder(javax.swing.BorderFactory.createTitledBorder("Cidade e Estado"));
 
-        comboBoxUF.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxUF.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECIONE", "RIO GRANDE DO SUL", "SANTA CATARINA", "PARANÁ" }));
         comboBoxUF.setToolTipText("");
         comboBoxUF.setBorder(javax.swing.BorderFactory.createTitledBorder("UF"));
         comboBoxUF.setName(""); // NOI18N
         comboBoxUF.setPrototypeDisplayValue("TESTE");
 
-        comboBoxCidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxCidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECIONE" }));
         comboBoxCidade.setBorder(javax.swing.BorderFactory.createTitledBorder("Cidade"));
 
         javax.swing.GroupLayout panelCidadeUFLayout = new javax.swing.GroupLayout(panelCidadeUF);
@@ -298,6 +316,7 @@ public class FormCadastro extends javax.swing.JFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         Cadastro cadastro = new Cadastro();
         cadastro.cadastrar(this);
+        cadastro.listar(this);
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
