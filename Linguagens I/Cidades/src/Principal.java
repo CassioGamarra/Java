@@ -6,9 +6,14 @@
  */
 
 import java.awt.Font;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -91,6 +96,7 @@ public class Principal {
         catch(Exception e){
             System.out.println("Erro: "+e.getMessage());
         }
+        
         exibir(cidades, uf);
     }
     
@@ -123,7 +129,7 @@ public class Principal {
             JScrollPane painel = new JScrollPane(texto);
             JOptionPane.showMessageDialog(null, painel, "CIDADES",
                     JOptionPane.PLAIN_MESSAGE);
-            
+            gravar(cidades, uf); //GRAVAR
             opcao = JOptionPane.showConfirmDialog(null, "Deseja realizar outra busca?", "CONTINUAR...", JOptionPane.YES_NO_OPTION);
             
             if(opcao == JOptionPane.YES_OPTION){
@@ -137,7 +143,31 @@ public class Principal {
         }
         
     }
+    //Método para gravar as cidades em um arquivo
+    public static void gravar(ArrayList<String> cidades, String uf){
+        int i, n;
+        n = cidades.size();
         
+        String nomeArquivo = uf+".dat"; //Nome do arquivo de saída
+        
+        try {
+            FileWriter fw = new FileWriter(nomeArquivo);
+            BufferedWriter bw = new BufferedWriter(fw);
+            
+            for(i = 0; i < n; i++){
+                bw.write(cidades.get(i));
+                bw.newLine();
+            }
+            bw.close();
+            System.out.println("GRAVADO!");
+            fw.close();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }
     //Método genérico para abrir caixas de diálogo
     public static String input(String tipoMsg, String msg, String titulo, int
             tipo){
