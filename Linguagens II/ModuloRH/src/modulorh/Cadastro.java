@@ -28,48 +28,60 @@ public class Cadastro {
     }
     
     public void cadastrar(JFrame frame){
-        JOptionPane.showMessageDialog(null, "SUCESSO!" + "Tamanho" + frame.getSize());
+        JOptionPane.showMessageDialog(null, "SUCESSO!");
     }
     
     public void listar(FormCadastro frame){
         int id, i, n;
         String nomeArquivo = "";
         id = frame.getComboBoxUF().getSelectedIndex();
-        System.out.println(id);
-        /*Uso de um ArrayList para armazenar as cidades, facilitando assim
-        a manipulação dos dados*/
-        ArrayList<String> cidades = new ArrayList();
+        //System.out.println(id);
+    
+        ArrayList<String> cidades;
         
         if(id == 0){
-            //?
+            frame.getComboBoxCidade().removeAllItems();
         }
         else if(id == 1){
             frame.getComboBoxCidade().removeAllItems();
             cidades = listaCidades("RS");
             n = cidades.size();
+            frame.getComboBoxCidade().addItem("SELECIONE");
             for(i = 0; i < n; i++){
                 frame.getComboBoxCidade().addItem(cidades.get(i));
             }
         }
         else if(id == 2){
             frame.getComboBoxCidade().removeAllItems();
-            frame.getComboBoxCidade().addItem("TESTE SC");
+            cidades = listaCidades("SC");
+            n = cidades.size();
+            frame.getComboBoxCidade().addItem("SELECIONE");
+            for(i = 0; i < n; i++){
+                frame.getComboBoxCidade().addItem(cidades.get(i));
+            }
         }
         else if(id == 3){
             frame.getComboBoxCidade().removeAllItems();
-            frame.getComboBoxCidade().addItem("TESTE PR");
+            cidades = listaCidades("PR");
+            n = cidades.size();
+            frame.getComboBoxCidade().addItem("SELECIONE");
+            for(i = 0; i < n; i++){
+                frame.getComboBoxCidade().addItem(cidades.get(i));
+            }
         }
         else{
             System.out.println("ERRO!");
         }
     }
+    
+    
     private ArrayList<String> listaCidades(String uf){
         nomeArquivo = uf+".dat";
         File arquivo = new File(nomeArquivo);
-        String cidade, estado, linha;
-        ArrayList<String> cidades = new ArrayList();
-        /*Uso de um ArrayList para armazenar as cidades, facilitando assim
-        a manipulação dos dados*/
+        String cidade;
+        ArrayList<String> cidades = new ArrayList<>();
+        
+    
         try {
             Scanner leitor = new Scanner(arquivo);
             while(leitor.hasNextLine()){

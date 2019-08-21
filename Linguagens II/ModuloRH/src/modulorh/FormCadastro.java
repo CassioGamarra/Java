@@ -70,9 +70,9 @@ public class FormCadastro extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Módulo RH - UFN Systems");
         setLocationByPlatform(true);
-        setMaximumSize(new java.awt.Dimension(800, 600));
-        setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
+        setMaximumSize(new java.awt.Dimension(860, 600));
+        setMinimumSize(new java.awt.Dimension(860, 600));
+        setPreferredSize(new java.awt.Dimension(860, 600));
 
         jLabel1.setFont(new java.awt.Font("Cantarell", 1, 48)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -201,6 +201,11 @@ public class FormCadastro extends javax.swing.JFrame {
         comboBoxUF.setBorder(javax.swing.BorderFactory.createTitledBorder("UF"));
         comboBoxUF.setName(""); // NOI18N
         comboBoxUF.setPrototypeDisplayValue("TESTE");
+        comboBoxUF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxUFActionPerformed(evt);
+            }
+        });
 
         comboBoxCidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECIONE" }));
         comboBoxCidade.setBorder(javax.swing.BorderFactory.createTitledBorder("Cidade"));
@@ -316,8 +321,14 @@ public class FormCadastro extends javax.swing.JFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         Cadastro cadastro = new Cadastro();
         cadastro.cadastrar(this);
-        cadastro.listar(this);
+        
     }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void comboBoxUFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxUFActionPerformed
+        Cadastro cadastro = new Cadastro();
+        
+        cadastro.listar(this);
+    }//GEN-LAST:event_comboBoxUFActionPerformed
 
     /**
      * @param args the command line arguments
