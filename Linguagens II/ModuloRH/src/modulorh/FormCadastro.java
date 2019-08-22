@@ -5,7 +5,11 @@
  */
 package modulorh;
 
+
+import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -19,7 +23,83 @@ public class FormCadastro extends javax.swing.JFrame {
     public FormCadastro() {
         initComponents();
     }
+    //Sets e Gets dos componentes
 
+    public ButtonGroup getBtnGroupEscolaridade() {
+        return btnGroupEscolaridade;
+    }
+
+    public void setBtnGroupEscolaridade(ButtonGroup btnGroupEscolaridade) {
+        this.btnGroupEscolaridade = btnGroupEscolaridade;
+    }
+
+    public ButtonGroup getBtnGroupEstadoCivil() {
+        return btnGroupEstadoCivil;
+    }
+
+    public void setBtnGroupEstadoCivil(ButtonGroup btnGroupEstadoCivil) {
+        this.btnGroupEstadoCivil = btnGroupEstadoCivil;
+    }
+    
+    public JTextField getTextEmail() {
+        return textEmail;
+    }
+
+    public void setTextEmail(JTextField textEmail) {
+        this.textEmail = textEmail;
+    }
+
+    public JTextField getTextNome() {
+        return textNome;
+    }
+
+    public void setTextNome(JTextField textNome) {
+        this.textNome = textNome;
+    }
+
+    public JRadioButton getRadioCasado() {
+        return radioCasado;
+    }
+
+    public void setRadioCasado(JRadioButton radioCasado) {
+        this.radioCasado = radioCasado;
+    }
+
+    public JRadioButton getRadioSolteiro() {
+        return radioSolteiro;
+    }
+
+    public void setRadioSolteiro(JRadioButton radioSolteiro) {
+        this.radioSolteiro = radioSolteiro;
+    }
+
+    
+    public JRadioButton getRadioFundamental() {
+        return radioFundamental;
+    }
+
+    public void setRadioFundamental(JRadioButton radioFundamental) {
+        this.radioFundamental = radioFundamental;
+    }
+
+    public JRadioButton getRadioMedio() {
+        return radioMedio;
+    }
+
+    public void setRadioMedio(JRadioButton radioMedio) {
+        this.radioMedio = radioMedio;
+    }
+
+    public JRadioButton getRadioSuperior() {
+        return radioSuperior;
+    }
+
+    public void setRadioSuperior(JRadioButton radioSuperior) {
+        this.radioSuperior = radioSuperior;
+    }
+    
+    
+    
     public JComboBox getComboBoxCidade() {
         return comboBoxCidade;
     }
@@ -48,15 +128,15 @@ public class FormCadastro extends javax.swing.JFrame {
         btnGroupEstadoCivil = new javax.swing.ButtonGroup();
         btnGroupEscolaridade = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        textNome = new javax.swing.JTextField();
+        textEmail = new javax.swing.JTextField();
         panelEscolaridade = new javax.swing.JPanel();
         radioFundamental = new javax.swing.JRadioButton();
         radioMedio = new javax.swing.JRadioButton();
         radioSuperior = new javax.swing.JRadioButton();
         panelEstadoCivil = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        radioSolteiro = new javax.swing.JRadioButton();
+        radioCasado = new javax.swing.JRadioButton();
         panelPerfil = new javax.swing.JPanel();
         checkBoxPerfil1 = new javax.swing.JCheckBox();
         checkBoxPerfil2 = new javax.swing.JCheckBox();
@@ -78,16 +158,16 @@ public class FormCadastro extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("UFN Systems");
 
-        jTextField1.setFont(new java.awt.Font("Cantarell", 0, 18)); // NOI18N
-        jTextField1.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome do Colaborador"));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        textNome.setFont(new java.awt.Font("Cantarell", 0, 18)); // NOI18N
+        textNome.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome do Colaborador"));
+        textNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                textNomeActionPerformed(evt);
             }
         });
 
-        jTextField2.setFont(new java.awt.Font("Cantarell", 0, 18)); // NOI18N
-        jTextField2.setBorder(javax.swing.BorderFactory.createTitledBorder("Email:"));
+        textEmail.setFont(new java.awt.Font("Cantarell", 0, 18)); // NOI18N
+        textEmail.setBorder(javax.swing.BorderFactory.createTitledBorder("Email:"));
 
         panelEscolaridade.setBorder(javax.swing.BorderFactory.createTitledBorder("Escolaridade:"));
 
@@ -131,33 +211,33 @@ public class FormCadastro extends javax.swing.JFrame {
 
         panelEstadoCivil.setBorder(javax.swing.BorderFactory.createTitledBorder("Estado Civil:"));
 
-        btnGroupEstadoCivil.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
-        jRadioButton1.setText("Solteiro");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnGroupEstadoCivil.add(radioSolteiro);
+        radioSolteiro.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
+        radioSolteiro.setText("Solteiro");
+        radioSolteiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                radioSolteiroActionPerformed(evt);
             }
         });
 
-        btnGroupEstadoCivil.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
-        jRadioButton2.setText("Casado");
+        btnGroupEstadoCivil.add(radioCasado);
+        radioCasado.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
+        radioCasado.setText("Casado");
 
         javax.swing.GroupLayout panelEstadoCivilLayout = new javax.swing.GroupLayout(panelEstadoCivil);
         panelEstadoCivil.setLayout(panelEstadoCivilLayout);
         panelEstadoCivilLayout.setHorizontalGroup(
             panelEstadoCivilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(radioCasado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(radioSolteiro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelEstadoCivilLayout.setVerticalGroup(
             panelEstadoCivilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelEstadoCivilLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(radioSolteiro, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(radioCasado, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
@@ -264,8 +344,8 @@ public class FormCadastro extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(textNome, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(textEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(panelEstadoCivil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
@@ -284,10 +364,10 @@ public class FormCadastro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(96, 96, 96)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(textEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(textNome, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -306,13 +386,13 @@ public class FormCadastro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void textNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_textNomeActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void radioSolteiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioSolteiroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_radioSolteiroActionPerformed
 
     private void radioFundamentalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioFundamentalActionPerformed
         // TODO add your handling code here:
@@ -327,7 +407,7 @@ public class FormCadastro extends javax.swing.JFrame {
     private void comboBoxUFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxUFActionPerformed
         Cadastro cadastro = new Cadastro();
         
-        cadastro.listar(this);
+        cadastro.listarCidades(this);
     }//GEN-LAST:event_comboBoxUFActionPerformed
 
     /**
@@ -375,17 +455,17 @@ public class FormCadastro extends javax.swing.JFrame {
     private javax.swing.JComboBox comboBoxCidade;
     private javax.swing.JComboBox comboBoxUF;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel panelCidadeUF;
     private javax.swing.JPanel panelEscolaridade;
     private javax.swing.JPanel panelEstadoCivil;
     private javax.swing.JPanel panelFooter;
     private javax.swing.JPanel panelPerfil;
+    private javax.swing.JRadioButton radioCasado;
     private javax.swing.JRadioButton radioFundamental;
     private javax.swing.JRadioButton radioMedio;
+    private javax.swing.JRadioButton radioSolteiro;
     private javax.swing.JRadioButton radioSuperior;
+    private javax.swing.JTextField textEmail;
+    private javax.swing.JTextField textNome;
     // End of variables declaration//GEN-END:variables
 }
