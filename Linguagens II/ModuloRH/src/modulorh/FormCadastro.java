@@ -400,7 +400,7 @@ public class FormCadastro extends javax.swing.JFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         Cadastro cadastro = new Cadastro();
-        cadastro.cadastrar(this);
+        cadastro.validarCadastro(this);
         
     }//GEN-LAST:event_btnCadastrarActionPerformed
 

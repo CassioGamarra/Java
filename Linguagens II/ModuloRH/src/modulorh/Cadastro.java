@@ -1,24 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modulorh;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import javax.swing.JFrame;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author cassio
- */
 public class Cadastro {
     
     public static String nomeArquivo = " ";
@@ -27,20 +19,50 @@ public class Cadastro {
     public Cadastro() {
     }
     
-    public void cadastrar(FormCadastro frame){
-        Pessoa funcionario = new Pessoa();
-        funcionario.setNome(frame.getTextNome().getText());
-        funcionario.setEmail(frame.getTextEmail().getText());
-        //Pega o valor do combo box
-        int uf = frame.getComboBoxUF().getSelectedIndex();
-        funcionario.setEstado(frame.getComboBoxUF().getItemAt(uf).toString());
-        int cidade = frame.getComboBoxCidade().getSelectedIndex();
-        funcionario.setCidade(frame.getComboBoxCidade().getItemAt(cidade).toString());
+    public void cadastrar(Pessoa pessoa){
+        String msg = "Dados Cadastrados: \n";
+        msg = msg + "\nNome: "+ pessoa.getNome()+
+                "\nNome: "+ pessoa.getEmail()+
+                "\nNome: "+ pessoa.getCidade()+
+                "\nNome: "+ pessoa.getEstado();
         
-        
-        
+        JOptionPane.showMessageDialog(null, "SUCESSO!");
+        JOptionPane.showMessageDialog(null, msg);
     }
     
+    public void validarCadastro(FormCadastro frame){
+        String nome = "";
+        String email = "";
+        String perfil = "";
+        String escolaridade = "";
+        String estadoCivil = "";
+        String estado = "";
+        String cidade  = "";
+        
+        nome = frame.getTextNome().getText();
+        email = frame.getTextEmail().getText();
+        int idUF, idCidade;
+        idUF = frame.getComboBoxUF().getSelectedIndex();
+        idCidade = frame.getComboBoxCidade().getSelectedIndex();
+        estado = frame.getComboBoxUF().getItemAt(idUF).toString();
+        cidade = frame.getComboBoxCidade().getItemAt(idCidade).toString();
+        
+        if(!isNome(nome)){
+           System.out.println("Nome inválido!");
+        }
+        if(!isEmail(email)){
+            frame.getTextEmail().setBackground(Color.red);
+            System.out.println("Email inválido!");
+        }
+        else{
+            Pessoa func = new Pessoa();
+            func.setNome(nome);
+            func.setEmail(email);
+            func.setCidade(cidade);
+            func.setEstado(estado);
+            cadastrar(func);
+        }
+    }
     //listar cidades referente ao estado selecionado
     public void listarCidades(FormCadastro frame){
         int id, i, n;
@@ -115,6 +137,22 @@ public class Cadastro {
             String regex = "^[[ ]|\\p{L}*]+$";
             return valor.matches(regex);
         }
+    }
+    
+    //Método para verificar se o nome é válido
+    public boolean isEmail(String email){
+        String valor = email.toUpperCase();
+        /*if(email.length() < 3){
+            return false;
+        }
+        else{
+            String regex = "^[[ ]|\\p{L}*]+$";
+            return valor.matches(regex);
+        }*/
+        if(email.contains("@")){
+            return true;
+        }
+        return false;
     }
 }
     

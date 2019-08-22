@@ -1,0 +1,1 @@
+;;Solteiro;F;Sim;Ensino médio;Teste

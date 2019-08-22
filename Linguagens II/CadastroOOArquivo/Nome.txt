@@ -1,0 +1,1 @@
+Nome;emailqualquer;Casado;F;Sim;Ensino superior;Testando infos
