@@ -1,36 +1,25 @@
 package modulorh;
 
-import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Cadastro {
     
     public static String nomeArquivo = " ";
     public static String uf = "";
-    
+            
     public Cadastro() {
     }
     
-    public void cadastrar(Pessoa pessoa){
-        String msg = "Dados Cadastrados: \n";
-        msg = msg + "\nNome: "+ pessoa.getNome()+
-                "\nNome: "+ pessoa.getEmail()+
-                "\nNome: "+ pessoa.getCidade()+
-                "\nNome: "+ pessoa.getEstado();
-        
-        JOptionPane.showMessageDialog(null, "SUCESSO!");
-        JOptionPane.showMessageDialog(null, msg);
+    public void cadastrar(Pessoa pessoa){        
+        JOptionPane.showMessageDialog(null, "SUCESSO!");   
     }
     
-    public void validarCadastro(FormCadastro frame){
+    public boolean validarCadastro(FormCadastro frame, int i){
         String nome = "";
         String email = "";
         String perfil = "";
@@ -50,8 +39,7 @@ public class Cadastro {
         if(!isNome(nome)){
            System.out.println("Nome inválido!");
         }
-        if(!isEmail(email)){
-            frame.getTextEmail().setBackground(Color.red);
+        else if(!isEmail(email)){
             System.out.println("Email inválido!");
         }
         else{
@@ -60,8 +48,16 @@ public class Cadastro {
             func.setEmail(email);
             func.setCidade(cidade);
             func.setEstado(estado);
+            
+            frame.getTableInfo().setValueAt(nome, i, 0);
+            frame.getTableInfo().setValueAt(email, i, 1);
+            frame.getTableInfo().setValueAt(cidade, i, 2);
+            frame.getTableInfo().setValueAt(estado, i, 3);
+            
             cadastrar(func);
+            return true;
         }
+        return false;
     }
     //listar cidades referente ao estado selecionado
     public void listarCidades(FormCadastro frame){
