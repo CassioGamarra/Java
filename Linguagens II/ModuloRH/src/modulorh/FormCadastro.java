@@ -8,7 +8,10 @@ package modulorh;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JRadioButton;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
@@ -23,8 +26,16 @@ public class FormCadastro extends javax.swing.JFrame {
     public FormCadastro() {
         initComponents();
     }
+    public int i = 0;
     //Sets e Gets dos componentes
+    public JTable getTableInfo() {
+        return tableInfo;
+    }
 
+    public void setTableInfo(JTable tableInfo) {
+        this.tableInfo = tableInfo;
+    }
+    
     public ButtonGroup getBtnGroupEscolaridade() {
         return btnGroupEscolaridade;
     }
@@ -127,6 +138,9 @@ public class FormCadastro extends javax.swing.JFrame {
 
         btnGroupEstadoCivil = new javax.swing.ButtonGroup();
         btnGroupEscolaridade = new javax.swing.ButtonGroup();
+        jDialog1 = new javax.swing.JDialog();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableInfo = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         textNome = new javax.swing.JTextField();
         textEmail = new javax.swing.JTextField();
@@ -146,6 +160,56 @@ public class FormCadastro extends javax.swing.JFrame {
         comboBoxCidade = new javax.swing.JComboBox();
         panelFooter = new javax.swing.JPanel();
         btnCadastrar = new javax.swing.JButton();
+
+        jDialog1.setMaximumSize(new java.awt.Dimension(400, 300));
+        jDialog1.setMinimumSize(new java.awt.Dimension(400, 300));
+
+        tableInfo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nome", "Email", "Cidade", "Estado"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableInfoMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tableInfo);
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 611, Short.MAX_VALUE)
+            .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog1Layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(13, Short.MAX_VALUE)))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Módulo RH - UFN Systems");
@@ -333,11 +397,11 @@ public class FormCadastro extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(270, 270, 270)
+                        .addGap(269, 269, 269)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(btnCadastrar)
                             .addComponent(jLabel1))
-                        .addGap(64, 64, 64)
+                        .addGap(65, 65, 65)
                         .addComponent(panelFooter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
@@ -371,7 +435,7 @@ public class FormCadastro extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelEscolaridade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -400,8 +464,15 @@ public class FormCadastro extends javax.swing.JFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         Cadastro cadastro = new Cadastro();
-        cadastro.validarCadastro(this);
         
+        if(cadastro.validarCadastro(this, i)){
+            textNome.setText("");
+            textEmail.setText("");
+            comboBoxUF.setSelectedIndex(0);
+            jDialog1.setLocationRelativeTo(null);
+            jDialog1.show(true);
+            i++;
+        }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void comboBoxUFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxUFActionPerformed
@@ -409,6 +480,15 @@ public class FormCadastro extends javax.swing.JFrame {
         
         cadastro.listarCidades(this);
     }//GEN-LAST:event_comboBoxUFActionPerformed
+
+    private void tableInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableInfoMouseClicked
+        int i = tableInfo.getSelectedRow();
+        
+        textNome.setText(tableInfo.getValueAt(i,0).toString());
+        textEmail.setText(tableInfo.getValueAt(i,1).toString());
+        comboBoxCidade.setSelectedItem(tableInfo.getValueAt(i,2));
+        comboBoxUF.setSelectedItem(tableInfo.getValueAt(i,3));
+    }//GEN-LAST:event_tableInfoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -454,7 +534,9 @@ public class FormCadastro extends javax.swing.JFrame {
     private javax.swing.JCheckBox checkBoxPerfil3;
     private javax.swing.JComboBox comboBoxCidade;
     private javax.swing.JComboBox comboBoxUF;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panelCidadeUF;
     private javax.swing.JPanel panelEscolaridade;
     private javax.swing.JPanel panelEstadoCivil;
@@ -465,6 +547,7 @@ public class FormCadastro extends javax.swing.JFrame {
     private javax.swing.JRadioButton radioMedio;
     private javax.swing.JRadioButton radioSolteiro;
     private javax.swing.JRadioButton radioSuperior;
+    private javax.swing.JTable tableInfo;
     private javax.swing.JTextField textEmail;
     private javax.swing.JTextField textNome;
     // End of variables declaration//GEN-END:variables
