@@ -20,26 +20,16 @@ public class ModelLogin {
     public ModelLogin(){}
     
     public boolean login(String usuario, String senha){
-        String senhaDB = "";
-        
-        try {
-            senha = hash(senha);
-        } catch (UnsupportedEncodingException | NoSuchAlgorithmException ex) {
-            Logger.getLogger(ModelLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+
         try {
             conectar();
             //String sql = "SELECT SENHA FROM USUARIOS WHERE USUARIO = "+usuario;
             
-            String sql = "SELECT pass FROM usuario WHERE username ='"+usuario+"'";
+            String sql = "SELECT pass FROM usuario WHERE username ='"+usuario+"'AND pass ='"+senha+"'";
             PreparedStatement stmt = conectar().prepareStatement(sql);
             ResultSet consulta = stmt.executeQuery(sql);
             
-            while(consulta.next()){
-                senhaDB = consulta.getString("pass");
-            }
-            if(senha.equals(senhaDB)){
+            if(consulta.next()){
                 return true;
             }
         } catch (SQLException ex) {
@@ -47,19 +37,6 @@ public class ModelLogin {
         }
         
         return false;
-    }
-    
-    private String hash(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException{
-        MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
-        byte messageDigestSenhaAdmin[] = algorithm.digest(password.getBytes("UTF-8"));
-
-        StringBuilder hexStringSenhaAdmin = new StringBuilder();
-        for (byte b : messageDigestSenhaAdmin) {
-                 hexStringSenhaAdmin.append(String.format("%02X", 0xFF & b));
-        }
-        String senhahexAdmin = hexStringSenhaAdmin.toString();
-      
-        return senhahexAdmin;   
     }
     
     public Connection conectar() throws SQLException{

@@ -19,8 +19,8 @@ public class CriarADM {
     public static void main(String[] args) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         try {
             Connection conectar = conectar();
-            String usuario = "admin";
-            String senha = gerarAdmin("admin");
+            String usuario = "amilton";
+            String senha = gerarAdmin("ckassio");
             
             String sql = "INSERT INTO USUARIO(username, pass, situacao)"
                     + "VALUES(?,?,?)";
