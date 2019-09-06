@@ -1,4 +1,9 @@
-package gerenciadordehorarios.model;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,7 +19,6 @@ import javax.swing.JOptionPane;
  * @author cassio
  */
 public class ModelLogin {
-    public ModelLogin(){}
     
     public boolean login(String usuario, String senha){
 
@@ -36,11 +40,12 @@ public class ModelLogin {
         return false;
     }
     
-    public Connection conectar() throws SQLException{
+    //Método para conectar com o banco
+    private Connection conectar() throws SQLException{
         
         Connection conectar = null;
         try{
-            conectar = DriverManager.getConnection("jdbc:mysql://localhost:3306/gerenciador","root","");
+            conectar = DriverManager.getConnection("jdbc:mysql://localhost:3306/estacionamento-rotativo","root","");
             return conectar;
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "NÃO FOI POSSÍVEL CONECTAR!", "ERRO!", JOptionPane.WARNING_MESSAGE);

@@ -19,15 +19,33 @@ public class ControllerHorario {
     
     public void horarios(ViewAdministrador view){
         String turno = view.getComboTurnoHorarios().getSelectedItem().toString();
-        if(turno.equals("MANHÃ")){
-            DefaultTableModel model = (DefaultTableModel) view.getTabelaHorarios().getModel();
+        DefaultTableModel model = (DefaultTableModel) view.getTabelaHorarios().getModel();
             
-            Object[] linha = {"Teste"};
-            
-            model.addRow(linha);
+        if(turno.equals("TARDE")){
+            Object[] linha1 = {"13h10"};
+            Object[] linha2 = {"14h"};
+            Object[] linha3 = {"14h45"};
+            Object[] linha4 = {"15h50"};
+            Object[] linha5 = {"16h40"};
+            model.addRow(linha1);
+            model.addRow(linha2);
+            model.addRow(linha3);
+            model.addRow(linha4);
+            model.addRow(linha5);
         }
-        else if(turno.equals("TARDE")){
-            view.getTabelaHorarios().setValueAt("B", 1, 0);
+        else if(turno.equals("MANHÃ")){
+            Object[] linha1 = {"7h40"};
+            Object[] linha2 = {"8h30"};
+            Object[] linha3 = {"9h15"};
+            Object[] linha4 = {"10h15"};
+            Object[] linha5 = {"11h15"};
+            Object[] linha6 = {"12h00"};
+            model.addRow(linha1);
+            model.addRow(linha2);
+            model.addRow(linha3);
+            model.addRow(linha4);
+            model.addRow(linha5);
+            model.addRow(linha6);
         }
         else{
             JOptionPane.showMessageDialog(null, "Selecione o turno!");
