@@ -6,6 +6,7 @@
 package view;
 
 import controller.ControllerLogin;
+import model.ModelConfig;
 
 /**
  *

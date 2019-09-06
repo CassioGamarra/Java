@@ -24,6 +24,8 @@ public class ControllerLogin {
     
     public void login(String usuario, char[] senha){
         ModelLogin entrar = new ModelLogin();
+        ControllerConfig configurar = new ControllerConfig();
+        ViewLogin viewLogin = new ViewLogin();
         String password = new String(senha);
         try {
             password = hash(password);
@@ -34,15 +36,19 @@ public class ControllerLogin {
         boolean entrada = entrar.login(usuario, password);
         
         if(entrada == true){
-            ViewLogin viewLogin = new ViewLogin();
             viewLogin.dispose();
             ViewAdm view = new ViewAdm();
             view.setLocationRelativeTo(null);
             view.setVisible(true);
+            if(view.getLabelNomeGaragem().getText().equals("")){
+                configurar.buscarConfig(view);
+            }
         }
         else{
             JOptionPane.showMessageDialog(null, "Login ou senha inválidos", 
                     "LOGIN", JOptionPane.WARNING_MESSAGE);
+            viewLogin.setLocationRelativeTo(null);
+            viewLogin.setVisible(true);
         }
     }
     

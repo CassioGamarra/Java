@@ -125,7 +125,7 @@ public class CadastroValidator {
     }
     //Método que verifica se o cadastro já existe, baseado no CPF
     public boolean consultarDuplicidade(String CPF){
-        String sql = "SELECT cpf FROM usuario WHERE cpf = "+CPF+" AND situacao = 1";
+        String sql = "SELECT cpf FROM usuario WHERE cpf = "+CPF;
         String cpfConsulta = "";
         try{
             PreparedStatement stmt = conexao.conectar().prepareStatement(sql);
