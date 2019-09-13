@@ -29,12 +29,16 @@ public class ViewSistema extends javax.swing.JFrame {
     }
      //Getter
 
+    public JTable getTabelaHistorico() {
+        return tabelaHistorico;
+    }
+
     public JTextField getFieldPlacaEntrada() {
-        return fieldPlacaEntrada;
+        return fieldPlaca;
     }
 
     public JComboBox<String> getFieldTipoVeiculo() {
-        return fieldTipoVeiculo;
+        return comboTipoVeiculo;
     }
     
     
@@ -55,7 +59,7 @@ public class ViewSistema extends javax.swing.JFrame {
     }
 
     public JFrame getViewEntrada() {
-        return ViewEntrada;
+        return ViewGerenciamento;
     }
 
     public JTable getTabelaVagas() {
@@ -71,10 +75,10 @@ public class ViewSistema extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ViewEntrada = new javax.swing.JFrame();
+        ViewGerenciamento = new javax.swing.JFrame();
         panelEntrada = new javax.swing.JPanel();
-        fieldPlacaEntrada = new javax.swing.JTextField();
-        fieldTipoVeiculo = new javax.swing.JComboBox<>();
+        fieldPlaca = new javax.swing.JTextField();
+        comboTipoVeiculo = new javax.swing.JComboBox<>();
         btnEntrada = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -82,12 +86,12 @@ public class ViewSistema extends javax.swing.JFrame {
         btnSaida = new javax.swing.JButton();
         ViewPainelAdm = new javax.swing.JTabbedPane();
         GuiaPrincipal = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnGerenciar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         labelNomeGaragem = new javax.swing.JLabel();
         GuiaHistorico = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaHistorico = new javax.swing.JTable();
         GuiaConfig = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSalvarConfig = new javax.swing.JButton();
@@ -96,18 +100,18 @@ public class ViewSistema extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         GuiaSobre = new javax.swing.JPanel();
 
-        ViewEntrada.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        ViewEntrada.setMinimumSize(new java.awt.Dimension(580, 480));
+        ViewGerenciamento.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        ViewGerenciamento.setMinimumSize(new java.awt.Dimension(580, 480));
 
-        panelEntrada.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "GERENCIADOR - ENTRADA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        panelEntrada.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "GERENCIADOR - ENTRADA E SAÍDA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
-        fieldPlacaEntrada.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PLACA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        fieldPlaca.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PLACA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
-        fieldTipoVeiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Carro", "Caminhão", "Moto", "Ônibus" }));
-        fieldTipoVeiculo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TIPO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
-        fieldTipoVeiculo.addActionListener(new java.awt.event.ActionListener() {
+        comboTipoVeiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Carro", "Caminhão", "Moto", "Ônibus" }));
+        comboTipoVeiculo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TIPO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        comboTipoVeiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldTipoVeiculoActionPerformed(evt);
+                comboTipoVeiculoActionPerformed(evt);
             }
         });
 
@@ -134,7 +138,27 @@ public class ViewSistema extends javax.swing.JFrame {
             new String [] {
                 "VAGA", "PLACA", "TIPO"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabelaVagas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaVagasMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tabelaVagas);
 
         btnSaida.setText("SAÍDA");
@@ -151,8 +175,8 @@ public class ViewSistema extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEntradaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(fieldPlacaEntrada)
-                    .addComponent(fieldTipoVeiculo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fieldPlaca)
+                    .addComponent(comboTipoVeiculo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelEntradaLayout.createSequentialGroup()
                         .addComponent(btnEntrada)
@@ -167,9 +191,9 @@ public class ViewSistema extends javax.swing.JFrame {
             panelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelEntradaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(fieldPlacaEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldTipoVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboTipoVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEntrada)
@@ -180,34 +204,45 @@ public class ViewSistema extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout ViewEntradaLayout = new javax.swing.GroupLayout(ViewEntrada.getContentPane());
-        ViewEntrada.getContentPane().setLayout(ViewEntradaLayout);
-        ViewEntradaLayout.setHorizontalGroup(
-            ViewEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ViewEntradaLayout.createSequentialGroup()
+        javax.swing.GroupLayout ViewGerenciamentoLayout = new javax.swing.GroupLayout(ViewGerenciamento.getContentPane());
+        ViewGerenciamento.getContentPane().setLayout(ViewGerenciamentoLayout);
+        ViewGerenciamentoLayout.setHorizontalGroup(
+            ViewGerenciamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ViewGerenciamentoLayout.createSequentialGroup()
                 .addComponent(panelEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        ViewEntradaLayout.setVerticalGroup(
-            ViewEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        ViewGerenciamentoLayout.setVerticalGroup(
+            ViewGerenciamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(450, 350));
-        setMinimumSize(new java.awt.Dimension(450, 350));
+        setMaximumSize(new java.awt.Dimension(1024, 500));
+        setMinimumSize(new java.awt.Dimension(1024, 500));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("GERENCIAMENTO");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ViewPainelAdm.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+
+        GuiaPrincipal.setBackground(new java.awt.Color(1, 96, 173));
+        GuiaPrincipal.setForeground(new java.awt.Color(255, 255, 255));
+
+        btnGerenciar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnGerenciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/btnGerenciar.png"))); // NOI18N
+        btnGerenciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnGerenciarActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("SISTEMA DE ESTACIONAMENTOS");
+        jLabel2.setBackground(new java.awt.Color(189, 219, 255));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sistema.png"))); // NOI18N
 
-        labelNomeGaragem.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelNomeGaragem.setBackground(new java.awt.Color(255, 255, 255));
+        labelNomeGaragem.setFont(new java.awt.Font("Tahoma", 1, 60)); // NOI18N
+        labelNomeGaragem.setForeground(new java.awt.Color(255, 255, 255));
+        labelNomeGaragem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout GuiaPrincipalLayout = new javax.swing.GroupLayout(GuiaPrincipal);
         GuiaPrincipal.setLayout(GuiaPrincipalLayout);
@@ -215,11 +250,11 @@ public class ViewSistema extends javax.swing.JFrame {
             GuiaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(GuiaPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(GuiaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
-                    .addComponent(labelNomeGaragem, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 21, Short.MAX_VALUE))
+                .addGroup(GuiaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btnGerenciar, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelNomeGaragem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         GuiaPrincipalLayout.setVerticalGroup(
             GuiaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,60 +262,69 @@ public class ViewSistema extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(labelNomeGaragem, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelNomeGaragem, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addComponent(btnGerenciar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         ViewPainelAdm.addTab("ESTACIONAMENTO", GuiaPrincipal);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        GuiaHistorico.setBackground(new java.awt.Color(1, 96, 173));
+
+        tabelaHistorico.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        tabelaHistorico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "PLACA", "HORA ENTRADA", "HORA SAÍDA", "TIPO"
+                "PLACA", "VAGA", "DATA ENTRADA", "HORA ENTRADA", "DATA SAÍDA", "HORA SAÍDA", "TIPO VEÍCULO"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        tabelaHistorico.setEnabled(false);
+        jScrollPane1.setViewportView(tabelaHistorico);
 
         javax.swing.GroupLayout GuiaHistoricoLayout = new javax.swing.GroupLayout(GuiaHistorico);
         GuiaHistorico.setLayout(GuiaHistoricoLayout);
         GuiaHistoricoLayout.setHorizontalGroup(
             GuiaHistoricoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1228, Short.MAX_VALUE)
         );
         GuiaHistoricoLayout.setVerticalGroup(
             GuiaHistoricoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(GuiaHistoricoLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
         );
 
         ViewPainelAdm.addTab("HISTÓRICO", GuiaHistorico);
 
+        GuiaConfig.setBackground(new java.awt.Color(1, 96, 173));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/config.png"))); // NOI18N
 
         btnSalvarConfig.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnSalvarConfig.setText("SALVAR");
+        btnSalvarConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/btnSalvar.png"))); // NOI18N
         btnSalvarConfig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarConfigActionPerformed(evt);
             }
         });
 
+        fieldQtdVagas.setBackground(new java.awt.Color(189, 219, 255));
         fieldQtdVagas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         fieldQtdVagas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "N° DE VAGAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
         fieldQtdVagas.addActionListener(new java.awt.event.ActionListener() {
@@ -289,6 +333,7 @@ public class ViewSistema extends javax.swing.JFrame {
             }
         });
 
+        fieldNomeGaragem.setBackground(new java.awt.Color(189, 219, 255));
         fieldNomeGaragem.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         fieldNomeGaragem.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "NOME DA GARAGEM", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
         fieldNomeGaragem.addActionListener(new java.awt.event.ActionListener() {
@@ -315,14 +360,14 @@ public class ViewSistema extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(fieldNomeGaragem))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GuiaConfigLayout.createSequentialGroup()
-                        .addGap(0, 283, Short.MAX_VALUE)
+                        .addGap(0, 1066, Short.MAX_VALUE)
                         .addComponent(btnSalvarConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         GuiaConfigLayout.setVerticalGroup(
             GuiaConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GuiaConfigLayout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(GuiaConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(fieldNomeGaragem)
                     .addComponent(jLabel4))
@@ -330,9 +375,9 @@ public class ViewSistema extends javax.swing.JFrame {
                 .addGroup(GuiaConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(fieldQtdVagas)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSalvarConfig)
-                .addGap(98, 98, 98))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSalvarConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(271, Short.MAX_VALUE))
         );
 
         ViewPainelAdm.addTab("CONFIGURAÇÕES", GuiaConfig);
@@ -341,11 +386,11 @@ public class ViewSistema extends javax.swing.JFrame {
         GuiaSobre.setLayout(GuiaSobreLayout);
         GuiaSobreLayout.setHorizontalGroup(
             GuiaSobreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 445, Short.MAX_VALUE)
+            .addGap(0, 1228, Short.MAX_VALUE)
         );
         GuiaSobreLayout.setVerticalGroup(
             GuiaSobreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 283, Short.MAX_VALUE)
+            .addGap(0, 471, Short.MAX_VALUE)
         );
 
         ViewPainelAdm.addTab("SOBRE", GuiaSobre);
@@ -358,17 +403,15 @@ public class ViewSistema extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(ViewPainelAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 39, Short.MAX_VALUE))
+            .addComponent(ViewPainelAdm)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fieldTipoVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldTipoVeiculoActionPerformed
+    private void comboTipoVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoVeiculoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fieldTipoVeiculoActionPerformed
+    }//GEN-LAST:event_comboTipoVeiculoActionPerformed
 
     private void fieldQtdVagasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldQtdVagasActionPerformed
         // TODO add your handling code here:
@@ -381,11 +424,11 @@ public class ViewSistema extends javax.swing.JFrame {
        configurar.buscarConfig(this);
     }//GEN-LAST:event_btnSalvarConfigActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnGerenciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciarActionPerformed
             // TODO add your handling code here:
-        ViewEntrada.setLocationRelativeTo(null);
-        ViewEntrada.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        ViewGerenciamento.setLocationRelativeTo(null);
+        ViewGerenciamento.setVisible(true);
+    }//GEN-LAST:event_btnGerenciarActionPerformed
 
     private void fieldNomeGaragemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNomeGaragemActionPerformed
         // TODO add your handling code here:
@@ -416,6 +459,24 @@ public class ViewSistema extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, msg);
         }
     }//GEN-LAST:event_btnSaidaActionPerformed
+
+    private void tabelaVagasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaVagasMouseClicked
+        // TODO add your handling code here:
+        String placa, tipo;
+        try {
+            placa = tabelaVagas.getValueAt(tabelaVagas.getSelectedRow(), 1).toString();
+            tipo = tabelaVagas.getValueAt(tabelaVagas.getSelectedRow(), 2).toString();
+            if(!placa.equals("")){
+                fieldPlaca.setText(placa);
+                comboTipoVeiculo.setSelectedItem(tipo);
+                
+            } 
+        } 
+        catch (Exception e) {
+            fieldPlaca.setText("");
+            comboTipoVeiculo.setSelectedItem("Selecione");
+        }
+    }//GEN-LAST:event_tabelaVagasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -460,25 +521,25 @@ public class ViewSistema extends javax.swing.JFrame {
     private javax.swing.JPanel GuiaHistorico;
     private javax.swing.JPanel GuiaPrincipal;
     private javax.swing.JPanel GuiaSobre;
-    private javax.swing.JFrame ViewEntrada;
+    private javax.swing.JFrame ViewGerenciamento;
     private javax.swing.JTabbedPane ViewPainelAdm;
     private javax.swing.JButton btnEntrada;
+    private javax.swing.JButton btnGerenciar;
     private javax.swing.JButton btnSaida;
     private javax.swing.JButton btnSalvarConfig;
     private javax.swing.JButton btnVoltar;
+    private javax.swing.JComboBox<String> comboTipoVeiculo;
     private javax.swing.JTextField fieldNomeGaragem;
-    private javax.swing.JTextField fieldPlacaEntrada;
+    private javax.swing.JTextField fieldPlaca;
     private javax.swing.JTextField fieldQtdVagas;
-    private javax.swing.JComboBox<String> fieldTipoVeiculo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelNomeGaragem;
     private javax.swing.JPanel panelEntrada;
+    private javax.swing.JTable tabelaHistorico;
     private javax.swing.JTable tabelaVagas;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,12 +1,13 @@
 package controller;
 
 import javax.swing.JOptionPane;
+import static model.ModelConfig.VAGA;
 import model.ModelEntradaSaida;
 import util.Util;
 import view.ViewSistema;
 
 /**
- *
+ * Classe Controller com os métodos de entrada e saida da garagem
  * @author cassio
  */
 public class ControllerEntradaSaida {
@@ -23,10 +24,26 @@ public class ControllerEntradaSaida {
         placa = view.getFieldPlacaEntrada().getText();
         tipo = view.getFieldTipoVeiculo().getSelectedItem().toString();
         vaga = view.getTabelaVagas().getSelectedRow();
-        System.out.println(vaga);
+        
         if(!util.isPlaca(placa)){
-            JOptionPane.showMessageDialog(null, "Placa Inválida!"
-                    + "\nA placa possui 7 dígitos");
+            JOptionPane.showMessageDialog(null, "PLACA INVÁLIDA"
+                    + "\nA placa digitada está incorreta");
+        }
+        else if(vaga < 0){
+            JOptionPane.showMessageDialog(null, "SELECIONAR VAGA"
+                    + "\nPor favor, selecione uma vaga!");
+        }
+        else if(tipo.equals("") || tipo.equals("Selecione")){
+            JOptionPane.showMessageDialog(null, "SELECIONAR TIPO"
+                    + "\nPor favor, selecione um tipo!");
+        }
+        else if(view.getTabelaVagas().getValueAt(vaga, 1) != null){
+            JOptionPane.showMessageDialog(null, "VAGA OCUPADA"
+                    + "\nPor favor, selecione uma vaga livre!");
+        }
+        else if(view.getTabelaVagas().getRowCount() == VAGA.size()){
+            JOptionPane.showMessageDialog(null, "GARAGEM LOTADA"
+                        + "\nDesculpe, a garagem está lotada!");
         }
         else{
             ModelEntradaSaida entradaSaida = new ModelEntradaSaida();

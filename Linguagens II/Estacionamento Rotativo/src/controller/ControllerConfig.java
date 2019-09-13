@@ -8,7 +8,7 @@ import static model.ModelConfig.*;
 import view.ViewSistema;
 
 /**
- *
+ *  Controller para recuperar as configurações do sistema
  * @author cassio
  */
 public class ControllerConfig {
@@ -18,7 +18,6 @@ public class ControllerConfig {
     public void buscarVagas(ViewSistema view){
         ModelConfig config = new ModelConfig();
         config.buscarVagas();
-        int numVagas;
         int posicao;
         for(int i = 0; i < VAGA.size(); i++){
             posicao = VAGA.get(i)+1;
@@ -43,14 +42,11 @@ public class ControllerConfig {
         view.getFieldNomeGaragem().setText(nomeGaragem);
         view.getFieldQtdVagas().setText(String.valueOf(numVagas));
         DefaultTableModel model = (DefaultTableModel) view.getTabelaVagas().getModel();
-       
+        
         for(int i = 0; i < numVagas; i++){
             Object[] linha = {"VAGA "+(i+1)+"   |   LIVRE"};
             model.addRow(linha);
         }
-        
-        System.out.println(nomeGaragem);
-        System.out.println(numVagas);
     }
     
     //Solicitar ao model para configurar o nome e quantidade de vagas
@@ -61,7 +57,7 @@ public class ControllerConfig {
         
         ModelConfig config = new ModelConfig();
         if(config.inserirConfiguracao(garagem.getNome(), garagem.getVagas())){
-            JOptionPane.showMessageDialog(null, "SUCESSO!");
+            JOptionPane.showMessageDialog(null,"Por favor, reinicie o sistema para aplicar as alterações");
             
         }
         else{

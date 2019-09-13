@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
- *
+ * Classe com métodos úteis, como verificação de placa, data e hora do sistema
  * @author cassio
  */
 public class Util {
@@ -39,11 +39,12 @@ public class Util {
     
     //Método para verificar placa 
     public boolean isPlaca(String placa){
-        
-        if(placa.length() == 7){
-            return true;
+        if(placa.length() != 8){
+            return false;
         }
-        
-        return false;
+        else{
+            String regex = "[A-Z]{3}-[0-9]{4}";
+            return placa.matches(regex);
+        }
     }
 }

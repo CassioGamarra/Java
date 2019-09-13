@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import util.Util;
 
 /**
- *
+ * Model com os métodos de entrada e saida
  * @author cassio
  */
 public class ModelEntradaSaida {

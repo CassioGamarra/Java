@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import view.ViewSistema;
 
 /**
  * Model das configurações
@@ -53,7 +52,6 @@ public class ModelConfig {
             }
         }
         
-        
         return false;
     }
     
@@ -89,7 +87,7 @@ public class ModelConfig {
             PreparedStatement stmt = conectar().prepareStatement(sql);
             ResultSet consulta = stmt.executeQuery(sql);
             while(consulta.next()){
-                VAGA.add(consulta.getInt("VAGA"));
+                VAGA.add(consulta.getInt("VAGA")-1);
                 PLACA.add(consulta.getString("PLACA"));
                 TIPO.add(consulta.getString("TIPO_VEICULO"));
             }

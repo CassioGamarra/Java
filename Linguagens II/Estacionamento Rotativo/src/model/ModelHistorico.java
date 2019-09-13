@@ -12,42 +12,22 @@ import javax.swing.JOptionPane;
  * @author cassio
  */
 public class ModelHistorico {
-    
+    public ModelHistorico(){}
+    //public static final ArrayList<Integer> HISTORICO = new ArrayList<>();
      //Método que retorna o histórico de entrada
-    public String gerarHistorico(){
-        String historicoEntrada = "";
-        String sql = "SELECT usuario.nome, catraca.codigo, catraca.dataHora "
-                + "FROM usuario, catraca "
-                + "WHERE usuario.codigo = catraca.codigo "
-                + "AND catraca.situacao = 1";
+    public ResultSet gerarHistorico(){
+        String historico = "";
+        String sql = "SELECT * FROM ENTRADA_E_SAIDA";
         
         try {
             PreparedStatement stmt = conectar().prepareStatement(sql);
             ResultSet consulta = stmt.executeQuery(sql);
-            while(consulta.next()){
-                String nome = consulta.getString("nome");
-                String codigo = consulta.getString("codigo");
-                String dataHora = consulta.getString("dataHora");
-                if(historicoEntrada.equals("")){
-                    historicoEntrada = "Código: "+codigo+" |  Nome: "+nome+
-                            " | "+dataHora+"\n";
-                }
-                else{
-                    historicoEntrada = historicoEntrada+"Código: "+codigo+
-                            " |  Nome: "+nome+" | "+dataHora+"\n";
-                }
-            }
-            if(historicoEntrada.equals("")){
-                return "SEM HISTÓRICO";
-            }
-            else{
-                return historicoEntrada;
-            }
+            return consulta;
         } 
         catch (SQLException e) {
-            System.out.println("Errro");
-            return historicoEntrada;
+            System.out.println("Erro");
         }
+        return null;
     }
     
      //Método para conectar com o banco
