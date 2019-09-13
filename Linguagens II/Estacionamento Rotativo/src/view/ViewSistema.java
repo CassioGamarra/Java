@@ -451,9 +451,7 @@ public class ViewSistema extends javax.swing.JFrame {
         ControllerHistorico historico = new ControllerHistorico();
         String msg = "";
         msg = entradaSaida.saidaGaragem(this);
-        
         if(!msg.equals("")){
-            historico.gerarHistorico(this);
             JOptionPane.showMessageDialog(null, msg);
         }
     }//GEN-LAST:event_btnSaidaActionPerformed

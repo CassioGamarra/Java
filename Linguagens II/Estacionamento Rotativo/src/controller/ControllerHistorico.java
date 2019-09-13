@@ -18,24 +18,25 @@ public class ControllerHistorico {
     public void gerarHistorico(ViewSistema view){
         ModelHistorico historico = new ModelHistorico();
         ResultSet consulta = historico.gerarHistorico();
-        int i = 0;
-        DefaultTableModel model = (DefaultTableModel) view.getTabelaHistorico().getModel();
         
+        DefaultTableModel model = (DefaultTableModel) view.getTabelaHistorico().getModel();
+        String placa, dataEntrada, horaEntrada, dataSaida, horaSaida, tipoVeiculo;
+        int vaga;
         try {
             while(consulta.next()){
-                
-                String placa = consulta.getString("PLACA");
-                int vaga = consulta.getInt("VAGA");
-                String dataEntrada = consulta.getString("DATA_ENTRADA");
-                String horaEntrada = consulta.getString("HORA_ENTRADA");
-                String dataSaida = consulta.getString("DATA_SAIDA");
-                String horaSaida = consulta.getString("HORA_SAIDA");
-                String tipoVeiculo = consulta.getString("TIPO_VEICULO");
-                
+                placa = consulta.getString("PLACA");
+                vaga = consulta.getInt("VAGA");
+                dataEntrada = consulta.getString("DATA_ENTRADA");
+                horaEntrada = consulta.getString("HORA_ENTRADA");
+                dataSaida = consulta.getString("DATA_SAIDA");
+                horaSaida = consulta.getString("HORA_SAIDA");
+                tipoVeiculo = consulta.getString("TIPO_VEICULO");
                 Object[] linha = {placa, vaga, dataEntrada, horaEntrada, dataSaida, horaSaida, tipoVeiculo};
                 model.addRow(linha);
             }
-        } catch (SQLException ex) {
+            
+        }
+        catch (SQLException ex) {
             Logger.getLogger(ControllerHistorico.class.getName()).log(Level.SEVERE, null, ex);
         }
             
