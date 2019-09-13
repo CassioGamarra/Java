@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.io.UnsupportedEncodingException;
@@ -12,7 +7,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.ModelLogin;
-import view.ViewAdm;
+import util.Sessao;
+import view.ViewSistema;
 import view.ViewLogin;
 
 /**
@@ -36,18 +32,28 @@ public class ControllerLogin {
         boolean entrada = entrar.login(usuario, password);
         
         if(entrada == true){
+            Sessao sessao = Sessao.getInstance();
+            
             viewLogin.dispose();
-            ViewAdm view = new ViewAdm();
+            ViewSistema view = new ViewSistema();
+            if(sessao.getNivelAcesso() == 1){
+                view.getFieldNomeGaragem().setEditable(false);
+                view.getFieldQtdVagas().setEditable(false);
+                view.getBtnSalvarConfig().setEnabled(false);
+            }
             view.setLocationRelativeTo(null);
             view.setVisible(true);
+            
             if(view.getLabelNomeGaragem().getText().equals("")){
                 configurar.buscarConfig(view);
+                configurar.buscarVagas(view);
             }
         }
         else{
             JOptionPane.showMessageDialog(null, "Login ou senha inválidos", 
                     "LOGIN", JOptionPane.WARNING_MESSAGE);
             viewLogin.setLocationRelativeTo(null);
+            
             viewLogin.setVisible(true);
         }
     }

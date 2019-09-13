@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.sql.Connection;
@@ -10,24 +5,30 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
+import view.ViewSistema;
 
 /**
- *
+ * Model das configurações
  * @author cassio
  */
 public class ModelConfig {
     public ModelConfig(){}
     
+    public static final ArrayList<Integer> VAGA = new ArrayList<>();
+    public static final ArrayList<String> PLACA = new ArrayList<>();
+    public static final ArrayList<String> TIPO = new ArrayList<>();
+    
+    //Método para inserir a configuração no banco
     public boolean inserirConfiguracao(String nome, int vaga){
         System.out.println(buscarConfig());
         if(buscarConfig().equals("-0")){
             try {
                 conectar();
-                String sql = "INSERT INTO configuracao(nome, vagas) VALUES (?,?)";
+                String sql = "INSERT INTO CONFIGURACAO(NOME_GARAGEM, VAGAS_GARAGEM) VALUES (?,?)";
                 PreparedStatement stmt = conectar().prepareStatement(sql);
                 stmt.setString(1, nome);
                 stmt.setInt(2, vaga);
@@ -41,7 +42,7 @@ public class ModelConfig {
         else{
             try {
                 conectar();
-                String sql = "UPDATE configuracao SET nome = '"+nome+"', vagas = '"+vaga+"' WHERE codigo = 1";
+                String sql = "UPDATE CONFIGURACAO SET NOME_GARAGEM = '"+nome+"', VAGAS_GARAGEM = '"+vaga+"' WHERE ID = 1";
                
                 PreparedStatement stmt = conectar().prepareStatement(sql);
                  
@@ -56,18 +57,19 @@ public class ModelConfig {
         return false;
     }
     
+    //Método para buscar a configuração no banco
     public String buscarConfig(){
         String config = "";
         String nomeGaragem = "";
         int numVagas = 0;
         try {
             conectar();
-            String sql = "SELECT * FROM configuracao WHERE codigo = 1";
+            String sql = "SELECT * FROM CONFIGURACAO WHERE ID = 1";
             PreparedStatement stmt = conectar().prepareStatement(sql);
             ResultSet consulta = stmt.executeQuery(sql);
             if(consulta.next()){
-                nomeGaragem = consulta.getString("nome");
-                numVagas = consulta.getInt("vagas");
+                nomeGaragem = consulta.getString("NOME_GARAGEM");
+                numVagas = consulta.getInt("VAGAS_GARAGEM");
             }
             config = nomeGaragem + "-" + numVagas;
             return config;
@@ -78,12 +80,31 @@ public class ModelConfig {
         return config;
     }
     
+    //Método para carregar as vagas ocupadas
+    public void buscarVagas(){        
+
+        try {
+            conectar();
+            String sql = "SELECT VAGA, PLACA, TIPO_VEICULO FROM ENTRADA_E_SAIDA WHERE SITUACAO = 1";
+            PreparedStatement stmt = conectar().prepareStatement(sql);
+            ResultSet consulta = stmt.executeQuery(sql);
+            while(consulta.next()){
+                VAGA.add(consulta.getInt("VAGA"));
+                PLACA.add(consulta.getString("PLACA"));
+                TIPO.add(consulta.getString("TIPO_VEICULO"));
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ModelConfig.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
     //Método para conectar com o banco
     private Connection conectar() throws SQLException{
         
         Connection conectar = null;
         try{
-            conectar = DriverManager.getConnection("jdbc:mysql://localhost:3306/estacionamento-rotativo","root","");
+            conectar = DriverManager.getConnection("jdbc:mysql://localhost:3306/GARAGEM","root","");
             return conectar;
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "NÃO FOI POSSÍVEL CONECTAR!", "ERRO!", JOptionPane.WARNING_MESSAGE);

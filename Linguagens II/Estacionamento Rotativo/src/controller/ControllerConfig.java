@@ -1,15 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Garagem;
 import model.ModelConfig;
-import view.ViewAdm;
+import static model.ModelConfig.*;
+import view.ViewSistema;
 
 /**
  *
@@ -18,7 +14,22 @@ import view.ViewAdm;
 public class ControllerConfig {
     public ControllerConfig(){}
     
-    public void buscarConfig(ViewAdm view){
+    //Solicitar ao model as vagas preenchidas
+    public void buscarVagas(ViewSistema view){
+        ModelConfig config = new ModelConfig();
+        config.buscarVagas();
+        int numVagas;
+        int posicao;
+        for(int i = 0; i < VAGA.size(); i++){
+            posicao = VAGA.get(i)+1;
+            view.getTabelaVagas().setValueAt("VAGA "+posicao+" OCUPADA", VAGA.get(i), 0);
+            view.getTabelaVagas().setValueAt(PLACA.get(i), VAGA.get(i), 1);
+            view.getTabelaVagas().setValueAt(TIPO.get(i), VAGA.get(i), 2);
+        }
+    }
+    
+    //Solicitar ao model as configurações do sistema
+    public void buscarConfig(ViewSistema view){
         ModelConfig config = new ModelConfig();
         String configuracao = config.buscarConfig();
         
@@ -32,15 +43,17 @@ public class ControllerConfig {
         view.getFieldNomeGaragem().setText(nomeGaragem);
         view.getFieldQtdVagas().setText(String.valueOf(numVagas));
         DefaultTableModel model = (DefaultTableModel) view.getTabelaVagas().getModel();
-        Object[] linha = {"VAGA LIVRE"};
+       
         for(int i = 0; i < numVagas; i++){
+            Object[] linha = {"VAGA "+(i+1)+"   |   LIVRE"};
             model.addRow(linha);
         }
+        
         System.out.println(nomeGaragem);
         System.out.println(numVagas);
     }
     
-    //Configurar o nome e quantidade de vagas
+    //Solicitar ao model para configurar o nome e quantidade de vagas
     public void configurarGaragem(String nome, int vagas){
         Garagem garagem = new Garagem();
         garagem.setNome(nome);
@@ -49,20 +62,10 @@ public class ControllerConfig {
         ModelConfig config = new ModelConfig();
         if(config.inserirConfiguracao(garagem.getNome(), garagem.getVagas())){
             JOptionPane.showMessageDialog(null, "SUCESSO!");
+            
         }
         else{
             JOptionPane.showMessageDialog(null, "NÃO FOI POSSÍVEL SALVAR!");
-        }
-    }
-    
-    public static void gerarVagas(int vagas){
-        ViewAdm view = new ViewAdm();
-        view.getTabelaVagas();
-        
-        DefaultTableModel model = (DefaultTableModel) view.getTabelaVagas().getModel();
-        Object[] linha = {"VAGA LIVRE"};
-        for(int i = 0; i < vagas; i++){
-            model.addRow(linha);
         }
     }
 }

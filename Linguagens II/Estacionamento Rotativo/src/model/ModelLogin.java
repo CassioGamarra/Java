@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
+import util.Sessao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -20,17 +16,22 @@ import javax.swing.JOptionPane;
  */
 public class ModelLogin {
     
+    Sessao sessao = Sessao.getInstance();
+    
     public boolean login(String usuario, String senha){
-
+        
         try {
             conectar();
-            //String sql = "SELECT SENHA FROM USUARIOS WHERE USUARIO = "+usuario;
             
-            String sql = "SELECT pass FROM usuario WHERE username ='"+usuario+"'AND pass ='"+senha+"'";
+            String sql = "SELECT * FROM usuario WHERE USERNAME ='"+usuario+"'AND PASSWORD ='"+senha+"' AND NIVEL_ACESSO != 0";
             PreparedStatement stmt = conectar().prepareStatement(sql);
             ResultSet consulta = stmt.executeQuery(sql);
-            
+            String password = "";    
             if(consulta.next()){
+                password = consulta.getString("PASSWORD");
+                sessao.setNivelAcesso(consulta.getInt("NIVEL_ACESSO"));
+            }
+            if(password.equals(senha) && sessao.getNivelAcesso() != 0){
                 return true;
             }
         } catch (SQLException ex) {
@@ -45,7 +46,7 @@ public class ModelLogin {
         
         Connection conectar = null;
         try{
-            conectar = DriverManager.getConnection("jdbc:mysql://localhost:3306/estacionamento-rotativo","root","");
+            conectar = DriverManager.getConnection("jdbc:mysql://localhost:3306/GARAGEM","root","");
             return conectar;
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "NÃO FOI POSSÍVEL CONECTAR!", "ERRO!", JOptionPane.WARNING_MESSAGE);
