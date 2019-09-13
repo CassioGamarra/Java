@@ -8,16 +8,15 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Model para recuperar o histórico
  * @author cassio
  */
 public class ModelHistorico {
     public ModelHistorico(){}
-    //public static final ArrayList<Integer> HISTORICO = new ArrayList<>();
-     //Método que retorna o histórico de entrada
+    
+    //Método que retorna o histórico de entrada
     public ResultSet gerarHistorico(){
-        String historico = "";
-        String sql = "SELECT * FROM ENTRADA_E_SAIDA";
+        String sql = "SELECT * FROM ENTRADA_E_SAIDA WHERE SITUACAO = 0";
         
         try {
             PreparedStatement stmt = conectar().prepareStatement(sql);

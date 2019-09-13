@@ -1,8 +1,7 @@
-
 package model;
 
 /**
- *
+ * Model com parâmetros da garagem
  * @author cassio
  */
 public class Garagem {

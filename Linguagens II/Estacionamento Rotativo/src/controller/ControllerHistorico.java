@@ -9,7 +9,7 @@ import model.ModelHistorico;
 import view.ViewSistema;
 
 /**
- *
+ * Controller do histórico
  * @author cassio
  */
 public class ControllerHistorico {
@@ -19,8 +19,11 @@ public class ControllerHistorico {
         ModelHistorico historico = new ModelHistorico();
         ResultSet consulta = historico.gerarHistorico();
         int i = 0;
+        DefaultTableModel model = (DefaultTableModel) view.getTabelaHistorico().getModel();
+        
         try {
             while(consulta.next()){
+                
                 String placa = consulta.getString("PLACA");
                 int vaga = consulta.getInt("VAGA");
                 String dataEntrada = consulta.getString("DATA_ENTRADA");
@@ -28,8 +31,7 @@ public class ControllerHistorico {
                 String dataSaida = consulta.getString("DATA_SAIDA");
                 String horaSaida = consulta.getString("HORA_SAIDA");
                 String tipoVeiculo = consulta.getString("TIPO_VEICULO");
-               
-                DefaultTableModel model = (DefaultTableModel) view.getTabelaHistorico().getModel();
+                
                 Object[] linha = {placa, vaga, dataEntrada, horaEntrada, dataSaida, horaSaida, tipoVeiculo};
                 model.addRow(linha);
             }

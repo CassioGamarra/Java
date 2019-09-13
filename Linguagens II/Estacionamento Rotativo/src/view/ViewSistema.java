@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import controller.ControllerConfig;
 import controller.ControllerEntradaSaida;
+import controller.ControllerHistorico;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -14,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -190,7 +187,8 @@ public class ViewSistema extends javax.swing.JFrame {
         panelEntradaLayout.setVerticalGroup(
             panelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelEntradaLayout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fieldPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(comboTipoVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -199,9 +197,7 @@ public class ViewSistema extends javax.swing.JFrame {
                     .addComponent(btnEntrada)
                     .addComponent(btnVoltar)
                     .addComponent(btnSaida))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout ViewGerenciamentoLayout = new javax.swing.GroupLayout(ViewGerenciamento.getContentPane());
@@ -436,8 +432,7 @@ public class ViewSistema extends javax.swing.JFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        
+        ViewGerenciamento.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntradaActionPerformed
@@ -453,9 +448,12 @@ public class ViewSistema extends javax.swing.JFrame {
     private void btnSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaidaActionPerformed
         // TODO add your handling code here:
         ControllerEntradaSaida entradaSaida = new ControllerEntradaSaida();
+        ControllerHistorico historico = new ControllerHistorico();
         String msg = "";
         msg = entradaSaida.saidaGaragem(this);
+        
         if(!msg.equals("")){
+            historico.gerarHistorico(this);
             JOptionPane.showMessageDialog(null, msg);
         }
     }//GEN-LAST:event_btnSaidaActionPerformed

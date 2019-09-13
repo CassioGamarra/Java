@@ -12,7 +12,7 @@ import view.ViewSistema;
 import view.ViewLogin;
 
 /**
- *
+ * Controller para realizar o login
  * @author cassio
  */
 public class ControllerLogin {

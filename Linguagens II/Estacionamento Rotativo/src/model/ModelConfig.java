@@ -97,6 +97,7 @@ public class ModelConfig {
         }
 
     }
+    
     //Método para conectar com o banco
     private Connection conectar() throws SQLException{
         

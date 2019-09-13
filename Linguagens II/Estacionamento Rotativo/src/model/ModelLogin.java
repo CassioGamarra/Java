@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Model para o login
  * @author cassio
  */
 public class ModelLogin {
@@ -23,7 +23,7 @@ public class ModelLogin {
         try {
             conectar();
             
-            String sql = "SELECT * FROM usuario WHERE USERNAME ='"+usuario+"'AND PASSWORD ='"+senha+"' AND NIVEL_ACESSO != 0";
+            String sql = "SELECT * FROM usuario WHERE USERNAME LIKE'"+usuario+"'AND PASSWORD LIKE'"+senha+"' AND NIVEL_ACESSO != 0";
             PreparedStatement stmt = conectar().prepareStatement(sql);
             ResultSet consulta = stmt.executeQuery(sql);
             String password = "";    

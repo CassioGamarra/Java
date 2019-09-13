@@ -20,7 +20,7 @@ public class ModelEntradaSaida {
     //Métodos de entrada e saida
     public String entrada(String placa, int vaga, String tipo) {
         String textoEntrada = "";
-        String sql = "SELECT SITUACAO FROM ENTRADA_E_SAIDA WHERE PLACA = '"+placa+"'";
+        String sql = "SELECT SITUACAO FROM ENTRADA_E_SAIDA WHERE PLACA LIKE '"+placa+"'";
         int status = 0;
         
         String horario, data;
@@ -61,7 +61,7 @@ public class ModelEntradaSaida {
     public String saida(String placa, int vaga){
         String textoSaida = "";
         
-        String sql = "SELECT * FROM ENTRADA_E_SAIDA WHERE PLACA = '"+placa+"'";
+        String sql = "SELECT * FROM ENTRADA_E_SAIDA WHERE PLACA LIKE '"+placa+"'";
         int status = 0;
         String horario, data;
         horario = util.horarioSistema();
@@ -86,7 +86,7 @@ public class ModelEntradaSaida {
             //Se a pessoa já foi excluida e já entrou ou se apenas entrou
             else{
                 //Faz a saída da pessoa
-                sql = "UPDATE ENTRADA_E_SAIDA SET DATA_SAIDA = '"+data+"', HORA_SAIDA = '"+horario+"', SITUACAO = 0 WHERE PLACA = '"+placa+"'";
+                sql = "UPDATE ENTRADA_E_SAIDA SET DATA_SAIDA = '"+data+"', HORA_SAIDA = '"+horario+"', SITUACAO = 0 WHERE PLACA LIKE '"+placa+"'";
                 stmt = conectar().prepareStatement(sql);
                 stmt.executeUpdate();
                 textoSaida = "VOLTE SEMPRE\n" + "PLACA: "+placa+"\nENTRADA: "+horaEntrada+" / "+dataEntrada+"\nSAÍDA: "+

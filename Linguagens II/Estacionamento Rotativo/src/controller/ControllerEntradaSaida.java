@@ -83,6 +83,7 @@ public class ControllerEntradaSaida {
                 view.getTabelaVagas().setValueAt("", vaga, 1);
                 view.getTabelaVagas().setValueAt("", vaga, 2);
             }
+            
             return mensagem;
         }
         return mensagem;
