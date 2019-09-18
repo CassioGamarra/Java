@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import util.Conexao;
 
 /**
  * Model para recuperar o histórico
@@ -21,6 +22,7 @@ public class ModelHistorico {
         try {
             PreparedStatement stmt = conectar().prepareStatement(sql);
             ResultSet consulta = stmt.executeQuery(sql);
+            conectar().close();
             return consulta;
         } 
         catch (SQLException e) {
@@ -31,12 +33,14 @@ public class ModelHistorico {
     
      //Método para conectar com o banco
     private Connection conectar() throws SQLException{
-        
+        Conexao conexao = Conexao.getInstance();
+        conexao.gerar();
         Connection conectar = null;
         try{
-            conectar = DriverManager.getConnection("jdbc:mysql://localhost:3306/GARAGEM","root","");
+            conectar = DriverManager.getConnection(conexao.getUrl(),conexao.getUser(),conexao.getPassword());
             return conectar;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             JOptionPane.showMessageDialog(null, "NÃO FOI POSSÍVEL CONECTAR!", "ERRO!", JOptionPane.WARNING_MESSAGE);
             System.exit(0);
 	}

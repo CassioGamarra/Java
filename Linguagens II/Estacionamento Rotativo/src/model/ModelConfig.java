@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import util.Conexao;
 
 /**
  * Model das configurações
@@ -23,7 +24,6 @@ public class ModelConfig {
     
     //Método para inserir a configuração no banco
     public boolean inserirConfiguracao(String nome, int vaga){
-        System.out.println(buscarConfig());
         if(buscarConfig().equals("-0")){
             try {
                 conectar();
@@ -32,7 +32,7 @@ public class ModelConfig {
                 stmt.setString(1, nome);
                 stmt.setInt(2, vaga);
                 stmt.execute();
-
+                conectar().close();
                 return true;
             } catch (SQLException ex) {
                 Logger.getLogger(ModelConfig.class.getName()).log(Level.SEVERE, null, ex);
@@ -46,6 +46,7 @@ public class ModelConfig {
                 PreparedStatement stmt = conectar().prepareStatement(sql);
                  
                 stmt.executeUpdate();
+                conectar().close();
                 return true;
             } catch (SQLException ex) {
                 Logger.getLogger(ModelConfig.class.getName()).log(Level.SEVERE, null, ex);
@@ -70,6 +71,7 @@ public class ModelConfig {
                 numVagas = consulta.getInt("VAGAS_GARAGEM");
             }
             config = nomeGaragem + "-" + numVagas;
+            conectar().close();
             return config;
             
         } catch (SQLException ex) {
@@ -91,6 +93,7 @@ public class ModelConfig {
                 PLACA.add(consulta.getString("PLACA"));
                 TIPO.add(consulta.getString("TIPO_VEICULO"));
             }
+            conectar().close();
             
         } catch (SQLException ex) {
             Logger.getLogger(ModelConfig.class.getName()).log(Level.SEVERE, null, ex);
@@ -100,12 +103,14 @@ public class ModelConfig {
     
     //Método para conectar com o banco
     private Connection conectar() throws SQLException{
-        
+        Conexao conexao = Conexao.getInstance();
+        conexao.gerar();
         Connection conectar = null;
         try{
-            conectar = DriverManager.getConnection("jdbc:mysql://localhost:3306/GARAGEM","root","");
+            conectar = DriverManager.getConnection(conexao.getUrl(),conexao.getUser(),conexao.getPassword());
             return conectar;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             JOptionPane.showMessageDialog(null, "NÃO FOI POSSÍVEL CONECTAR!", "ERRO!", JOptionPane.WARNING_MESSAGE);
             System.exit(0);
 	}

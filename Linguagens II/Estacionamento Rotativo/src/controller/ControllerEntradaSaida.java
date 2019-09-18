@@ -14,7 +14,7 @@ public class ControllerEntradaSaida {
     
     Util util = new Util();
     
-    //Entrada catraca virtual manual
+    //Entrada da garagem
     public String entradaGaragem(ViewSistema view){
         
         String mensagem =  "";
@@ -59,7 +59,7 @@ public class ControllerEntradaSaida {
         return mensagem;
     }
     
-    //Saída catraca virtual manual
+    //Saída da garagem
     public String saidaGaragem(ViewSistema view){
         
         String mensagem =  "";
@@ -83,7 +83,9 @@ public class ControllerEntradaSaida {
                 view.getTabelaVagas().setValueAt("", vaga, 1);
                 view.getTabelaVagas().setValueAt("", vaga, 2);
             }
-            
+            util.cleanJTable(view.getTabelaHistorico());
+            ControllerHistorico historico = new ControllerHistorico();
+            historico.gerarHistorico(view);
             return mensagem;
         }
         return mensagem;

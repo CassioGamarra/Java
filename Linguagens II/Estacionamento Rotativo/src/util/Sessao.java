@@ -1,7 +1,7 @@
 package util;
 
 /**
- *
+ *  Singleton com a sessão do usuário
  * @author cassio
  */
 public class Sessao {
@@ -25,5 +25,4 @@ public class Sessao {
         this.nivelAcesso = nivelAcesso;
     }
     
-  
 }

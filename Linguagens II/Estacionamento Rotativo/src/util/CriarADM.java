@@ -62,7 +62,7 @@ public class CriarADM {
         
         Connection conectar = null;
         try{
-            conectar = DriverManager.getConnection("jdbc:mysql://localhost:3306/GARAGEM","root","");
+            conectar = DriverManager.getConnection("jdbc:mysql://localhost:3306/GARAGEM","root","root");
             return conectar;
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "NÃO FOI POSSÍVEL CONECTAR!", "ERRO!", JOptionPane.WARNING_MESSAGE);

@@ -5,6 +5,7 @@ import javax.swing.table.DefaultTableModel;
 import model.Garagem;
 import model.ModelConfig;
 import static model.ModelConfig.*;
+import util.Util;
 import view.ViewSistema;
 
 /**
@@ -30,6 +31,7 @@ public class ControllerConfig {
     //Solicitar ao model as configurações do sistema
     public void buscarConfig(ViewSistema view){
         ModelConfig config = new ModelConfig();
+        Util util = new Util();
         String configuracao = config.buscarConfig();
         
         String[] vet = configuracao.split("-");
@@ -41,6 +43,8 @@ public class ControllerConfig {
         view.getTabelaVagas();
         view.getFieldNomeGaragem().setText(nomeGaragem);
         view.getFieldQtdVagas().setText(String.valueOf(numVagas));
+        util.cleanJTable(view.getTabelaVagas());
+        
         DefaultTableModel model = (DefaultTableModel) view.getTabelaVagas().getModel();
         
         for(int i = 0; i < numVagas; i++){
@@ -52,13 +56,13 @@ public class ControllerConfig {
     //Solicitar ao model para configurar o nome e quantidade de vagas
     public void configurarGaragem(String nome, int vagas){
         Garagem garagem = new Garagem();
+        
         garagem.setNome(nome);
         garagem.setVagas(vagas);
         
         ModelConfig config = new ModelConfig();
         if(config.inserirConfiguracao(garagem.getNome(), garagem.getVagas())){
-            JOptionPane.showMessageDialog(null,"Por favor, reinicie o sistema para aplicar as alterações");
-            
+            JOptionPane.showMessageDialog(null,"Configuração atualizada com sucesso!");
         }
         else{
             JOptionPane.showMessageDialog(null, "NÃO FOI POSSÍVEL SALVAR!");

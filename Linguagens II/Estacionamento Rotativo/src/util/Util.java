@@ -2,6 +2,8 @@ package util;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  * Classe com métodos úteis, como verificação de placa, data e hora do sistema
@@ -39,12 +41,28 @@ public class Util {
     
     //Método para verificar placa 
     public boolean isPlaca(String placa){
+        placa = placa.toUpperCase();
         if(placa.length() != 8){
             return false;
         }
         else{
             String regex = "[A-Z]{3}-[0-9]{4}";
             return placa.matches(regex);
+        }
+    }
+    
+    //Método para limpar tabelas
+    public void cleanJTable(JTable table){
+        DefaultTableModel tblRemove = (DefaultTableModel)table.getModel();
+        int i, count;
+        
+        count = tblRemove.getRowCount();
+        //Verifica se o número de linhas é maior que 0
+        if (tblRemove.getRowCount() > 0){
+            System.out.println(count);
+            for (i = 0; i < count; i++){
+                tblRemove.removeRow(0);
+            }    
         }
     }
 }

@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import util.Conexao;
 import util.Util;
 
 /**
@@ -48,6 +49,7 @@ public class ModelEntradaSaida {
                 stmt.setInt(6, 1);
                 stmt.execute();
                 textoEntrada = "ENTRADA: "+placa+"\n"+"Entrada - HORA:"+horario+" | DATA: "+data;
+                conectar().close();
                 return textoEntrada;
             }           
         }
@@ -91,6 +93,7 @@ public class ModelEntradaSaida {
                 stmt.executeUpdate();
                 textoSaida = "VOLTE SEMPRE\n" + "PLACA: "+placa+"\nENTRADA: "+horaEntrada+" / "+dataEntrada+"\nSAÍDA: "+
                         horario+" / "+data;
+                conectar().close();
                 return textoSaida;
             }
         }
@@ -102,12 +105,14 @@ public class ModelEntradaSaida {
     
     //Método para conectar com o banco
     private Connection conectar() throws SQLException{
-        
+        Conexao conexao = Conexao.getInstance();
+        conexao.gerar();
         Connection conectar = null;
         try{
-            conectar = DriverManager.getConnection("jdbc:mysql://localhost:3306/GARAGEM","root","");
+            conectar = DriverManager.getConnection(conexao.getUrl(),conexao.getUser(),conexao.getPassword());
             return conectar;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             JOptionPane.showMessageDialog(null, "NÃO FOI POSSÍVEL CONECTAR!", "ERRO!", JOptionPane.WARNING_MESSAGE);
             System.exit(0);
 	}

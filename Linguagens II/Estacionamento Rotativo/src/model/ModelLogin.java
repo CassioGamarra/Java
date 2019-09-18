@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import util.Conexao;
 
 /**
  * Model para o login
@@ -32,6 +33,7 @@ public class ModelLogin {
                 sessao.setNivelAcesso(consulta.getInt("NIVEL_ACESSO"));
             }
             if(password.equals(senha) && sessao.getNivelAcesso() != 0){
+                conectar().close();
                 return true;
             }
         } catch (SQLException ex) {
@@ -43,13 +45,16 @@ public class ModelLogin {
     
     //Método para conectar com o banco
     private Connection conectar() throws SQLException{
-        
+        Conexao conexao = Conexao.getInstance();
+        conexao.gerar();
         Connection conectar = null;
         try{
-            conectar = DriverManager.getConnection("jdbc:mysql://localhost:3306/GARAGEM","root","");
+            conectar = DriverManager.getConnection(conexao.getUrl(),conexao.getUser(),conexao.getPassword());
             return conectar;
-        }catch(SQLException e){
+        }
+        catch(SQLException e){
             JOptionPane.showMessageDialog(null, "NÃO FOI POSSÍVEL CONECTAR!", "ERRO!", JOptionPane.WARNING_MESSAGE);
+            System.out.println(e);
             System.exit(0);
 	}
         
