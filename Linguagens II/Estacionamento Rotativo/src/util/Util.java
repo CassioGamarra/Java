@@ -59,7 +59,6 @@ public class Util {
         count = tblRemove.getRowCount();
         //Verifica se o número de linhas é maior que 0
         if (tblRemove.getRowCount() > 0){
-            System.out.println(count);
             for (i = 0; i < count; i++){
                 tblRemove.removeRow(0);
             }    

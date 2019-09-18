@@ -34,7 +34,6 @@ public class ModelHistorico {
      //Método para conectar com o banco
     private Connection conectar() throws SQLException{
         Conexao conexao = Conexao.getInstance();
-        conexao.gerar();
         Connection conectar = null;
         try{
             conectar = DriverManager.getConnection(conexao.getUrl(),conexao.getUser(),conexao.getPassword());
