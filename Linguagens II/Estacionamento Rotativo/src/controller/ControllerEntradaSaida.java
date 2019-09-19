@@ -25,13 +25,15 @@ public class ControllerEntradaSaida {
         tipo = view.getFieldTipoVeiculo().getSelectedItem().toString();
         vaga = view.getTabelaVagas().getSelectedRow();
         
-        if(!util.isPlaca(placa)){
-            JOptionPane.showMessageDialog(null, "PLACA INVÁLIDA"
-                    + "\nA placa digitada está incorreta");
-        }
-        else if(vaga < 0){
+        placa = placa.toUpperCase();
+        
+        if(vaga < 0){
             JOptionPane.showMessageDialog(null, "SELECIONAR VAGA"
                     + "\nPor favor, selecione uma vaga!");
+        }
+        else if(!util.isPlaca(placa)){
+            JOptionPane.showMessageDialog(null, "PLACA INVÁLIDA"
+                    + "\nA placa digitada está incorreta");
         }
         else if(tipo.equals("") || tipo.equals("Selecione")){
             JOptionPane.showMessageDialog(null, "SELECIONAR TIPO"
@@ -69,6 +71,8 @@ public class ControllerEntradaSaida {
         placa = view.getFieldPlacaEntrada().getText();
         tipo = view.getFieldTipoVeiculo().getSelectedItem().toString();
         vaga = view.getTabelaVagas().getSelectedRow();
+        
+        placa = placa.toUpperCase();
         
         if(!util.isPlaca(placa)){
             JOptionPane.showMessageDialog(null, "Placa inválida!"

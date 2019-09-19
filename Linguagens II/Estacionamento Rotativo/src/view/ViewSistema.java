@@ -3,6 +3,10 @@ package view;
 import controller.ControllerConfig;
 import controller.ControllerEntradaSaida;
 import controller.ControllerHistorico;
+import java.awt.EventQueue;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -10,22 +14,66 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author cassio
  */
 public class ViewSistema extends javax.swing.JFrame {
-
+    private static final DateFormat FORMATO = new SimpleDateFormat("HH:mm:ss");
     /**
      * Creates new form ViewPainelAdministrador
      */
     public ViewSistema() {
         initComponents();
+        // Iniciamos a thread do relógio. Tornei uma deamon thread para que seja
+        // automaticamente finalizada caso a aplicação feche.
+        Thread clockThread = new Thread(new ViewSistema.ClockRunnable(), "Clock thread");
+        clockThread.setDaemon(true);
+        clockThread.start(); 
     }
-     //Getter
-
+    //Hora do sistema
+    
+    /**
+     * Método para atualizar a hora no formulário. Não é thread-safe, portanto,
+     * @param date
+     */
+    public void setHora(Date date) {
+        lblHora.setText(FORMATO.format(date));
+    }
+    
+    /**
+     * Runnable que contém o código que atuará na thread. Chamando o método setHora
+     */
+    private class ClockRunnable implements Runnable {
+        public void run() {
+            try {
+                while (true) {
+                    // Aqui chamamos o setHora através da EventQueue da AWT.
+                    // Conforme dito, isso garante Thread safety para o Swing.
+                    EventQueue.invokeLater(new Runnable() {
+                        public void run() {
+                            // Só podemos chamar setHora diretamente dessa
+                            // forma, pois esse Runnable é uma InnerClass não
+                            // estática.
+                            setHora(new Date());
+                        }
+                    });
+                    // Fazemos nossa thread dormir por um segundo, liberando o
+                    // processador para outras threads processarem.
+                    Thread.sleep(1000);
+                }
+            }
+            catch (InterruptedException e) {
+            }
+        }
+    }
+    
+    //Getter
+    public JLabel getLblHora() {
+        return lblHora;
+    }
+    
     public JTable getTabelaHistorico() {
         return tabelaHistorico;
     }
@@ -84,7 +132,6 @@ public class ViewSistema extends javax.swing.JFrame {
         ViewPainelAdm = new javax.swing.JTabbedPane();
         GuiaPrincipal = new javax.swing.JPanel();
         btnGerenciar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         labelNomeGaragem = new javax.swing.JLabel();
         GuiaHistorico = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -96,6 +143,8 @@ public class ViewSistema extends javax.swing.JFrame {
         fieldNomeGaragem = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         GuiaSobre = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        lblHora = new javax.swing.JLabel();
 
         ViewGerenciamento.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         ViewGerenciamento.setMinimumSize(new java.awt.Dimension(580, 480));
@@ -230,11 +279,6 @@ public class ViewSistema extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setBackground(new java.awt.Color(189, 219, 255));
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sistema.png"))); // NOI18N
-
         labelNomeGaragem.setBackground(new java.awt.Color(255, 255, 255));
         labelNomeGaragem.setFont(new java.awt.Font("Tahoma", 1, 60)); // NOI18N
         labelNomeGaragem.setForeground(new java.awt.Color(255, 255, 255));
@@ -244,24 +288,21 @@ public class ViewSistema extends javax.swing.JFrame {
         GuiaPrincipal.setLayout(GuiaPrincipalLayout);
         GuiaPrincipalLayout.setHorizontalGroup(
             GuiaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(GuiaPrincipalLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GuiaPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(GuiaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnGerenciar, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelNomeGaragem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(GuiaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelNomeGaragem, javax.swing.GroupLayout.DEFAULT_SIZE, 1208, Short.MAX_VALUE)
+                    .addComponent(btnGerenciar, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         GuiaPrincipalLayout.setVerticalGroup(
             GuiaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GuiaPrincipalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(50, 50, 50)
                 .addComponent(labelNomeGaragem, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(53, 53, 53)
                 .addComponent(btnGerenciar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         ViewPainelAdm.addTab("ESTACIONAMENTO", GuiaPrincipal);
@@ -303,7 +344,7 @@ public class ViewSistema extends javax.swing.JFrame {
         );
         GuiaHistoricoLayout.setVerticalGroup(
             GuiaHistoricoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
         );
 
         ViewPainelAdm.addTab("HISTÓRICO", GuiaHistorico);
@@ -373,7 +414,7 @@ public class ViewSistema extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvarConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(271, Short.MAX_VALUE))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
 
         ViewPainelAdm.addTab("CONFIGURAÇÕES", GuiaConfig);
@@ -386,20 +427,39 @@ public class ViewSistema extends javax.swing.JFrame {
         );
         GuiaSobreLayout.setVerticalGroup(
             GuiaSobreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 471, Short.MAX_VALUE)
+            .addGap(0, 422, Short.MAX_VALUE)
         );
 
         ViewPainelAdm.addTab("SOBRE", GuiaSobre);
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(1, 96, 173));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sistema.png"))); // NOI18N
+
+        lblHora.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        lblHora.setForeground(new java.awt.Color(1, 96, 173));
+        lblHora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(ViewPainelAdm)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ViewPainelAdm)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblHora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ViewPainelAdm))
         );
 
         pack();
@@ -534,6 +594,7 @@ public class ViewSistema extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelNomeGaragem;
+    private javax.swing.JLabel lblHora;
     private javax.swing.JPanel panelEntrada;
     private javax.swing.JTable tabelaHistorico;
     private javax.swing.JTable tabelaVagas;

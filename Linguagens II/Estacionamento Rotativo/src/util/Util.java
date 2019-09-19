@@ -41,7 +41,6 @@ public class Util {
     
     //Método para verificar placa 
     public boolean isPlaca(String placa){
-        placa = placa.toUpperCase();
         if(placa.length() != 8){
             return false;
         }
@@ -64,4 +63,5 @@ public class Util {
             }    
         }
     }
+    
 }

@@ -20,9 +20,8 @@ public class ControllerLogin {
     
     public void login(String usuario, char[] senha){
         ModelLogin entrar = new ModelLogin();
-        ControllerConfig configurar = new ControllerConfig();
         ViewLogin viewLogin = new ViewLogin();
-        ControllerHistorico  historico = new ControllerHistorico();
+        
         String password = new String(senha);
         try {
             password = hash(password);
@@ -44,7 +43,8 @@ public class ControllerLogin {
             }
             view.setLocationRelativeTo(null);
             view.setVisible(true);
-            
+            ControllerConfig configurar = new ControllerConfig();
+            ControllerHistorico  historico = new ControllerHistorico();
             if(view.getLabelNomeGaragem().getText().equals("")){
                 configurar.buscarConfig(view);
                 historico.gerarHistorico(view);
