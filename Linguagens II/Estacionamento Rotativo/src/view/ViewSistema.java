@@ -129,6 +129,8 @@ public class ViewSistema extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelaVagas = new javax.swing.JTable();
         btnSaida = new javax.swing.JButton();
+        dialogCupom = new javax.swing.JDialog();
+        lblNomeGaragemCupom = new javax.swing.JLabel();
         ViewPainelAdm = new javax.swing.JTabbedPane();
         GuiaPrincipal = new javax.swing.JPanel();
         btnGerenciar = new javax.swing.JButton();
@@ -260,6 +262,26 @@ public class ViewSistema extends javax.swing.JFrame {
         ViewGerenciamentoLayout.setVerticalGroup(
             ViewGerenciamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        lblNomeGaragemCupom.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblNomeGaragemCupom.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout dialogCupomLayout = new javax.swing.GroupLayout(dialogCupom.getContentPane());
+        dialogCupom.getContentPane().setLayout(dialogCupomLayout);
+        dialogCupomLayout.setHorizontalGroup(
+            dialogCupomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogCupomLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblNomeGaragemCupom, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        dialogCupomLayout.setVerticalGroup(
+            dialogCupomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogCupomLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblNomeGaragemCupom, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(267, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -501,6 +523,7 @@ public class ViewSistema extends javax.swing.JFrame {
         String msg = "";
         msg = entradaSaida.entradaGaragem(this);
         if(!msg.equals("")){
+            lblNomeGaragemCupom.setText(labelNomeGaragem.getText());
             JOptionPane.showMessageDialog(null, msg);
         }
     }//GEN-LAST:event_btnEntradaActionPerformed
@@ -585,6 +608,7 @@ public class ViewSistema extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvarConfig;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JComboBox<String> comboTipoVeiculo;
+    private javax.swing.JDialog dialogCupom;
     private javax.swing.JTextField fieldNomeGaragem;
     private javax.swing.JTextField fieldPlaca;
     private javax.swing.JTextField fieldQtdVagas;
@@ -595,6 +619,7 @@ public class ViewSistema extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelNomeGaragem;
     private javax.swing.JLabel lblHora;
+    private javax.swing.JLabel lblNomeGaragemCupom;
     private javax.swing.JPanel panelEntrada;
     private javax.swing.JTable tabelaHistorico;
     private javax.swing.JTable tabelaVagas;
