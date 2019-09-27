@@ -70,6 +70,27 @@ public class ViewSistema extends javax.swing.JFrame {
     }
     
     //Getter
+    
+    public JLabel getLblHoraEntradaCupomSaida() {
+        return lblHoraEntradaCupomSaida;
+    }
+
+    public JLabel getLblHoraEntradaCupom() {
+        return lblHoraEntradaCupom;
+    }
+
+    public JLabel getLblHoraSaidaCupomSaida() {
+        return lblHoraSaidaCupomSaida;
+    }
+
+    public JLabel getLblPlacaCupom() {
+        return lblPlacaCupom;
+    }
+
+    public JLabel getLblPlacaCupomSaida() {    
+        return lblPlacaCupomSaida;
+    }
+
     public JLabel getLblHora() {
         return lblHora;
     }
@@ -129,8 +150,19 @@ public class ViewSistema extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelaVagas = new javax.swing.JTable();
         btnSaida = new javax.swing.JButton();
-        dialogCupom = new javax.swing.JDialog();
+        dialogCupomEntrada = new javax.swing.JDialog();
+        panelCupomEntrada = new javax.swing.JPanel();
         lblNomeGaragemCupom = new javax.swing.JLabel();
+        lblPlacaCupom = new javax.swing.JLabel();
+        lblHoraEntradaCupom = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        dialogCupomSaida = new javax.swing.JDialog();
+        panelCupom1 = new javax.swing.JPanel();
+        lblNomeGaragemCupom1 = new javax.swing.JLabel();
+        lblPlacaCupomSaida = new javax.swing.JLabel();
+        lblHoraEntradaCupomSaida = new javax.swing.JLabel();
+        lblHoraSaidaCupomSaida = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         ViewPainelAdm = new javax.swing.JTabbedPane();
         GuiaPrincipal = new javax.swing.JPanel();
         btnGerenciar = new javax.swing.JButton();
@@ -179,6 +211,9 @@ public class ViewSistema extends javax.swing.JFrame {
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "VAGAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
+        tabelaVagas.setBackground(new java.awt.Color(0, 102, 0));
+        tabelaVagas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        tabelaVagas.setForeground(new java.awt.Color(255, 255, 255));
         tabelaVagas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -264,24 +299,168 @@ public class ViewSistema extends javax.swing.JFrame {
             .addComponent(panelEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        dialogCupomEntrada.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        dialogCupomEntrada.setMaximumSize(new java.awt.Dimension(460, 420));
+        dialogCupomEntrada.setMinimumSize(new java.awt.Dimension(460, 420));
+        dialogCupomEntrada.setPreferredSize(new java.awt.Dimension(460, 420));
+
+        panelCupomEntrada.setBackground(new java.awt.Color(253, 245, 171));
+        panelCupomEntrada.setForeground(new java.awt.Color(253, 245, 171));
+        panelCupomEntrada.setToolTipText("");
+
         lblNomeGaragemCupom.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblNomeGaragemCupom.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        javax.swing.GroupLayout dialogCupomLayout = new javax.swing.GroupLayout(dialogCupom.getContentPane());
-        dialogCupom.getContentPane().setLayout(dialogCupomLayout);
-        dialogCupomLayout.setHorizontalGroup(
-            dialogCupomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dialogCupomLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblNomeGaragemCupom, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                .addContainerGap())
+        lblPlacaCupom.setBackground(new java.awt.Color(253, 245, 171));
+        lblPlacaCupom.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblPlacaCupom.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPlacaCupom.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PLACA:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+
+        lblHoraEntradaCupom.setBackground(new java.awt.Color(253, 245, 171));
+        lblHoraEntradaCupom.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblHoraEntradaCupom.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHoraEntradaCupom.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ENTRADA: ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+
+        javax.swing.GroupLayout panelCupomEntradaLayout = new javax.swing.GroupLayout(panelCupomEntrada);
+        panelCupomEntrada.setLayout(panelCupomEntradaLayout);
+        panelCupomEntradaLayout.setHorizontalGroup(
+            panelCupomEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(panelCupomEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelCupomEntradaLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(panelCupomEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblNomeGaragemCupom, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                        .addComponent(lblPlacaCupom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblHoraEntradaCupom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap()))
         );
-        dialogCupomLayout.setVerticalGroup(
-            dialogCupomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dialogCupomLayout.createSequentialGroup()
+        panelCupomEntradaLayout.setVerticalGroup(
+            panelCupomEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 327, Short.MAX_VALUE)
+            .addGroup(panelCupomEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelCupomEntradaLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(lblNomeGaragemCupom, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(35, 35, 35)
+                    .addComponent(lblPlacaCupom, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lblHoraEntradaCupom, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(88, Short.MAX_VALUE)))
+        );
+
+        jButton1.setText("OK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        dialogCupomEntrada.setLocationRelativeTo(null);
+
+        javax.swing.GroupLayout dialogCupomEntradaLayout = new javax.swing.GroupLayout(dialogCupomEntrada.getContentPane());
+        dialogCupomEntrada.getContentPane().setLayout(dialogCupomEntradaLayout);
+        dialogCupomEntradaLayout.setHorizontalGroup(
+            dialogCupomEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogCupomEntradaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblNomeGaragemCupom, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(267, Short.MAX_VALUE))
+                .addGroup(dialogCupomEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(panelCupomEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        dialogCupomEntradaLayout.setVerticalGroup(
+            dialogCupomEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogCupomEntradaLayout.createSequentialGroup()
+                .addComponent(panelCupomEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                .addGap(28, 28, 28))
+        );
+
+        dialogCupomSaida.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        dialogCupomSaida.setMaximumSize(new java.awt.Dimension(420, 420));
+        dialogCupomSaida.setMinimumSize(new java.awt.Dimension(420, 420));
+        dialogCupomSaida.setPreferredSize(new java.awt.Dimension(420, 420));
+
+        panelCupom1.setBackground(new java.awt.Color(253, 245, 171));
+        panelCupom1.setForeground(new java.awt.Color(253, 245, 171));
+        panelCupom1.setToolTipText("");
+
+        lblNomeGaragemCupom1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblNomeGaragemCupom1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        lblPlacaCupomSaida.setBackground(new java.awt.Color(253, 245, 171));
+        lblPlacaCupomSaida.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblPlacaCupomSaida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPlacaCupomSaida.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PLACA:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+
+        lblHoraEntradaCupomSaida.setBackground(new java.awt.Color(253, 245, 171));
+        lblHoraEntradaCupomSaida.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblHoraEntradaCupomSaida.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "HORA ENTRADA: ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+
+        lblHoraSaidaCupomSaida.setBackground(new java.awt.Color(253, 245, 171));
+        lblHoraSaidaCupomSaida.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblHoraSaidaCupomSaida.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "HORA SAÍDA: ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+
+        javax.swing.GroupLayout panelCupom1Layout = new javax.swing.GroupLayout(panelCupom1);
+        panelCupom1.setLayout(panelCupom1Layout);
+        panelCupom1Layout.setHorizontalGroup(
+            panelCupom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(panelCupom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelCupom1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(panelCupom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblNomeGaragemCupom1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                        .addComponent(lblPlacaCupomSaida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblHoraEntradaCupomSaida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblHoraSaidaCupomSaida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap()))
+        );
+        panelCupom1Layout.setVerticalGroup(
+            panelCupom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 327, Short.MAX_VALUE)
+            .addGroup(panelCupom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelCupom1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(lblNomeGaragemCupom1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(35, 35, 35)
+                    .addComponent(lblPlacaCupomSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lblHoraEntradaCupomSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lblHoraSaidaCupomSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        jButton2.setText("OK");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        dialogCupomSaida.setLocationRelativeTo(null);
+
+        javax.swing.GroupLayout dialogCupomSaidaLayout = new javax.swing.GroupLayout(dialogCupomSaida.getContentPane());
+        dialogCupomSaida.getContentPane().setLayout(dialogCupomSaidaLayout);
+        dialogCupomSaidaLayout.setHorizontalGroup(
+            dialogCupomSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogCupomSaidaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(dialogCupomSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(panelCupom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        dialogCupomSaidaLayout.setVerticalGroup(
+            dialogCupomSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogCupomSaidaLayout.createSequentialGroup()
+                .addComponent(panelCupom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                .addGap(28, 28, 28))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -522,9 +701,11 @@ public class ViewSistema extends javax.swing.JFrame {
         ControllerEntradaSaida entradaSaida = new ControllerEntradaSaida();
         String msg = "";
         msg = entradaSaida.entradaGaragem(this);
+        
         if(!msg.equals("")){
             lblNomeGaragemCupom.setText(labelNomeGaragem.getText());
-            JOptionPane.showMessageDialog(null, msg);
+            dialogCupomEntrada.setVisible(true);
+            fieldPlaca.setText("");
         }
     }//GEN-LAST:event_btnEntradaActionPerformed
 
@@ -533,9 +714,11 @@ public class ViewSistema extends javax.swing.JFrame {
         ControllerEntradaSaida entradaSaida = new ControllerEntradaSaida();
         ControllerHistorico historico = new ControllerHistorico();
         String msg = "";
+        
         msg = entradaSaida.saidaGaragem(this);
         if(!msg.equals("")){
             JOptionPane.showMessageDialog(null, msg);
+            fieldPlaca.setText("");
         }
     }//GEN-LAST:event_btnSaidaActionPerformed
 
@@ -545,17 +728,29 @@ public class ViewSistema extends javax.swing.JFrame {
         try {
             placa = tabelaVagas.getValueAt(tabelaVagas.getSelectedRow(), 1).toString();
             tipo = tabelaVagas.getValueAt(tabelaVagas.getSelectedRow(), 2).toString();
-            if(!placa.equals("")){
+            
+            if(!placa.equals("LIVRE")){
                 fieldPlaca.setText(placa);
                 comboTipoVeiculo.setSelectedItem(tipo);
-                
-            } 
+            }
         } 
         catch (Exception e) {
             fieldPlaca.setText("");
             comboTipoVeiculo.setSelectedItem("Selecione");
         }
     }//GEN-LAST:event_tabelaVagasMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        dialogCupomEntrada.dispose();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        dialogCupomSaida.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -608,10 +803,13 @@ public class ViewSistema extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvarConfig;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JComboBox<String> comboTipoVeiculo;
-    private javax.swing.JDialog dialogCupom;
+    private javax.swing.JDialog dialogCupomEntrada;
+    private javax.swing.JDialog dialogCupomSaida;
     private javax.swing.JTextField fieldNomeGaragem;
     private javax.swing.JTextField fieldPlaca;
     private javax.swing.JTextField fieldQtdVagas;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -619,7 +817,15 @@ public class ViewSistema extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelNomeGaragem;
     private javax.swing.JLabel lblHora;
+    private javax.swing.JLabel lblHoraEntradaCupom;
+    private javax.swing.JLabel lblHoraEntradaCupomSaida;
+    private javax.swing.JLabel lblHoraSaidaCupomSaida;
     private javax.swing.JLabel lblNomeGaragemCupom;
+    private javax.swing.JLabel lblNomeGaragemCupom1;
+    private javax.swing.JLabel lblPlacaCupom;
+    private javax.swing.JLabel lblPlacaCupomSaida;
+    private javax.swing.JPanel panelCupom1;
+    private javax.swing.JPanel panelCupomEntrada;
     private javax.swing.JPanel panelEntrada;
     private javax.swing.JTable tabelaHistorico;
     private javax.swing.JTable tabelaVagas;

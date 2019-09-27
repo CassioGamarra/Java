@@ -48,7 +48,7 @@ public class ModelEntradaSaida {
                 stmt.setString(5, tipo);
                 stmt.setInt(6, 1);
                 stmt.execute();
-                textoEntrada = "ENTRADA: "+placa+"\n"+"Entrada - HORA:"+horario+" | DATA: "+data;
+                textoEntrada = horario+"-"+data;
                 conectar().close();
                 return textoEntrada;
             }           

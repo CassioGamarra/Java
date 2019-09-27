@@ -1,5 +1,6 @@
 package controller;
-
+ 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import static model.ModelConfig.VAGA;
 import model.ModelEntradaSaida;
@@ -39,7 +40,7 @@ public class ControllerEntradaSaida {
             JOptionPane.showMessageDialog(null, "SELECIONAR TIPO"
                     + "\nPor favor, selecione um tipo!");
         }
-        else if(view.getTabelaVagas().getValueAt(vaga, 1) != null){
+        else if(!view.getTabelaVagas().getValueAt(vaga, 1).toString().equals("LIVRE")){
             JOptionPane.showMessageDialog(null, "VAGA OCUPADA"
                     + "\nPor favor, selecione uma vaga livre!");
         }
@@ -51,10 +52,16 @@ public class ControllerEntradaSaida {
             ModelEntradaSaida entradaSaida = new ModelEntradaSaida();
             mensagem = entradaSaida.entrada(placa, vaga, tipo);
             int posicao = vaga + 1;
+            String msg[] = mensagem.split("-");
+            String hora = msg[0];
+            String data = msg[1];
             if(!mensagem.equals("")){
                 view.getTabelaVagas().setValueAt("VAGA "+posicao+" OCUPADA", vaga, 0);
                 view.getTabelaVagas().setValueAt(placa, vaga, 1);
                 view.getTabelaVagas().setValueAt(tipo, vaga, 2);
+                view.getLblPlacaCupom().setText(placa);
+                view.getLblHoraEntradaCupom().setText("HORA: "+hora+" | DATA: "+data);
+                view.getFieldPlacaEntrada().setText("");
             }
             return mensagem;
         }
@@ -84,8 +91,8 @@ public class ControllerEntradaSaida {
             int posicao = vaga+1;
             if(!mensagem.equals("")){
                 view.getTabelaVagas().setValueAt("VAGA "+posicao+"   |   LIVRE", vaga, 0);
-                view.getTabelaVagas().setValueAt("", vaga, 1);
-                view.getTabelaVagas().setValueAt("", vaga, 2);
+                view.getTabelaVagas().setValueAt("LIVRE", vaga, 1);
+                view.getTabelaVagas().setValueAt("LIVRE", vaga, 2);
             }
             util.cleanJTable(view.getTabelaHistorico());
             ControllerHistorico historico = new ControllerHistorico();

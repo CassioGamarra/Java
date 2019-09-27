@@ -26,6 +26,7 @@ public class ControllerConfig {
             view.getTabelaVagas().setValueAt(PLACA.get(i), VAGA.get(i), 1);
             view.getTabelaVagas().setValueAt(TIPO.get(i), VAGA.get(i), 2);
         }
+        
     }
     
     //Solicitar ao model as configurações do sistema
@@ -43,12 +44,13 @@ public class ControllerConfig {
         view.getTabelaVagas();
         view.getFieldNomeGaragem().setText(nomeGaragem);
         view.getFieldQtdVagas().setText(String.valueOf(numVagas));
+        
         util.cleanJTable(view.getTabelaVagas());
         
         DefaultTableModel model = (DefaultTableModel) view.getTabelaVagas().getModel();
         
         for(int i = 0; i < numVagas; i++){
-            Object[] linha = {"VAGA "+(i+1)+"   |   LIVRE"};
+            Object[] linha = {"VAGA "+(i+1)+"   |   LIVRE", "LIVRE", "LIVRE"};
             model.addRow(linha);
         }
     }

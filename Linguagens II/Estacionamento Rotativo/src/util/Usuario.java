@@ -21,12 +21,13 @@ import javax.swing.JOptionPane;
  * 3 -  SUPER ADM
  * @author cassio
  */
-public class CriarADM {
+public class Usuario {
     public static void main(String[] args) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         try {
             Connection conectar = conectar();
             String usuario = "operador";
-            String senha = gerarAdmin("operador");
+            String senha = gerarAdmin("op");
+            int nivelAcesso = 1;
             
             String sql = "INSERT INTO USUARIO(USERNAME, PASSWORD, NIVEL_ACESSO)"
                     + "VALUES(?,?,?)";
@@ -34,13 +35,13 @@ public class CriarADM {
             PreparedStatement stmt = conectar().prepareStatement(sql);
             stmt.setString(1, usuario);
             stmt.setString(2, senha);
-            stmt.setInt(3, 1);
+            stmt.setInt(3, nivelAcesso);
             
             stmt.execute();
             System.out.println("SUCESSO!");
             
         } catch (SQLException ex) {
-            Logger.getLogger(CriarADM.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -62,7 +63,7 @@ public class CriarADM {
         
         Connection conectar = null;
         try{
-            conectar = DriverManager.getConnection("jdbc:mysql://localhost:3306/GARAGEM","root","root");
+            conectar = DriverManager.getConnection("jdbc:mysql://localhost:3306/GARAGEM?useTimezone=true&serverTimezone=UTC","root","root");
             return conectar;
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "NÃO FOI POSSÍVEL CONECTAR!", "ERRO!", JOptionPane.WARNING_MESSAGE);
