@@ -1,7 +1,5 @@
 package model;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,6 +16,8 @@ public class ModelEntradaSaida {
     public ModelEntradaSaida(){}
     
     Util util = new Util();
+    Conexao conexao = Conexao.getInstance();
+    
     //Métodos de entrada e saida
     public String entrada(String placa, int vaga, String tipo) {
         String textoEntrada = "";
@@ -28,7 +28,7 @@ public class ModelEntradaSaida {
         horario = util.horarioSistema();
         data = util.dataSistema();
         try {
-            PreparedStatement stmt = conectar().prepareStatement(sql);
+            PreparedStatement stmt = conexao.conectarBanco().prepareStatement(sql);
             ResultSet consulta = stmt.executeQuery(sql);
             while(consulta.next()){
                 status = Integer.parseInt(consulta.getString("SITUACAO"));
@@ -40,7 +40,7 @@ public class ModelEntradaSaida {
             }
             else{
                 sql = "INSERT INTO ENTRADA_E_SAIDA(PLACA, VAGA, DATA_ENTRADA, HORA_ENTRADA, TIPO_VEICULO,SITUACAO)VALUES(?, ?, ?, ?, ?, ?)";
-                stmt = conectar().prepareStatement(sql);
+                stmt = conexao.conectarBanco().prepareStatement(sql);
                 stmt.setString(1, placa);
                 stmt.setInt(2, vaga+1);
                 stmt.setString(3, data);
@@ -49,7 +49,7 @@ public class ModelEntradaSaida {
                 stmt.setInt(6, 1);
                 stmt.execute();
                 textoEntrada = horario+"-"+data;
-                conectar().close();
+                conexao.conectarBanco().close();
                 return textoEntrada;
             }           
         }
@@ -72,7 +72,7 @@ public class ModelEntradaSaida {
         String horaEntrada = "", dataEntrada = "";
         
         try {
-            PreparedStatement stmt = conectar().prepareStatement(sql);
+            PreparedStatement stmt = conexao.conectarBanco().prepareStatement(sql);
             ResultSet consulta = stmt.executeQuery(sql);
             while(consulta.next()){
                 status = Integer.parseInt(consulta.getString("situacao"));
@@ -89,10 +89,10 @@ public class ModelEntradaSaida {
             else{
                 //Faz a saída da pessoa
                 sql = "UPDATE ENTRADA_E_SAIDA SET DATA_SAIDA = '"+data+"', HORA_SAIDA = '"+horario+"', SITUACAO = 0 WHERE PLACA LIKE '"+placa+"'";
-                stmt = conectar().prepareStatement(sql);
+                stmt = conexao.conectarBanco().prepareStatement(sql);
                 stmt.executeUpdate();
                 textoSaida = horaEntrada+"-"+dataEntrada+"-"+horario+"-"+data;
-                conectar().close();
+                conexao.conectarBanco().close();
                 return textoSaida;
             }
         }
@@ -100,21 +100,5 @@ public class ModelEntradaSaida {
             System.out.println("ERRO");
             throw new RuntimeException(e);
         }
-    }
-    
-    //Método para conectar com o banco
-    private Connection conectar() throws SQLException{
-        Conexao conexao = Conexao.getInstance();
-        Connection conectar = null;
-        try{
-            conectar = DriverManager.getConnection(conexao.getUrl(),conexao.getUser(),conexao.getPassword());
-            return conectar;
-        }
-        catch(SQLException e){
-            JOptionPane.showMessageDialog(null, "NÃO FOI POSSÍVEL CONECTAR!", "ERRO!", JOptionPane.WARNING_MESSAGE);
-            System.exit(0);
-	}
-        
-        return conectar;
     }
 }

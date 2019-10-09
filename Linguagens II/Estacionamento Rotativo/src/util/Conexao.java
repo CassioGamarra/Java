@@ -1,5 +1,10 @@
 package util;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  * Singleton com as conexões do banco
  * @author cassio
@@ -19,35 +24,27 @@ public class Conexao {
         return instance;
     }
     
-    public void gerar(){
-        setUrl("jdbc:mysql://localhost:3306/GARAGEM?useTimezone=true&serverTimezone=UTC");
-        setUser("root");
-        setPassword("root");
+    
+    public Connection conectarBanco() throws SQLException{
+        url = "jdbc:mysql://localhost:3306/GARAGEM?useTimezone=true&serverTimezone=UTC";
+        user = "root";
+        password = "root";
+        return conectar();
     }
     
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {        
-        this.url = url;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    
-    
+    //Método para conectar com o banco
+    private Connection conectar() throws SQLException{
+        Conexao conexao = util.Conexao.getInstance();
+        Connection conectar = null;
+        try{
+            conectar = DriverManager.getConnection(url, user, password);
+            return conectar;
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "NÃO FOI POSSÍVEL CONECTAR!", "ERRO!", JOptionPane.WARNING_MESSAGE);
+            System.exit(0);
+	}
+        
+        return conectar;
+    }    
 }
