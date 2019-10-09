@@ -6,6 +6,7 @@
 package view;
 
 import controller.ControllerLogin;
+import java.awt.event.KeyEvent;
 /**
  *
  * @author cassio
@@ -70,6 +71,11 @@ public class ViewLogin extends javax.swing.JFrame {
         fieldSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldSenhaActionPerformed(evt);
+            }
+        });
+        fieldSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                fieldSenhaKeyPressed(evt);
             }
         });
 
@@ -161,6 +167,13 @@ public class ViewLogin extends javax.swing.JFrame {
         login.login(fieldUsuario.getText(), fieldSenha.getPassword());
         this.dispose();
     }//GEN-LAST:event_btnEntrarActionPerformed
+
+    private void fieldSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldSenhaKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {                    
+            btnEntrar.doClick();
+        }
+    }//GEN-LAST:event_fieldSenhaKeyPressed
 
     /**
      * @param args the command line arguments

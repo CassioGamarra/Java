@@ -91,8 +91,7 @@ public class ModelEntradaSaida {
                 sql = "UPDATE ENTRADA_E_SAIDA SET DATA_SAIDA = '"+data+"', HORA_SAIDA = '"+horario+"', SITUACAO = 0 WHERE PLACA LIKE '"+placa+"'";
                 stmt = conectar().prepareStatement(sql);
                 stmt.executeUpdate();
-                textoSaida = "VOLTE SEMPRE\n" + "PLACA: "+placa+"\nENTRADA: "+horaEntrada+" / "+dataEntrada+"\nSAÍDA: "+
-                        horario+" / "+data;
+                textoSaida = horaEntrada+"-"+dataEntrada+"-"+horario+"-"+data;
                 conectar().close();
                 return textoSaida;
             }

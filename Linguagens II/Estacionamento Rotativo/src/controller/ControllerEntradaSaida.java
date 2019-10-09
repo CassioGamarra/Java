@@ -71,7 +71,7 @@ public class ControllerEntradaSaida {
     //Saída da garagem
     public String saidaGaragem(ViewSistema view){
         
-        String mensagem =  "";
+        String mensagem = "";
         String placa, tipo;
         int vaga;
         
@@ -88,11 +88,21 @@ public class ControllerEntradaSaida {
         else{
             ModelEntradaSaida entradaSaida = new ModelEntradaSaida();
             mensagem = entradaSaida.saida(placa, vaga);
+            String msg[] = mensagem.split("-");
+            String horaEntrada = msg[0];
+            String dataEntrada = msg[1];
+            String horaSaida = msg[2];
+            String dataSaida = msg[3];
+            
             int posicao = vaga+1;
             if(!mensagem.equals("")){
                 view.getTabelaVagas().setValueAt("VAGA "+posicao+"   |   LIVRE", vaga, 0);
                 view.getTabelaVagas().setValueAt("LIVRE", vaga, 1);
                 view.getTabelaVagas().setValueAt("LIVRE", vaga, 2);
+                view.getLblPlacaCupomSaida().setText(placa);
+                view.getLblHoraEntradaCupomSaida().setText("HORA: "+horaEntrada+" | DATA: "+dataEntrada);
+                view.getLblHoraSaidaCupomSaida().setText("HORA: "+horaSaida+" | DATA: "+dataSaida);
+                view.getFieldPlacaEntrada().setText("");
             }
             util.cleanJTable(view.getTabelaHistorico());
             ControllerHistorico historico = new ControllerHistorico();

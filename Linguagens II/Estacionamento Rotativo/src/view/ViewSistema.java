@@ -379,9 +379,9 @@ public class ViewSistema extends javax.swing.JFrame {
         );
 
         dialogCupomSaida.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        dialogCupomSaida.setMaximumSize(new java.awt.Dimension(420, 420));
-        dialogCupomSaida.setMinimumSize(new java.awt.Dimension(420, 420));
-        dialogCupomSaida.setPreferredSize(new java.awt.Dimension(420, 420));
+        dialogCupomSaida.setMaximumSize(new java.awt.Dimension(460, 420));
+        dialogCupomSaida.setMinimumSize(new java.awt.Dimension(460, 420));
+        dialogCupomSaida.setPreferredSize(new java.awt.Dimension(460, 420));
 
         panelCupom1.setBackground(new java.awt.Color(253, 245, 171));
         panelCupom1.setForeground(new java.awt.Color(253, 245, 171));
@@ -452,7 +452,7 @@ public class ViewSistema extends javax.swing.JFrame {
                 .addGroup(dialogCupomSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(panelCupom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         dialogCupomSaidaLayout.setVerticalGroup(
             dialogCupomSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -706,6 +706,7 @@ public class ViewSistema extends javax.swing.JFrame {
             lblNomeGaragemCupom.setText(labelNomeGaragem.getText());
             dialogCupomEntrada.setVisible(true);
             fieldPlaca.setText("");
+            comboTipoVeiculo.setSelectedIndex(0);
         }
     }//GEN-LAST:event_btnEntradaActionPerformed
 
@@ -714,11 +715,13 @@ public class ViewSistema extends javax.swing.JFrame {
         ControllerEntradaSaida entradaSaida = new ControllerEntradaSaida();
         ControllerHistorico historico = new ControllerHistorico();
         String msg = "";
-        
         msg = entradaSaida.saidaGaragem(this);
+        
         if(!msg.equals("")){
-            JOptionPane.showMessageDialog(null, msg);
+            lblNomeGaragemCupom1.setText(labelNomeGaragem.getText());
+            dialogCupomSaida.setVisible(true);
             fieldPlaca.setText("");
+            comboTipoVeiculo.setSelectedIndex(0);
         }
     }//GEN-LAST:event_btnSaidaActionPerformed
 
@@ -732,6 +735,10 @@ public class ViewSistema extends javax.swing.JFrame {
             if(!placa.equals("LIVRE")){
                 fieldPlaca.setText(placa);
                 comboTipoVeiculo.setSelectedItem(tipo);
+            }
+            else{
+                fieldPlaca.setText("");
+                comboTipoVeiculo.setSelectedIndex(0);
             }
         } 
         catch (Exception e) {
