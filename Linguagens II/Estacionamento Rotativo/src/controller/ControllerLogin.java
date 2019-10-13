@@ -37,9 +37,7 @@ public class ControllerLogin {
             viewLogin.dispose();
             ViewSistema view = new ViewSistema();
             if(sessao.getNivelAcesso() == 1){
-                view.getFieldNomeGaragem().setEditable(false);
-                view.getFieldQtdVagas().setEditable(false);
-                view.getBtnSalvarConfig().setEnabled(false);
+                view.getViewPainelAdm().remove(2);
             }
             view.setLocationRelativeTo(null);
             view.setVisible(true);

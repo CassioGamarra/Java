@@ -1,4 +1,4 @@
-package util;
+package model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -26,7 +26,7 @@ public class Conexao {
     
     
     public Connection conectarBanco() throws SQLException{
-        url = "jdbc:mysql://localhost:3306/GARAGEM?useTimezone=true&serverTimezone=UTC";
+        url = "jdbc:mysql://localhost:3306/AULA03AGENDA?useTimezone=true&serverTimezone=UTC";
         user = "root";
         password = "root";
         return conectar();

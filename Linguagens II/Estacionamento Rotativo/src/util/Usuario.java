@@ -25,7 +25,7 @@ public class Usuario {
     public static void main(String[] args) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         try {
             Connection conectar = conectar();
-            String usuario = "operador";
+            String usuario = "op";
             String senha = gerarAdmin("op");
             int nivelAcesso = 1;
             

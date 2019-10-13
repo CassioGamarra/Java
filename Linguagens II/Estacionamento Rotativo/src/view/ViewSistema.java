@@ -11,7 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -71,6 +71,10 @@ public class ViewSistema extends javax.swing.JFrame {
     
     //Getter
     
+    public JTabbedPane getViewPainelAdm() {
+        return ViewPainelAdm;
+    }
+
     public JLabel getLblHoraEntradaCupomSaida() {
         return lblHoraEntradaCupomSaida;
     }
@@ -300,9 +304,7 @@ public class ViewSistema extends javax.swing.JFrame {
         );
 
         dialogCupomEntrada.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        dialogCupomEntrada.setMaximumSize(new java.awt.Dimension(460, 420));
         dialogCupomEntrada.setMinimumSize(new java.awt.Dimension(460, 420));
-        dialogCupomEntrada.setPreferredSize(new java.awt.Dimension(460, 420));
 
         panelCupomEntrada.setBackground(new java.awt.Color(253, 245, 171));
         panelCupomEntrada.setForeground(new java.awt.Color(253, 245, 171));
@@ -379,9 +381,7 @@ public class ViewSistema extends javax.swing.JFrame {
         );
 
         dialogCupomSaida.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        dialogCupomSaida.setMaximumSize(new java.awt.Dimension(460, 420));
         dialogCupomSaida.setMinimumSize(new java.awt.Dimension(460, 420));
-        dialogCupomSaida.setPreferredSize(new java.awt.Dimension(460, 420));
 
         panelCupom1.setBackground(new java.awt.Color(253, 245, 171));
         panelCupom1.setForeground(new java.awt.Color(253, 245, 171));
