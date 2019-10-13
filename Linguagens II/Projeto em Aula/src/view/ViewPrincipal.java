@@ -22,7 +22,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
         initComponents();
     }
     ControllerCadastro cadastro = new ControllerCadastro();
-
+    
     public JTextField getFieldCargoAlteracao() {
         return fieldCargoAlteracao;
     }
@@ -190,6 +190,11 @@ public class ViewPrincipal extends javax.swing.JFrame {
         });
 
         jButton2.setText("VOLTAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         fieldEmailCadastro.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         fieldEmailCadastro.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "E-MAIL:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
@@ -426,6 +431,11 @@ public class ViewPrincipal extends javax.swing.JFrame {
         });
 
         btnVoltarAlteracao.setText("VOLTAR");
+        btnVoltarAlteracao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarAlteracaoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -539,6 +549,11 @@ public class ViewPrincipal extends javax.swing.JFrame {
         });
 
         btnVoltarExcluir.setText("VOLTAR");
+        btnVoltarExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -690,6 +705,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
     
     private void btnVoltarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarConsultaActionPerformed
         // TODO add your handling code here:
+        ViewConsulta.dispose();
     }//GEN-LAST:event_btnVoltarConsultaActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
@@ -745,6 +761,21 @@ public class ViewPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         cadastro.consultar(this, 3);
     }//GEN-LAST:event_btnBuscarExcluirActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        ViewCadastro.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnVoltarAlteracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarAlteracaoActionPerformed
+        // TODO add your handling code here:
+        ViewAlterar.dispose();
+    }//GEN-LAST:event_btnVoltarAlteracaoActionPerformed
+
+    private void btnVoltarExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarExcluirActionPerformed
+        // TODO add your handling code here:
+        ViewExcluir.dispose();
+    }//GEN-LAST:event_btnVoltarExcluirActionPerformed
 
     /**
      * @param args the command line arguments

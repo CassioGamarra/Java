@@ -36,6 +36,9 @@ public class ControllerCadastro {
             func.setCargo(cargo);
             if(cadastro.cadastrar(func)){
                 JOptionPane.showMessageDialog(null, "CADASTRO REALIZADO COM SUCESSO!");
+                view.getFieldNomeCadastro().setText("");
+                view.getFieldEmailCadastro().setText("");
+                view.getFieldCargoCadastro().setText("");
             }
             else{
                 JOptionPane.showMessageDialog(null, "ERRO NO CADASTRO");
@@ -158,6 +161,11 @@ public class ControllerCadastro {
             func.setCargo(cargo);
             if(cadastro.alterar(func)){
                 JOptionPane.showMessageDialog(null, "CADASTRO ALTERADO COM SUCESSO!");
+                view.getFieldConsultaAlteracao().setText("");
+                view.getFieldIdAlteracao().setText("");
+                view.getFieldNomeAlteracao().setText("");
+                view.getFieldEmailAlteracao().setText("");
+                view.getFieldCargoAlteracao().setText("");
             }
             else{
                 JOptionPane.showMessageDialog(null, "ERRO NA ALTERACAO");
@@ -174,6 +182,12 @@ public class ControllerCadastro {
         if(opcao == 0){
             cadastro.excluir(func);
             JOptionPane.showMessageDialog(null, "CADASTRO EXCLUIDO COM SUCESSO!");
+            view.getFieldConsultaExcluir().setText("");
+            view.getFieldIdExcluir().setText("");
+            view.getFieldNomeExcluir().setText("");
+            view.getFieldEmailExcluir().setText("");
+            view.getFieldCargoExcluir().setText("");
+                  
         }
         else if(opcao == 1){
             JOptionPane.showMessageDialog(null, "SEM ALTERAÇÕES!");
