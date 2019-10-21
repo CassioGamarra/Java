@@ -1,5 +1,6 @@
 package controller;
 
+import view.ViewConfig;
 import view.ViewPrincipal;
 
 /**
@@ -8,7 +9,10 @@ import view.ViewPrincipal;
  */
 public class ControllerPrincipal {
     public static void main(String[] args) {
-        ViewPrincipal view = new ViewPrincipal();
+        /*ViewPrincipal view = new ViewPrincipal();
+        view.setLocationRelativeTo(null);
+        view.setVisible(true);*/
+        ViewConfig view = new ViewConfig();
         view.setLocationRelativeTo(null);
         view.setVisible(true);
     }
