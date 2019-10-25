@@ -165,8 +165,6 @@ public class Principal {
         } catch (IOException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
     }
     //Método genérico para abrir caixas de diálogo
     public static String input(String tipoMsg, String msg, String titulo, int
