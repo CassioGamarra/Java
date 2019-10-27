@@ -64,24 +64,29 @@ public class ControllerCadastroJogo {
         
         int i = view.getTabelaJogos().getSelectedRow();
         
+        if(i == -1){
+            JOptionPane.showMessageDialog(null, "Nenhum jogo selecionado!");
+            return;
+        }
+        
         jogo.setId(Integer.parseInt(view.getTabelaJogos().getValueAt(i, 0).toString()));
         jogo.setDescricao(view.getTabelaJogos().getValueAt(i, 1).toString());
         
-        int opcao = JOptionPane.showConfirmDialog(null, "DESEJA EXCLUIR O JOGO: "+jogo.getDescricao());
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja excluir o jogo:\n\n"+jogo.getDescricao().toUpperCase());
         if(opcao == 0){
             if(cadastro.excluir(jogo)){
-                JOptionPane.showMessageDialog(null, "O JOGO "+jogo.getDescricao()+" FOI EXCLUIDO COM SUCESSO");
+                JOptionPane.showMessageDialog(null, "O jogo\n\n"+jogo.getDescricao().toUpperCase()+"\n\nfoi excluido com sucesso!");
                 util.cleanJTable(view.getTabelaJogos());
                 util.cleanJTable(view.getTabelaJogosExcluidos());
                 consulta(view);
             }
             else{
-                JOptionPane.showMessageDialog(null, "ERRO AO EXCLUIR!");
+                JOptionPane.showMessageDialog(null, "Erro ao excluir!");
             }
                  
         }
         else if(opcao == 1){
-            JOptionPane.showMessageDialog(null, "SEM ALTERAÇÕES!");
+            JOptionPane.showMessageDialog(null, "Sem alterações!");
         }
         else{
             return;
@@ -93,24 +98,30 @@ public class ControllerCadastroJogo {
         
         int i = view.getTabelaJogosExcluidos().getSelectedRow();
         
+        if(i == -1){
+            JOptionPane.showMessageDialog(null, "Nenhum jogo selecionado!");
+            return;
+        }
+        
         jogo.setId(Integer.parseInt(view.getTabelaJogosExcluidos().getValueAt(i, 0).toString()));
         jogo.setDescricao(view.getTabelaJogosExcluidos().getValueAt(i, 1).toString());
         
-        int opcao = JOptionPane.showConfirmDialog(null, "DESEJA RESTAURAR O JOGO: "+jogo.getDescricao());
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja restaurar o jogo:\n\n"+jogo.getDescricao().toUpperCase());
         if(opcao == 0){
             if(cadastro.restaurar(jogo)){
-                JOptionPane.showMessageDialog(null, "O JOGO "+jogo.getDescricao()+" FOI RESTAURADO COM SUCESSO");
+                JOptionPane.showMessageDialog(null, "O jogo\n\n"+jogo.getDescricao().toUpperCase()+"\n\nfoi restaurado com sucesso!");
                 util.cleanJTable(view.getTabelaJogos());
                 util.cleanJTable(view.getTabelaJogosExcluidos());
                 consulta(view);
+                
             }
             else{
-                JOptionPane.showMessageDialog(null, "ERRO AO RESTAURAR!");
+                JOptionPane.showMessageDialog(null, "Erro ao restaurar!");
             }
                  
         }
         else if(opcao == 1){
-            JOptionPane.showMessageDialog(null, "SEM ALTERAÇÕES!");
+            JOptionPane.showMessageDialog(null, "Sem alterações!");
         }
         else{
             return;

@@ -46,7 +46,7 @@ public class Conexao {
             return conectar;
         }
         catch(SQLException e){
-            JOptionPane.showMessageDialog(null, "NÃO FOI POSSÍVEL CONECTAR!", "ERRO!", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Não foi possível conectar!", "ERRO!", JOptionPane.WARNING_MESSAGE);
             status = false;
 	}        
         return conectar;

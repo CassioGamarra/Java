@@ -136,6 +136,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelaJogosExcluidos = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        btnRestaurarJogo = new javax.swing.JButton();
         dialogConexao = new javax.swing.JDialog();
         panelConexao = new javax.swing.JPanel();
         fieldIP = new javax.swing.JTextField();
@@ -154,6 +155,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
         logo = new javax.swing.JLabel();
         lblHora = new javax.swing.JLabel();
         btnConexao = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
         dialogRestaurarJogos.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         dialogRestaurarJogos.setTitle("RESTAURAR JOGOS");
@@ -204,11 +206,6 @@ public class ViewPrincipal extends javax.swing.JFrame {
         tabelaJogosExcluidos.setSelectionBackground(new java.awt.Color(212, 14, 30));
         tabelaJogosExcluidos.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tabelaJogosExcluidos.getTableHeader().setReorderingAllowed(false);
-        tabelaJogosExcluidos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaJogosExcluidosMouseClicked(evt);
-            }
-        });
         jScrollPane2.setViewportView(tabelaJogosExcluidos);
         if (tabelaJogosExcluidos.getColumnModel().getColumnCount() > 0) {
             tabelaJogosExcluidos.getColumnModel().getColumn(0).setPreferredWidth(8);
@@ -225,6 +222,16 @@ public class ViewPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnRestaurarJogo.setBackground(new java.awt.Color(212, 14, 30));
+        btnRestaurarJogo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnRestaurarJogo.setForeground(new java.awt.Color(246, 180, 14));
+        btnRestaurarJogo.setText("RESTAURAR");
+        btnRestaurarJogo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRestaurarJogoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelRestaurarLayout = new javax.swing.GroupLayout(panelRestaurar);
         panelRestaurar.setLayout(panelRestaurarLayout);
         panelRestaurarLayout.setHorizontalGroup(
@@ -232,12 +239,20 @@ public class ViewPrincipal extends javax.swing.JFrame {
             .addGroup(panelRestaurarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelRestaurarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRestaurarLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnRestaurarJogo, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(113, 113, 113)))
                 .addContainerGap())
         );
+
+        panelRestaurarLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnRestaurarJogo, jButton1});
+
         panelRestaurarLayout.setVerticalGroup(
             panelRestaurarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRestaurarLayout.createSequentialGroup()
@@ -246,9 +261,11 @@ public class ViewPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelRestaurarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRestaurarJogo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout dialogRestaurarJogosLayout = new javax.swing.GroupLayout(dialogRestaurarJogos.getContentPane());
@@ -401,7 +418,6 @@ public class ViewPrincipal extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setFocusCycleRoot(false);
         setFocusTraversalPolicyProvider(true);
-        setPreferredSize(new java.awt.Dimension(960, 540));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(960, 540));
@@ -438,11 +454,6 @@ public class ViewPrincipal extends javax.swing.JFrame {
         tabelaJogos.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tabelaJogos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tabelaJogos.getTableHeader().setReorderingAllowed(false);
-        tabelaJogos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaJogosMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(tabelaJogos);
         if (tabelaJogos.getColumnModel().getColumnCount() > 0) {
             tabelaJogos.getColumnModel().getColumn(0).setResizable(false);
@@ -486,6 +497,16 @@ public class ViewPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnExcluir.setBackground(new java.awt.Color(212, 14, 30));
+        btnExcluir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnExcluir.setForeground(new java.awt.Color(246, 180, 14));
+        btnExcluir.setText("EXCLUIR JOGO");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -496,8 +517,9 @@ public class ViewPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRestaurar, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRestaurar, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(logo)
@@ -508,7 +530,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnRestaurar, btnVoltar});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnExcluir, btnRestaurar, btnVoltar});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -521,11 +543,12 @@ public class ViewPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnConexao, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRestaurar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRestaurar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -576,16 +599,6 @@ public class ViewPrincipal extends javax.swing.JFrame {
         dialogRestaurarJogos.setVisible(true);
     }//GEN-LAST:event_btnRestaurarActionPerformed
 
-    private void tabelaJogosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaJogosMouseClicked
-        // TODO add your handling code here:
-        cadastro.excluir(this);
-    }//GEN-LAST:event_tabelaJogosMouseClicked
-
-    private void tabelaJogosExcluidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaJogosExcluidosMouseClicked
-        // TODO add your handling code here:
-        cadastro.restaurar(this);
-    }//GEN-LAST:event_tabelaJogosExcluidosMouseClicked
-
     private void fieldPortaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldPortaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldPortaActionPerformed
@@ -599,6 +612,16 @@ public class ViewPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         dialogRestaurarJogos.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // TODO add your handling code here:
+        cadastro.excluir(this);
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnRestaurarJogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestaurarJogoActionPerformed
+        // TODO add your handling code here:
+        cadastro.restaurar(this);
+    }//GEN-LAST:event_btnRestaurarJogoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -643,7 +666,9 @@ public class ViewPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConectar;
     private javax.swing.JButton btnConexao;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnRestaurar;
+    private javax.swing.JButton btnRestaurarJogo;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JDialog dialogConexao;
     private javax.swing.JDialog dialogRestaurarJogos;

@@ -102,14 +102,14 @@ public class ControllerConexao {
     public void conectar(ViewPrincipal view) throws SQLException{
         conexao.conectarBanco();
         if(!conexao.getStatus() && !view.getDialogConexao().isVisible()){
-            int opcao = JOptionPane.showConfirmDialog(null, "DESEJA CONFIGURAR A CONEXÃO?");
+            int opcao = JOptionPane.showConfirmDialog(null, "Deseja configurar a conexão com a base de dados?");
             if(opcao == 0){
                 view.getDialogConexao().setVisible(true);
             }
         }
         else{
             if(conexao.getStatus()){
-                JOptionPane.showMessageDialog(null, "CONEXÃO REALIZADA COM SUCESSO!", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Conexão realizada com sucesso!", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }
