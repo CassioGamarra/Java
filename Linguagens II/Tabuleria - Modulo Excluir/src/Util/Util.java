@@ -1,4 +1,4 @@
-package util;
+package Util;
 
 
 import java.util.Calendar;
@@ -38,17 +38,6 @@ public class Util {
         horario = hora+":"+minuto+":"+segundo;
         
         return horario;
-    }
-    
-    //Método para verificar placa 
-    public boolean isPlaca(String placa){
-        if(placa.length() != 8){
-            return false;
-        }
-        else{
-            String regex = "[A-Z]{3}-[0-9]{4}";
-            return placa.matches(regex);
-        }
     }
     
     //Método para limpar tabelas

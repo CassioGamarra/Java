@@ -2,6 +2,7 @@ package Controller;
 
 import View.ViewPrincipal;
 import Model.Conexao;
+import Util.*;
 
 //Importações para manipular o arquivo
 import java.io.File;
@@ -23,6 +24,8 @@ public class ControllerConexao {
     public ControllerConexao(){}
     Conexao conexao = Conexao.getInstance();
     
+    public static boolean statusConexao;
+    
     //Verifica no arquivo de conexão se existem os dados
     public void verificaDadosConexao(ViewPrincipal view) throws SQLException{
         String nomeArquivo = "dadosconexao.dat";
@@ -39,7 +42,6 @@ public class ControllerConexao {
                 conexao.setDbname(leitor.nextLine());
                 conexao.setUser(leitor.nextLine());
                 conexao.setPassword(leitor.nextLine());
-                conexao.setSgbd(leitor.nextLine());
                 
                 view.getFieldIP().setText(conexao.getIP());
                 view.getFieldPorta().setText(conexao.getPorta());
@@ -64,7 +66,6 @@ public class ControllerConexao {
         nomeDB = view.getFieldNomeDB().getText();
         user = view.getFieldUser().getText();
         senha = view.getFieldPassword().getPassword();
-        tipo = view.getComboTipoBanco().getSelectedItem().toString().toLowerCase();
         
         try {
             FileWriter fw = new FileWriter(nomeArquivo);
@@ -79,14 +80,18 @@ public class ControllerConexao {
             bw.write(user);
             bw.newLine();
             bw.write(senha);
-            bw.newLine();
-            bw.write(tipo);
-            
             //Fecha os buffers
             bw.close();
             fw.close();
             //Verifica novamente os dados no arquivo
             verificaDadosConexao(view);
+            //Tenta conectar com o banco
+            Util util = new Util();
+            util.cleanJTable(view.getTabelaJogos());
+            util.cleanJTable(view.getTabelaJogosExcluidos());
+            //ControllerCadastroJogo cadastro = new ControllerCadastroJogo();
+            conectar(view);
+            view.cadastro.consulta(view);
         }
         catch (IOException ex) {
             Logger.getLogger(ControllerConexao.class.getName()).log(Level.SEVERE, null, ex);
@@ -94,16 +99,18 @@ public class ControllerConexao {
     }
     
     //Teste de conexão com o banco
-    public void contectar(ViewPrincipal view) throws SQLException{
+    public void conectar(ViewPrincipal view) throws SQLException{
         conexao.conectarBanco();
-        if(!conexao.getStatus()){
+        if(!conexao.getStatus() && !view.getDialogConexao().isVisible()){
             int opcao = JOptionPane.showConfirmDialog(null, "DESEJA CONFIGURAR A CONEXÃO?");
             if(opcao == 0){
-                view.getTabbedPanel().setSelectedIndex(1);
+                view.getDialogConexao().setVisible(true);
             }
         }
         else{
-            System.out.println("TA OK");
+            if(conexao.getStatus()){
+                JOptionPane.showMessageDialog(null, "CONEXÃO REALIZADA COM SUCESSO!", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
     }
 }

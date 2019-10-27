@@ -24,7 +24,7 @@ public class ModelHistorico {
             return consulta;
         } 
         catch (SQLException e) {
-            System.out.println("Erro");
+            System.out.println(e);
         }
         return null;
     }

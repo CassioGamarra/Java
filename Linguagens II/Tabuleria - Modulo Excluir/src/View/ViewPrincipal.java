@@ -5,13 +5,19 @@
  */
 package View;
 
+import Controller.ControllerCadastroJogo;
 import Controller.ControllerConexao;
+import java.awt.EventQueue;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JPasswordField;
-import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
@@ -19,25 +25,68 @@ import javax.swing.JTextField;
  * @author cassio
  */
 public class ViewPrincipal extends javax.swing.JFrame {
-
+    //Formatando a hora no sistema
+    private static final DateFormat FORMATO = new SimpleDateFormat("HH:mm:ss");
     /**
      * Creates new form ViewPrincipal
      */
     public ViewPrincipal() throws SQLException {
         initComponents();
         conexao.verificaDadosConexao(this);
+        conexao.conectar(this);
+        cadastro.consulta(this);
+        // Iniciamos a thread do relógio. Tornei uma deamon thread para que seja
+        // automaticamente finalizada caso a aplicação feche.
+        Thread clockThread = new Thread(new ViewPrincipal.ClockRunnable(), "Clock thread");
+        clockThread.setDaemon(true);
+        clockThread.start(); 
+    }
+    
+    //Hora do sistema
+    
+    /**
+     * Método para atualizar a hora no formulário. Não é thread-safe, portanto,
+     * @param date
+     */
+    public void setHora(Date date) {
+        lblHora.setText(FORMATO.format(date));
+    }
+    
+    /**
+     * Runnable que contém o código que atuará na thread. Chamando o método setHora
+     */
+    private class ClockRunnable implements Runnable {
+        public void run() {
+            try {
+                while (true) {
+                    // Aqui chamamos o setHora através da EventQueue da AWT.
+                    // Conforme dito, isso garante Thread safety para o Swing.
+                    EventQueue.invokeLater(new Runnable() {
+                        public void run() {
+                            // Só podemos chamar setHora diretamente dessa
+                            // forma, pois esse Runnable é uma InnerClass não
+                            // estática.
+                            setHora(new Date());
+                        }
+                    });
+                    // Fazemos nossa thread dormir por um segundo, liberando o
+                    // processador para outras threads processarem.
+                    Thread.sleep(1000);
+                }
+            }
+            catch (InterruptedException e) {
+            }
+        }
     }
     
     //Controller da Conexão
-    ControllerConexao conexao = new ControllerConexao();
+    public ControllerConexao conexao = new ControllerConexao();
+    //Controler para buscar a lista de jogos
+    public ControllerCadastroJogo cadastro = new ControllerCadastroJogo();
 
     //Getters da conexão
     public JTextField getFieldUser() {    
         return fieldUser;
-    }
-    
-    public JComboBox<String> getComboTipoBanco() {
-        return comboTipoBanco;
     }
 
     public JTextField getFieldIP() {
@@ -58,11 +107,18 @@ public class ViewPrincipal extends javax.swing.JFrame {
     
     //Getters gerais da view
 
-    public JTabbedPane getTabbedPanel() {
-        return tabbedPanel;
+    public JTable getTabelaJogosExcluidos() {
+        return tabelaJogosExcluidos;
     }
     
-    
+    public JTable getTabelaJogos() {
+        return tabelaJogos;
+    }
+
+    public JDialog getDialogConexao() {
+        return dialogConexao;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -73,105 +129,208 @@ public class ViewPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tabbedPanel = new javax.swing.JTabbedPane();
-        panelExcluir = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        dialogRestaurarJogos = new javax.swing.JDialog();
+        panelRestaurar = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabelaJogosExcluidos = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        dialogConexao = new javax.swing.JDialog();
         panelConexao = new javax.swing.JPanel();
         fieldIP = new javax.swing.JTextField();
         fieldPorta = new javax.swing.JTextField();
         fieldNomeDB = new javax.swing.JTextField();
         fieldUser = new javax.swing.JTextField();
         fieldPassword = new javax.swing.JPasswordField();
-        comboTipoBanco = new javax.swing.JComboBox<>();
         btnConectar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabelaJogos = new javax.swing.JTable();
+        btnVoltar = new javax.swing.JButton();
+        btnRestaurar = new javax.swing.JButton();
+        logo = new javax.swing.JLabel();
+        lblHora = new javax.swing.JLabel();
+        btnConexao = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        dialogRestaurarJogos.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        dialogRestaurarJogos.setTitle("RESTAURAR JOGOS");
+        dialogRestaurarJogos.setBackground(new java.awt.Color(255, 255, 255));
+        dialogRestaurarJogos.setMaximumSize(new java.awt.Dimension(640, 640));
+        dialogRestaurarJogos.setMinimumSize(new java.awt.Dimension(640, 640));
+        dialogRestaurarJogos.setPreferredSize(new java.awt.Dimension(640, 640));
+        dialogRestaurarJogos.setResizable(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        panelRestaurar.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(212, 14, 30));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("RESTAURAR JOGOS");
+
+        tabelaJogosExcluidos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        tabelaJogosExcluidos.setForeground(new java.awt.Color(246, 180, 14));
+        tabelaJogosExcluidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "CÓDIGO", "DESCRIÇÃO", "CLASSIFICAÇÃO INDICATIVA", "VALOR ALUGUEL"
+                "CÓDIGO", "DESCRIÇÃO", "CLASSIFICAÇÃO INDICATIVA", "VALOR ALUGUEL", "STATUS"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, true, false
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        tabelaJogosExcluidos.setGridColor(new java.awt.Color(246, 180, 14));
+        tabelaJogosExcluidos.setSelectionBackground(new java.awt.Color(212, 14, 30));
+        tabelaJogosExcluidos.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tabelaJogosExcluidos.getTableHeader().setReorderingAllowed(false);
+        tabelaJogosExcluidos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaJogosExcluidosMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tabelaJogosExcluidos);
+        if (tabelaJogosExcluidos.getColumnModel().getColumnCount() > 0) {
+            tabelaJogosExcluidos.getColumnModel().getColumn(0).setPreferredWidth(8);
+            tabelaJogosExcluidos.getColumnModel().getColumn(4).setPreferredWidth(2);
+        }
 
-        jButton1.setText("jButton1");
+        jButton1.setBackground(new java.awt.Color(212, 14, 30));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(246, 180, 14));
+        jButton1.setText("VOLTAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout panelExcluirLayout = new javax.swing.GroupLayout(panelExcluir);
-        panelExcluir.setLayout(panelExcluirLayout);
-        panelExcluirLayout.setHorizontalGroup(
-            panelExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelExcluirLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelRestaurarLayout = new javax.swing.GroupLayout(panelRestaurar);
+        panelRestaurar.setLayout(panelRestaurarLayout);
+        panelRestaurarLayout.setHorizontalGroup(
+            panelRestaurarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRestaurarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
-                    .addGroup(panelExcluirLayout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(panelRestaurarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        panelExcluirLayout.setVerticalGroup(
-            panelExcluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelExcluirLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+        panelRestaurarLayout.setVerticalGroup(
+            panelRestaurarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRestaurarLayout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
-        tabbedPanel.addTab("EXCLUIR JOGO", panelExcluir);
+        javax.swing.GroupLayout dialogRestaurarJogosLayout = new javax.swing.GroupLayout(dialogRestaurarJogos.getContentPane());
+        dialogRestaurarJogos.getContentPane().setLayout(dialogRestaurarJogosLayout);
+        dialogRestaurarJogosLayout.setHorizontalGroup(
+            dialogRestaurarJogosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelRestaurar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        dialogRestaurarJogosLayout.setVerticalGroup(
+            dialogRestaurarJogosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelRestaurar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
-        fieldIP.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "IP", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        dialogRestaurarJogos.setLocationRelativeTo(null);
+
+        dialogConexao.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        dialogConexao.setTitle("CONFIGURAR CONEXÃO");
+        dialogConexao.setAlwaysOnTop(true);
+        dialogConexao.setMaximumSize(new java.awt.Dimension(480, 560));
+        dialogConexao.setMinimumSize(new java.awt.Dimension(480, 560));
+        dialogConexao.setPreferredSize(new java.awt.Dimension(480, 560));
+        dialogConexao.setResizable(false);
+        dialogConexao.setLocationRelativeTo(null);
+
+        panelConexao.setBackground(new java.awt.Color(255, 255, 255));
+
+        fieldIP.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        fieldIP.setForeground(new java.awt.Color(212, 14, 30));
+        fieldIP.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(212, 14, 30), 2, true), "IP", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(212, 14, 30))); // NOI18N
         fieldIP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldIPActionPerformed(evt);
             }
         });
 
-        fieldPorta.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PORTA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        fieldPorta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        fieldPorta.setForeground(new java.awt.Color(212, 14, 30));
+        fieldPorta.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(212, 14, 30), 2, true), "PORTA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(212, 14, 30))); // NOI18N
+        fieldPorta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldPortaActionPerformed(evt);
+            }
+        });
 
-        fieldNomeDB.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "NOME DA BASE DE DADOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        fieldNomeDB.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        fieldNomeDB.setForeground(new java.awt.Color(212, 14, 30));
+        fieldNomeDB.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(212, 14, 30), 2, true), "NOME DA BASE DE DADOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(212, 14, 30))); // NOI18N
 
-        fieldUser.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "USUÁRIO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        fieldUser.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        fieldUser.setForeground(new java.awt.Color(212, 14, 30));
+        fieldUser.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(212, 14, 30), 2, true), "USUÁRIO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(212, 14, 30))); // NOI18N
 
+        fieldPassword.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        fieldPassword.setForeground(new java.awt.Color(212, 14, 30));
         fieldPassword.setText("jPasswordField1");
-        fieldPassword.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SENHA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        fieldPassword.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(212, 14, 30), 2, true), "SENHA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(212, 14, 30))); // NOI18N
+        fieldPassword.setCaretColor(new java.awt.Color(255, 255, 255));
         fieldPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 fieldPasswordMouseClicked(evt);
             }
         });
 
-        comboTipoBanco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MYSQL", "MARIADB", "SQLITE" }));
-        comboTipoBanco.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SGBD", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
-
-        btnConectar.setText("CONECTAR");
+        btnConectar.setBackground(new java.awt.Color(212, 14, 30));
+        btnConectar.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnConectar.setForeground(new java.awt.Color(246, 180, 14));
+        btnConectar.setText("OK");
+        btnConectar.setToolTipText("Botão para Conectar com o banco");
+        btnConectar.setBorderPainted(false);
+        btnConectar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnConectar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConectarActionPerformed(evt);
             }
         });
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("CONFIGURAR CONEXÃO COM A BASE DE DADOS");
 
         javax.swing.GroupLayout panelConexaoLayout = new javax.swing.GroupLayout(panelConexao);
         panelConexao.setLayout(panelConexaoLayout);
@@ -179,55 +338,210 @@ public class ViewPrincipal extends javax.swing.JFrame {
             panelConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelConexaoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(fieldNomeDB, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
-                    .addGroup(panelConexaoLayout.createSequentialGroup()
-                        .addComponent(comboTipoBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnConectar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(panelConexaoLayout.createSequentialGroup()
-                        .addComponent(fieldIP, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fieldPorta))
-                    .addGroup(panelConexaoLayout.createSequentialGroup()
-                        .addComponent(fieldUser, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(fieldPassword)))
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addGroup(panelConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btnConectar, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldPassword)
+                    .addComponent(fieldUser)
+                    .addComponent(fieldNomeDB))
+                .addContainerGap())
+            .addGroup(panelConexaoLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(fieldIP)
+                .addGap(187, 187, 187))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConexaoLayout.createSequentialGroup()
+                .addContainerGap(299, Short.MAX_VALUE)
+                .addComponent(fieldPorta, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10))
+            .addGroup(panelConexaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(panelConexaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         panelConexaoLayout.setVerticalGroup(
             panelConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelConexaoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fieldIP, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldPorta, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fieldIP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldPorta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(fieldNomeDB, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fieldUser, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(fieldUser, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(comboTipoBanco, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-                    .addComponent(btnConectar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addComponent(btnConectar, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
-        tabbedPanel.addTab("CONFIGURAR CONEXÃO", panelConexao);
+        btnConectar.getAccessibleContext().setAccessibleName("botão conectar");
+
+        javax.swing.GroupLayout dialogConexaoLayout = new javax.swing.GroupLayout(dialogConexao.getContentPane());
+        dialogConexao.getContentPane().setLayout(dialogConexaoLayout);
+        dialogConexaoLayout.setHorizontalGroup(
+            dialogConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelConexao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        dialogConexaoLayout.setVerticalGroup(
+            dialogConexaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelConexao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("MÓDULO EXCLUIR - JOGOS");
+        setBackground(new java.awt.Color(255, 255, 255));
+        setFocusCycleRoot(false);
+        setFocusTraversalPolicyProvider(true);
+        setPreferredSize(new java.awt.Dimension(960, 540));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(960, 540));
+
+        tabelaJogos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tabelaJogos.setForeground(new java.awt.Color(246, 180, 14));
+        tabelaJogos.setBackground(new java.awt.Color(255, 255, 255));
+        tabelaJogos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "CÓDIGO", "DESCRIÇÃO", "CLASSIFICAÇÃO INDICATIVA", "VALOR ALUGUEL", "STATUS"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabelaJogos.setGridColor(new java.awt.Color(246, 180, 14));
+        tabelaJogos.setRowHeight(20);
+        tabelaJogos.setSelectionBackground(new java.awt.Color(212, 14, 30));
+        tabelaJogos.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tabelaJogos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tabelaJogos.getTableHeader().setReorderingAllowed(false);
+        tabelaJogos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaJogosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabelaJogos);
+        if (tabelaJogos.getColumnModel().getColumnCount() > 0) {
+            tabelaJogos.getColumnModel().getColumn(0).setResizable(false);
+            tabelaJogos.getColumnModel().getColumn(0).setPreferredWidth(1);
+        }
+
+        btnVoltar.setBackground(new java.awt.Color(212, 14, 30));
+        btnVoltar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnVoltar.setForeground(new java.awt.Color(246, 180, 14));
+        btnVoltar.setText("VOLTAR");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
+
+        btnRestaurar.setBackground(new java.awt.Color(212, 14, 30));
+        btnRestaurar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnRestaurar.setForeground(new java.awt.Color(246, 180, 14));
+        btnRestaurar.setText("RESTAURAR JOGOS");
+        btnRestaurar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRestaurarActionPerformed(evt);
+            }
+        });
+
+        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
+
+        lblHora.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        lblHora.setForeground(new java.awt.Color(246, 180, 14));
+        lblHora.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+
+        btnConexao.setBackground(new java.awt.Color(212, 14, 30));
+        btnConexao.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnConexao.setForeground(new java.awt.Color(246, 180, 14));
+        btnConexao.setText("CONFIGURAR CONEXÃO");
+        btnConexao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConexaoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRestaurar, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(logo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 452, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblHora, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnConexao, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addContainerGap())
+        );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnRestaurar, btnVoltar});
+
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(logo)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnConexao, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRestaurar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnRestaurar, btnVoltar});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(tabbedPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 950, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabbedPanel)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -243,6 +557,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldPasswordMouseClicked
 
     private void btnConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConectarActionPerformed
+        dialogConexao.setAlwaysOnTop(false);
         try {
             // TODO add your handling code here:
             conexao.salvarDadosConexao(this);
@@ -251,14 +566,38 @@ public class ViewPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnConectarActionPerformed
 
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnRestaurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestaurarActionPerformed
+        // TODO add your handling code here:
+        dialogRestaurarJogos.setVisible(true);
+    }//GEN-LAST:event_btnRestaurarActionPerformed
+
+    private void tabelaJogosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaJogosMouseClicked
+        // TODO add your handling code here:
+        cadastro.excluir(this);
+    }//GEN-LAST:event_tabelaJogosMouseClicked
+
+    private void tabelaJogosExcluidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaJogosExcluidosMouseClicked
+        // TODO add your handling code here:
+        cadastro.restaurar(this);
+    }//GEN-LAST:event_tabelaJogosExcluidosMouseClicked
+
+    private void fieldPortaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldPortaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldPortaActionPerformed
+
+    private void btnConexaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConexaoActionPerformed
+        // TODO add your handling code here:
+        dialogConexao.setVisible(true);
+    }//GEN-LAST:event_btnConexaoActionPerformed
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            // TODO add your handling code here:
-            conexao.contectar(this);
-        }
-        catch (SQLException ex) {
-            Logger.getLogger(ViewPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        // TODO add your handling code here:
+        dialogRestaurarJogos.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -293,6 +632,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
             public void run() {
                 try {
                     new ViewPrincipal().setVisible(true);
+                    
                 } catch (SQLException ex) {
                     Logger.getLogger(ViewPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -302,17 +642,29 @@ public class ViewPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConectar;
-    private javax.swing.JComboBox<String> comboTipoBanco;
+    private javax.swing.JButton btnConexao;
+    private javax.swing.JButton btnRestaurar;
+    private javax.swing.JButton btnVoltar;
+    private javax.swing.JDialog dialogConexao;
+    private javax.swing.JDialog dialogRestaurarJogos;
     private javax.swing.JTextField fieldIP;
     private javax.swing.JTextField fieldNomeDB;
     private javax.swing.JPasswordField fieldPassword;
     private javax.swing.JTextField fieldPorta;
     private javax.swing.JTextField fieldUser;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblHora;
+    private javax.swing.JLabel logo;
     private javax.swing.JPanel panelConexao;
-    private javax.swing.JPanel panelExcluir;
-    private javax.swing.JTabbedPane tabbedPanel;
+    private javax.swing.JPanel panelRestaurar;
+    private javax.swing.JTable tabelaJogos;
+    private javax.swing.JTable tabelaJogosExcluidos;
     // End of variables declaration//GEN-END:variables
 }

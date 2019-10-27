@@ -12,7 +12,6 @@ import javax.swing.JOptionPane;
 public class Conexao {
     private static Conexao instance;
     private String url;
-    private String sgbd;
     private String IP;
     private String porta;
     private String dbname;
@@ -32,7 +31,7 @@ public class Conexao {
     }
    
     public Connection conectarBanco() throws SQLException{
-        url = "jdbc:"+getSgbd()+"://"+getIP()+":"+getPorta()+"/"+getDbname()+"?useTimezone=true&serverTimezone=UTC";
+        url = "jdbc:mysql://"+getIP()+":"+getPorta()+"/"+getDbname()+"?useTimezone=true&serverTimezone=UTC";
         user = getUser();
         password = getPassword();     
         return conectar();
@@ -54,17 +53,8 @@ public class Conexao {
     }
     
     //Getter e Setter
-
     public boolean getStatus() {
         return status;
-    }
-
-    public String getSgbd() {
-        return sgbd;
-    }
-
-    public void setSgbd(String sgbd) {
-        this.sgbd = sgbd;
     }
 
     public String getIP() {
