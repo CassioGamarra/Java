@@ -160,9 +160,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
         dialogRestaurarJogos.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         dialogRestaurarJogos.setTitle("RESTAURAR JOGOS");
         dialogRestaurarJogos.setBackground(new java.awt.Color(255, 255, 255));
-        dialogRestaurarJogos.setMaximumSize(new java.awt.Dimension(640, 640));
         dialogRestaurarJogos.setMinimumSize(new java.awt.Dimension(640, 640));
-        dialogRestaurarJogos.setPreferredSize(new java.awt.Dimension(640, 640));
         dialogRestaurarJogos.setResizable(false);
 
         panelRestaurar.setBackground(new java.awt.Color(255, 255, 255));
@@ -284,9 +282,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
         dialogConexao.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         dialogConexao.setTitle("CONFIGURAR CONEXÃO");
         dialogConexao.setAlwaysOnTop(true);
-        dialogConexao.setMaximumSize(new java.awt.Dimension(480, 560));
         dialogConexao.setMinimumSize(new java.awt.Dimension(480, 560));
-        dialogConexao.setPreferredSize(new java.awt.Dimension(480, 560));
         dialogConexao.setResizable(false);
         dialogConexao.setLocationRelativeTo(null);
 

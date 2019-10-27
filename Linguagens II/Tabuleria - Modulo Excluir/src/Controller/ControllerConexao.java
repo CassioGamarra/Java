@@ -33,7 +33,7 @@ public class ControllerConexao {
         
         try {
             Scanner leitor = new Scanner(arquivo);
-            if(!leitor.hasNextLine()){
+            if(!leitor.hasNextLine() ){
                 System.out.println("ERRO!");
             }
             else{
