@@ -108,8 +108,16 @@ public class ViewPrincipal extends javax.swing.JFrame {
     }
     
     //Getters gerais da view
-    public int opcao = -1;
+    private int opcao = -1;
 
+    public int getOpcao() {
+        return opcao;
+    }
+
+    public void setOpcao(int opcao) {
+        this.opcao = opcao;
+    }
+    
     public JButton getBtnCancelar() {
         return btnCancelar;
     }
@@ -454,7 +462,6 @@ public class ViewPrincipal extends javax.swing.JFrame {
 
         dialogInfo.setTitle("INFORMAÇÕES");
         dialogInfo.setBackground(new java.awt.Color(255, 255, 255));
-        dialogInfo.setMaximumSize(new java.awt.Dimension(300, 260));
         dialogInfo.setMinimumSize(new java.awt.Dimension(300, 260));
         dialogInfo.setResizable(false);
         dialogInfo.setLocationRelativeTo(null);
@@ -532,21 +539,11 @@ public class ViewPrincipal extends javax.swing.JFrame {
         btnNao.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnNao.setForeground(new java.awt.Color(246, 180, 14));
         btnNao.setText("NÃO");
-        btnNao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNaoActionPerformed(evt);
-            }
-        });
 
         btnCancelar.setBackground(new java.awt.Color(212, 14, 30));
         btnCancelar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(246, 180, 14));
         btnCancelar.setText("CANCELAR");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
 
         lblInfo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblInfo.setForeground(new java.awt.Color(212, 14, 30));
@@ -813,18 +810,8 @@ public class ViewPrincipal extends javax.swing.JFrame {
 
     private void btnSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimActionPerformed
         // TODO add your handling code here:
-        opcao = 0;
+        setOpcao(0);
     }//GEN-LAST:event_btnSimActionPerformed
-
-    private void btnNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNaoActionPerformed
-        // TODO add your handling code here:
-        opcao = 1;
-    }//GEN-LAST:event_btnNaoActionPerformed
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
-        dialogConfirma.dispose();
-    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments

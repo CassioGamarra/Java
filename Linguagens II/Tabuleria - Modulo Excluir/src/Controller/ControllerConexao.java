@@ -3,7 +3,6 @@ package Controller;
 import View.ViewPrincipal;
 import Model.Conexao;
 import Util.*;
-import java.awt.Color;
 
 //Importações para manipular o arquivo
 import java.io.File;

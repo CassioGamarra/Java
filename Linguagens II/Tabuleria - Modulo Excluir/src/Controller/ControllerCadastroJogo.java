@@ -72,10 +72,9 @@ public class ControllerCadastroJogo {
         jogo.setId(Integer.parseInt(view.getTabelaJogos().getValueAt(i, 0).toString()));
         jogo.setDescricao(view.getTabelaJogos().getValueAt(i, 1).toString());
         
-        int opcao = JOptionPane.showConfirmDialog(null, "Deseja excluir o jogo:\n\n"+jogo.getDescricao().toUpperCase());
-       // view.getLblInfo().setText("Deseja excluir o jogo:\n\n"+jogo.getDescricao().toUpperCase());
-       // view.getDialogConfirma().setVisible(true);
-        
+        int opcao= JOptionPane.showConfirmDialog(null, "Deseja excluir o jogo:\n\n"+jogo.getDescricao().toUpperCase());
+
+        System.out.println(opcao);
         if(opcao == 0){
             if(cadastro.excluir(jogo)){
                 //JOptionPane.showMessageDialog(null, "O jogo\n\n"+jogo.getDescricao().toUpperCase()+"\n\nfoi excluido com sucesso!");
@@ -98,6 +97,7 @@ public class ControllerCadastroJogo {
         }
     }
     
+    //Restaura os jogos
     public void restaurar(ViewPrincipal view){
         Jogo jogo = new Jogo();
         
@@ -114,11 +114,11 @@ public class ControllerCadastroJogo {
         int opcao = JOptionPane.showConfirmDialog(null, "Deseja restaurar o jogo:\n\n"+jogo.getDescricao().toUpperCase());
         if(opcao == 0){
             if(cadastro.restaurar(jogo)){
-                JOptionPane.showMessageDialog(null, "O jogo\n\n"+jogo.getDescricao().toUpperCase()+"\n\nfoi restaurado com sucesso!");
+                view.getTextInfo().setText("O jogo\n\n"+jogo.getDescricao().toUpperCase()+"\n\nfoi restaurado com sucesso!");
                 util.cleanJTable(view.getTabelaJogos());
                 util.cleanJTable(view.getTabelaJogosExcluidos());
+                view.getDialogInfo().setVisible(true);
                 consulta(view);
-                
             }
             else{
                 JOptionPane.showMessageDialog(null, "Erro ao restaurar!");
@@ -131,5 +131,5 @@ public class ControllerCadastroJogo {
         else{
             return;
         }
-    }
+    }   
 }
