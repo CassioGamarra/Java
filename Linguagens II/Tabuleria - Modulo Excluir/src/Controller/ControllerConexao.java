@@ -3,6 +3,7 @@ package Controller;
 import View.ViewPrincipal;
 import Model.Conexao;
 import Util.*;
+import java.awt.Color;
 
 //Importações para manipular o arquivo
 import java.io.File;
@@ -41,8 +42,12 @@ public class ControllerConexao {
                 conexao.setPorta(leitor.nextLine());
                 conexao.setDbname(leitor.nextLine());
                 conexao.setUser(leitor.nextLine());
-                conexao.setPassword(leitor.nextLine());
-                
+                if(leitor.hasNextLine()){
+                    conexao.setPassword(leitor.nextLine());
+                }
+                else{
+                    conexao.setPassword("");
+                }
                 view.getFieldIP().setText(conexao.getIP());
                 view.getFieldPorta().setText(conexao.getPorta());
                 view.getFieldNomeDB().setText(conexao.getDbname());
@@ -67,34 +72,39 @@ public class ControllerConexao {
         user = view.getFieldUser().getText();
         senha = view.getFieldPassword().getPassword();
         
-        try {
-            FileWriter fw = new FileWriter(nomeArquivo);
-            BufferedWriter bw = new BufferedWriter(fw);
-            
-            bw.write(ip);
-            bw.newLine();
-            bw.write(porta);
-            bw.newLine();
-            bw.write(nomeDB);
-            bw.newLine();
-            bw.write(user);
-            bw.newLine();
-            bw.write(senha);
-            //Fecha os buffers
-            bw.close();
-            fw.close();
-            //Verifica novamente os dados no arquivo
-            verificaDadosConexao(view);
-            //Tenta conectar com o banco
-            Util util = new Util();
-            util.cleanJTable(view.getTabelaJogos());
-            util.cleanJTable(view.getTabelaJogosExcluidos());
-            //ControllerCadastroJogo cadastro = new ControllerCadastroJogo();
-            conectar(view);
-            view.cadastro.consulta(view);
+        if(ip.equals("") || porta.equals("") || nomeDB.equals("") || user.equals("")){
+            JOptionPane.showMessageDialog(view, "Os campos com * são obrigatórios", "ERRO!", JOptionPane.WARNING_MESSAGE);
         }
-        catch (IOException ex) {
-            Logger.getLogger(ControllerConexao.class.getName()).log(Level.SEVERE, null, ex);
+        else{
+            try {
+                FileWriter fw = new FileWriter(nomeArquivo);
+                BufferedWriter bw = new BufferedWriter(fw);
+
+                bw.write(ip);
+                bw.newLine();
+                bw.write(porta);
+                bw.newLine();
+                bw.write(nomeDB);
+                bw.newLine();
+                bw.write(user);
+                bw.newLine();
+                bw.write(senha);
+                //Fecha os buffers
+                bw.close();
+                fw.close();
+                //Verifica novamente os dados no arquivo
+                verificaDadosConexao(view);
+                //Tenta conectar com o banco
+                Util util = new Util();
+                util.cleanJTable(view.getTabelaJogos());
+                util.cleanJTable(view.getTabelaJogosExcluidos());
+                //ControllerCadastroJogo cadastro = new ControllerCadastroJogo();
+                conectar(view);
+                view.cadastro.consulta(view);
+            }
+            catch (IOException ex) {
+                Logger.getLogger(ControllerConexao.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     

@@ -73,11 +73,16 @@ public class ControllerCadastroJogo {
         jogo.setDescricao(view.getTabelaJogos().getValueAt(i, 1).toString());
         
         int opcao = JOptionPane.showConfirmDialog(null, "Deseja excluir o jogo:\n\n"+jogo.getDescricao().toUpperCase());
+       // view.getLblInfo().setText("Deseja excluir o jogo:\n\n"+jogo.getDescricao().toUpperCase());
+       // view.getDialogConfirma().setVisible(true);
+        
         if(opcao == 0){
             if(cadastro.excluir(jogo)){
-                JOptionPane.showMessageDialog(null, "O jogo\n\n"+jogo.getDescricao().toUpperCase()+"\n\nfoi excluido com sucesso!");
+                //JOptionPane.showMessageDialog(null, "O jogo\n\n"+jogo.getDescricao().toUpperCase()+"\n\nfoi excluido com sucesso!");
+                view.getTextInfo().setText("O jogo\n\n"+jogo.getDescricao().toUpperCase()+"\n\nfoi excluido com sucesso!");
                 util.cleanJTable(view.getTabelaJogos());
                 util.cleanJTable(view.getTabelaJogosExcluidos());
+                view.getDialogInfo().setVisible(true);
                 consulta(view);
             }
             else{
