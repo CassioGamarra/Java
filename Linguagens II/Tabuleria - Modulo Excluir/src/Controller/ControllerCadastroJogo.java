@@ -5,6 +5,7 @@ import Model.Jogo;
 import Model.ModelCadastroJogo;
 import Util.Util;
 import View.ViewPrincipal;
+import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -33,7 +34,7 @@ public class ControllerCadastroJogo {
 
             String descricao, classificacao, valorAluguel, statusAmigavel;
             int id, status;
-
+            
             try {
                 while(consulta.next()){
                     id = consulta.getInt("ID");
@@ -59,6 +60,7 @@ public class ControllerCadastroJogo {
 
     }
     
+    //Excluir um jogo
     public void excluir(ViewPrincipal view){
         Jogo jogo = new Jogo();
         
@@ -72,16 +74,15 @@ public class ControllerCadastroJogo {
         jogo.setId(Integer.parseInt(view.getTabelaJogos().getValueAt(i, 0).toString()));
         jogo.setDescricao(view.getTabelaJogos().getValueAt(i, 1).toString());
         
-        int opcao= JOptionPane.showConfirmDialog(null, "Deseja excluir o jogo:\n\n"+jogo.getDescricao().toUpperCase());
+        
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja excluir o jogo:\n\n"+jogo.getDescricao().toUpperCase(), "EXCLUIR", JOptionPane.YES_NO_OPTION);
 
         System.out.println(opcao);
         if(opcao == 0){
             if(cadastro.excluir(jogo)){
-                //JOptionPane.showMessageDialog(null, "O jogo\n\n"+jogo.getDescricao().toUpperCase()+"\n\nfoi excluido com sucesso!");
-                view.getTextInfo().setText("O jogo\n\n"+jogo.getDescricao().toUpperCase()+"\n\nfoi excluido com sucesso!");
+                JOptionPane.showMessageDialog(null, "O jogo\n\n"+jogo.getDescricao().toUpperCase()+"\n\nfoi excluido com sucesso!");
                 util.cleanJTable(view.getTabelaJogos());
                 util.cleanJTable(view.getTabelaJogosExcluidos());
-                view.getDialogInfo().setVisible(true);
                 consulta(view);
             }
             else{
@@ -97,7 +98,7 @@ public class ControllerCadastroJogo {
         }
     }
     
-    //Restaura os jogos
+    //Restaurar um jogo
     public void restaurar(ViewPrincipal view){
         Jogo jogo = new Jogo();
         
@@ -114,16 +115,14 @@ public class ControllerCadastroJogo {
         int opcao = JOptionPane.showConfirmDialog(null, "Deseja restaurar o jogo:\n\n"+jogo.getDescricao().toUpperCase());
         if(opcao == 0){
             if(cadastro.restaurar(jogo)){
-                view.getTextInfo().setText("O jogo\n\n"+jogo.getDescricao().toUpperCase()+"\n\nfoi restaurado com sucesso!");
+                JOptionPane.showMessageDialog(null, "O jogo\n\n"+jogo.getDescricao().toUpperCase()+"\n\nfoi restaurado com sucesso!");
                 util.cleanJTable(view.getTabelaJogos());
                 util.cleanJTable(view.getTabelaJogosExcluidos());
-                view.getDialogInfo().setVisible(true);
                 consulta(view);
             }
             else{
                 JOptionPane.showMessageDialog(null, "Erro ao restaurar!");
-            }
-                 
+            }    
         }
         else if(opcao == 1){
             JOptionPane.showMessageDialog(null, "Sem alterações!");
@@ -131,5 +130,5 @@ public class ControllerCadastroJogo {
         else{
             return;
         }
-    }   
+    }
 }

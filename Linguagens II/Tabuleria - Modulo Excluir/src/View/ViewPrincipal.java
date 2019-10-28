@@ -7,16 +7,17 @@ package View;
 
 import Controller.ControllerCadastroJogo;
 import Controller.ControllerConexao;
+import Model.Jogo;
 import java.awt.EventQueue;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JButton;
+import java.util.logging.Logger;;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
@@ -108,44 +109,6 @@ public class ViewPrincipal extends javax.swing.JFrame {
     }
     
     //Getters gerais da view
-    private int opcao = -1;
-
-    public int getOpcao() {
-        return opcao;
-    }
-
-    public void setOpcao(int opcao) {
-        this.opcao = opcao;
-    }
-    
-    public JButton getBtnCancelar() {
-        return btnCancelar;
-    }
-
-    public JButton getBtnNao() {
-        return btnNao;
-    }
-
-    public JButton getBtnSim() {
-        return btnSim;
-    }
-    
-    
-    public JDialog getDialogConfirma() {
-        return dialogConfirma;
-    }
-    
-    public JLabel getLblInfo() {
-        return lblInfo;
-    }
-    
-    public JDialog getDialogInfo() {
-        return dialogInfo;
-    }
-
-    public JTextArea getTextInfo() {
-        return textInfo;
-    }
 
     public JTable getTabelaJogosExcluidos() {
         return tabelaJogosExcluidos;
@@ -187,17 +150,6 @@ public class ViewPrincipal extends javax.swing.JFrame {
         btnConectar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        dialogInfo = new javax.swing.JDialog();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        textInfo = new javax.swing.JTextArea();
-        btnOK = new javax.swing.JButton();
-        dialogConfirma = new javax.swing.JDialog();
-        jPanel3 = new javax.swing.JPanel();
-        btnSim = new javax.swing.JButton();
-        btnNao = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
-        lblInfo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaJogos = new javax.swing.JTable();
@@ -460,139 +412,6 @@ public class ViewPrincipal extends javax.swing.JFrame {
             .addComponent(panelConexao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        dialogInfo.setTitle("INFORMAÇÕES");
-        dialogInfo.setBackground(new java.awt.Color(255, 255, 255));
-        dialogInfo.setMinimumSize(new java.awt.Dimension(300, 260));
-        dialogInfo.setResizable(false);
-        dialogInfo.setLocationRelativeTo(null);
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        textInfo.setEditable(false);
-        textInfo.setColumns(20);
-        textInfo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        textInfo.setRows(5);
-        textInfo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(212, 14, 30), 2, true));
-        jScrollPane3.setViewportView(textInfo);
-
-        btnOK.setBackground(new java.awt.Color(212, 14, 30));
-        btnOK.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnOK.setForeground(new java.awt.Color(246, 180, 14));
-        btnOK.setText("OK");
-        btnOK.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOKActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addComponent(btnOK, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnOK, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout dialogInfoLayout = new javax.swing.GroupLayout(dialogInfo.getContentPane());
-        dialogInfo.getContentPane().setLayout(dialogInfoLayout);
-        dialogInfoLayout.setHorizontalGroup(
-            dialogInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        dialogInfoLayout.setVerticalGroup(
-            dialogInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        dialogConfirma.setLocationRelativeTo(null);
-        dialogConfirma.setMaximumSize(new java.awt.Dimension(350, 160));
-        dialogConfirma.setMinimumSize(new java.awt.Dimension(350, 160));
-        dialogConfirma.setPreferredSize(new java.awt.Dimension(350, 160));
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(212, 14, 30), 2, true));
-        jPanel3.setFocusCycleRoot(true);
-
-        btnSim.setBackground(new java.awt.Color(212, 14, 30));
-        btnSim.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnSim.setForeground(new java.awt.Color(246, 180, 14));
-        btnSim.setText("SIM");
-        btnSim.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSimActionPerformed(evt);
-            }
-        });
-
-        btnNao.setBackground(new java.awt.Color(212, 14, 30));
-        btnNao.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnNao.setForeground(new java.awt.Color(246, 180, 14));
-        btnNao.setText("NÃO");
-
-        btnCancelar.setBackground(new java.awt.Color(212, 14, 30));
-        btnCancelar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnCancelar.setForeground(new java.awt.Color(246, 180, 14));
-        btnCancelar.setText("CANCELAR");
-
-        lblInfo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblInfo.setForeground(new java.awt.Color(212, 14, 30));
-        lblInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(btnSim)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNao)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCancelar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCancelar, btnNao, btnSim});
-
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
-                .addComponent(lblInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSim)
-                    .addComponent(btnNao)
-                    .addComponent(btnCancelar))
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout dialogConfirmaLayout = new javax.swing.GroupLayout(dialogConfirma.getContentPane());
-        dialogConfirma.getContentPane().setLayout(dialogConfirmaLayout);
-        dialogConfirmaLayout.setHorizontalGroup(
-            dialogConfirmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        dialogConfirmaLayout.setVerticalGroup(
-            dialogConfirmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MÓDULO EXCLUIR - JOGOS");
         setBackground(new java.awt.Color(255, 255, 255));
@@ -803,16 +622,6 @@ public class ViewPrincipal extends javax.swing.JFrame {
         cadastro.restaurar(this);
     }//GEN-LAST:event_btnRestaurarJogoActionPerformed
 
-    private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
-        // TODO add your handling code here:
-        dialogInfo.dispose();
-    }//GEN-LAST:event_btnOKActionPerformed
-
-    private void btnSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimActionPerformed
-        // TODO add your handling code here:
-        setOpcao(0);
-    }//GEN-LAST:event_btnSimActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -854,19 +663,13 @@ public class ViewPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnConectar;
     private javax.swing.JButton btnConexao;
     private javax.swing.JButton btnExcluir;
-    private javax.swing.JButton btnNao;
-    private javax.swing.JButton btnOK;
     private javax.swing.JButton btnRestaurar;
     private javax.swing.JButton btnRestaurarJogo;
-    private javax.swing.JButton btnSim;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JDialog dialogConexao;
-    private javax.swing.JDialog dialogConfirma;
-    private javax.swing.JDialog dialogInfo;
     private javax.swing.JDialog dialogRestaurarJogos;
     private javax.swing.JTextField fieldIP;
     private javax.swing.JTextField fieldNomeDB;
@@ -879,18 +682,13 @@ public class ViewPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblHora;
-    private javax.swing.JLabel lblInfo;
     private javax.swing.JLabel logo;
     private javax.swing.JPanel panelConexao;
     private javax.swing.JPanel panelRestaurar;
     private javax.swing.JTable tabelaJogos;
     private javax.swing.JTable tabelaJogosExcluidos;
-    private javax.swing.JTextArea textInfo;
     // End of variables declaration//GEN-END:variables
 }
