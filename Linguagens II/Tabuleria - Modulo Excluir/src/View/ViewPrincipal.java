@@ -7,8 +7,9 @@ package View;
 
 import Controller.ControllerCadastroJogo;
 import Controller.ControllerConexao;
-import Model.Jogo;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -16,12 +17,10 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;;
 import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 
 /**
  *
@@ -42,7 +41,8 @@ public class ViewPrincipal extends javax.swing.JFrame {
         // automaticamente finalizada caso a aplicação feche.
         Thread clockThread = new Thread(new ViewPrincipal.ClockRunnable(), "Clock thread");
         clockThread.setDaemon(true);
-        clockThread.start(); 
+        clockThread.start();
+        
     }
     
     //Hora do sistema
@@ -86,7 +86,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
     public ControllerConexao conexao = new ControllerConexao();
     //Controler para buscar a lista de jogos
     public ControllerCadastroJogo cadastro = new ControllerCadastroJogo();
-
+    
     //Getters da conexão
     public JTextField getFieldUser() {    
         return fieldUser;
@@ -634,7 +634,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Metal".equals(info.getName())) {
+                if ("Windows Classic".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
