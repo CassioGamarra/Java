@@ -73,11 +73,9 @@ public class ControllerCadastroJogo {
         
         jogo.setId(Integer.parseInt(view.getTabelaJogos().getValueAt(i, 0).toString()));
         jogo.setDescricao(view.getTabelaJogos().getValueAt(i, 1).toString());
-        
-        
+               
         int opcao = JOptionPane.showConfirmDialog(null, "Deseja excluir o jogo:\n\n"+jogo.getDescricao().toUpperCase(), "EXCLUIR", JOptionPane.YES_NO_OPTION);
 
-        System.out.println(opcao);
         if(opcao == 0){
             if(cadastro.excluir(jogo)){
                 JOptionPane.showMessageDialog(null, "O jogo\n\n"+jogo.getDescricao().toUpperCase()+"\n\nfoi excluido com sucesso!");
