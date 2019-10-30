@@ -45,7 +45,7 @@ public class ModelCadastro {
         int id = 0;
         String nome = " ", email = " ", cargo = " ";
         
-        String sql = "SELECT * FROM FUNCIONARIO WHERE "+tipoConsulta+" LIKE '"+consulta+"'";
+        String sql = "SELECT * FROM funcionario WHERE "+tipoConsulta+" LIKE '"+consulta+"'";
         PreparedStatement stmt;
         try {
             stmt = conexao.conectarBanco().prepareStatement(sql);
@@ -79,7 +79,7 @@ public class ModelCadastro {
         email = funcionario.getEmail();
         cargo = funcionario.getCargo();
         
-        String sql = "UPDATE FUNCIONARIO SET NOME ='"+nome+"', EMAIL = '"+email+"', CARGO = '"+cargo+"' WHERE ID = '"+id+"'";
+        String sql = "UPDATE funcionario SET NOME ='"+nome+"', EMAIL = '"+email+"', CARGO = '"+cargo+"' WHERE ID = '"+id+"'";
         PreparedStatement stmt;
         try {
             stmt = conexao.conectarBanco().prepareStatement(sql);
@@ -100,7 +100,7 @@ public class ModelCadastro {
         id = funcionario.getId();
         
         
-        String sql = "DELETE FROM FUNCIONARIO WHERE ID = '"+id+"'";
+        String sql = "DELETE FROM funcionario WHERE ID = '"+id+"'";
         try {
             PreparedStatement stmt;
             stmt = conexao.conectarBanco().prepareStatement(sql);
