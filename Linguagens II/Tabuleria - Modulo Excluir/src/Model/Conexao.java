@@ -95,7 +95,5 @@ public class Conexao {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-    
-    
+    }    
 }
