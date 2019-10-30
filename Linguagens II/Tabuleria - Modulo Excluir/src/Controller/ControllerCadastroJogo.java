@@ -5,7 +5,6 @@ import Model.Jogo;
 import Model.ModelCadastroJogo;
 import Util.Util;
 import View.ViewPrincipal;
-import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
