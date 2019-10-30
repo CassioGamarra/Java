@@ -16,7 +16,7 @@ public class ModelCadastroJogo {
     Conexao conexao = Conexao.getInstance();
 
     public ResultSet consulta(){
-        String sql = "SELECT * FROM JOGO";
+        String sql = "SELECT * FROM jogo";
         
         try {
             PreparedStatement stmt = conexao.conectarBanco().prepareStatement(sql);
@@ -35,7 +35,7 @@ public class ModelCadastroJogo {
         
         id = jogo.getId();
         
-        String sql = "UPDATE JOGO SET STATUS = 0 WHERE ID = '"+id+"'";
+        String sql = "UPDATE jogo SET status = 0 WHERE id = '"+id+"'";
         PreparedStatement stmt;
         try {
             stmt = conexao.conectarBanco().prepareStatement(sql);
@@ -55,7 +55,7 @@ public class ModelCadastroJogo {
         
         id = jogo.getId();
         
-        String sql = "UPDATE JOGO SET STATUS = 1 WHERE ID = '"+id+"'";
+        String sql = "UPDATE jogo SET status = 1 WHERE id = '"+id+"'";
         PreparedStatement stmt;
         try {
             stmt = conexao.conectarBanco().prepareStatement(sql);
