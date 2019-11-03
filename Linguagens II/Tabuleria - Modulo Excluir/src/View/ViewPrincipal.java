@@ -285,7 +285,9 @@ public class ViewPrincipal extends javax.swing.JFrame {
         dialogConexao.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         dialogConexao.setTitle("CONFIGURAR CONEXÃO");
         dialogConexao.setAlwaysOnTop(true);
-        dialogConexao.setMinimumSize(new java.awt.Dimension(480, 560));
+        dialogConexao.setBackground(new java.awt.Color(255, 255, 255));
+        dialogConexao.setMinimumSize(new java.awt.Dimension(480, 570));
+        dialogConexao.setPreferredSize(new java.awt.Dimension(480, 570));
         dialogConexao.setResizable(false);
         dialogConexao.setLocationRelativeTo(null);
 
@@ -634,7 +636,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows Classic".equals(info.getName())) {
+                if ("Metal".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

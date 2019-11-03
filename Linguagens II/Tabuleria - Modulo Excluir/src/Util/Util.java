@@ -1,13 +1,12 @@
 package Util;
 
-
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
- * Classe com métodos úteis, como verificação de placa, data e hora do sistema
+ * Classe com métodos úteis, como data e hora do sistema, atualizar JTable
  * @author cassio
  */
 public class Util {

@@ -26,7 +26,7 @@ public class Conexao {
     }
    
     public Connection conectarBanco() throws SQLException{
-        url = "jdbc:mysql://"+getIP()+":3306/AULA03AGENDA?useTimezone=true&serverTimezone=UTC";
+        url = "jdbc:mysql://"+getIP()+":3306/aula03agenda?useTimezone=true&serverTimezone=UTC";
         user = getUser();
         password = getPassword();
         return conectar();
